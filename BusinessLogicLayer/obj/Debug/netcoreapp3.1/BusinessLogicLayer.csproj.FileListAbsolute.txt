@@ -1,0 +1,12 @@
+D:\StoreStatusBoard\BusinessLogicLayer\obj\Debug\netcoreapp3.1\BusinessLogicLayer.csprojAssemblyReference.cache
+D:\StoreStatusBoard\BusinessLogicLayer\obj\Debug\netcoreapp3.1\BusinessLogicLayer.AssemblyInfoInputs.cache
+D:\StoreStatusBoard\BusinessLogicLayer\obj\Debug\netcoreapp3.1\BusinessLogicLayer.AssemblyInfo.cs
+D:\StoreStatusBoard\BusinessLogicLayer\obj\Debug\netcoreapp3.1\BusinessLogicLayer.csproj.CoreCompileInputs.cache
+D:\StoreStatusBoard\BusinessLogicLayer\bin\Debug\netcoreapp3.1\BusinessLogicLayer.deps.json
+D:\StoreStatusBoard\BusinessLogicLayer\bin\Debug\netcoreapp3.1\BusinessLogicLayer.dll
+D:\StoreStatusBoard\BusinessLogicLayer\bin\Debug\netcoreapp3.1\BusinessLogicLayer.pdb
+D:\StoreStatusBoard\BusinessLogicLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.dll
+D:\StoreStatusBoard\BusinessLogicLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.pdb
+D:\StoreStatusBoard\BusinessLogicLayer\obj\Debug\netcoreapp3.1\BusinessLogicLayer.csproj.CopyComplete
+D:\StoreStatusBoard\BusinessLogicLayer\obj\Debug\netcoreapp3.1\BusinessLogicLayer.dll
+D:\StoreStatusBoard\BusinessLogicLayer\obj\Debug\netcoreapp3.1\BusinessLogicLayer.pdb
