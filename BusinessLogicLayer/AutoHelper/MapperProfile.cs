@@ -8,8 +8,7 @@ namespace BusinessLogicLayer.AutoHelper
     {
         public MapperProfile()
         {
-            CreateMap<Stock, ResponseModel>();
-            CreateMap<ResponseModel, Stock>();
+            CreateMap<Monitoring, ResponseModel>();
         }
     }
 }

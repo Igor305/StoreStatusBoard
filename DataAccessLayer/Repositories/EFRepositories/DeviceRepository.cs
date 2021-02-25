@@ -9,15 +9,14 @@ namespace DataAccessLayer.Repositories.EFRepositories
 {
     public class DeviceRepository : GenericRepository<Device> , IDeviceRepository
     {
-        public DeviceRepository (ApplicationContext applicationContext) : base (applicationContext)
+        public DeviceRepository (NetMonitoringContext netMonitoringContext) : base (netMonitoringContext)
         {
 
         }
 
         public async Task<List<Device>> GetAllAsync()
         {
-            List<Device> devices = await _applicationContext.Devices.ToListAsync();
-            int r = 56;
+            List<Device> devices = await _netMonitoringContext.Devices.ToListAsync();
             return devices;
         }
     }

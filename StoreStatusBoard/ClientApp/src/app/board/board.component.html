@@ -1,7 +1,6 @@
-<p>board works!</p>
-<p>board works!</p>
-{{board}}
-<p>board works!</p>
-<p>board works!</p><p>board works!</p><p>board works!</p><p>board works!</p><p>board works!</p>
-
-<p>board works!</p>
+<div *ngFor="let stock of stocks;">
+  <div *ngIf="stock.status == 1" class="stocks" style="background-color: forestgreen;">
+    <div id="Nstock" class="stocks">{{stock.stock}}</div>
+  </div>
+  <div *ngIf="stock.status == 0" class="stocks" style="background-color: red;" (click)="goStock()"> {{stock.stock}} </div>
+</div>

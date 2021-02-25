@@ -1,4 +1,4 @@
-export interface StoreModel {
+export interface StockModel {
   Device?: string;
   Stock?: number;
   Status?: number;

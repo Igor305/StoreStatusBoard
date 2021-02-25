@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="ClientApp\src\app\models\store.model.ts" />
+    <None Remove="ClientApp\src\app\models\stock.model.ts" />
     <None Remove="ClientApp\src\app\models\StoreModel.ts" />
   </ItemGroup>
 

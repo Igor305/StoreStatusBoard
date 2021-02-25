@@ -27,11 +27,11 @@ namespace StoreStatusBoard
         public void ConfigureServices(IServiceCollection services)
         {
             string connectionString = "Data Source=sql08;Initial Catalog=NetMonitoring;Persist Security Info=True;User ID=j-sql08-read-NetMonitoring;Password=9g0sl3l9z1l0";
-            services.AddDbContext<ApplicationContext>(opts => opts.UseSqlServer(connectionString));
+            services.AddDbContext<NetMonitoringContext>(opts => opts.UseSqlServer(connectionString));
             services.AddScoped<IDeviceRepository, DeviceRepository>();
             services.AddScoped<IMonitoringRepository, MonitoringReposirory>();
             services.AddScoped<IStockRepository, StockRepository>();
-            services.AddScoped<IStocksRepository, StocksRepository>();
+            services.AddScoped<IRStockRepository, RStockRepository>();
             services.AddScoped<IBoardService, BoardService>();
             services.AddControllersWithViews();
 

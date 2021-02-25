@@ -1,8 +1,9 @@
 ﻿namespace DataAccessLayer.Entities
 {
-    public class Stock
+    public partial class Stock
     {
-        public int StockID { get; }
-        public string StockName { get; }
+        public int Id { get; set; }
+        public string StockId { get; set; }
+        public string Network { get; set; }
     }
 }

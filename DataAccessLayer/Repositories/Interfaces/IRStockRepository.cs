@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repositories.Interfaces
 {
-    public interface IStocksRepository
+    public interface IRStockRepository
     {
-        public Task<List<Stocks>> GetAllAsync();
+        public Task<List<RStock>> GetAllAsync();
     }
 }

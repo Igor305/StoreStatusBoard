@@ -2,14 +2,14 @@
 
 namespace DataAccessLayer.Entities
 {
-    public class Monitoring
+    public partial class Monitoring
     {
-        public string Device { get; }
-        public int Stock { get; }
-        public int Status { get; }
-        public string IpAddress { get; }
-        public DateTime LogTime { get;}
-        public int ResponseTime { get; }
-        public int TTL { get; }
+        public string Device { get; set; }
+        public int? Stock { get; set; }
+        public int? Status { get; set; }
+        public string IpAddress { get; set; }
+        public DateTime? LogTime { get; set; }
+        public int? ResponseTime { get; set; }
+        public int? Ttl { get; set; }
     }
 }

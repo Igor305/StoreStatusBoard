@@ -1,12 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BusinessLogicLayer.Models
 {
     public class ResponseModel
     {
-        public int StockID { get; }
-        public string StockName { get; }
+        public string Device { get; set; }
+        public int? Stock { get; set; }
+        public int? Status { get; set; }
+        public string IpAddress { get; set; }
+        public DateTime? LogTime { get; set; }
+        public int? ResponseTime { get; set; }
+        public int? Ttl { get; set; }
     }
 }
+

@@ -9,13 +9,13 @@ namespace DataAccessLayer.Repositories.EFRepositories
 {
     public class StockRepository : GenericRepository<Stock>, IStockRepository
     {
-        public StockRepository (ApplicationContext applicationContext) : base (applicationContext)
+        public StockRepository (NetMonitoringContext netMonitoringContext) : base (netMonitoringContext)
         {
 
         }
         public async Task<List<Stock>> GetAllAsync()
         {
-            List<Stock> stocks = await _applicationContext.Stock.ToListAsync();
+            List<Stock> stocks = await _netMonitoringContext.Stocks.ToListAsync();
 
             return stocks;
         }

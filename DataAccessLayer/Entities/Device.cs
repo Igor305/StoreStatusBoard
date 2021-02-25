@@ -1,9 +1,9 @@
 ﻿namespace DataAccessLayer.Entities
 {
-    public class Device
+    public partial class Device
     {
-        public int id { get; }
-        public string DeviceName {get;}
-        public string DevicePrefiks { get; }
+        public int Id { get; set; }
+        public string DeviceName { get; set; }
+        public string DevicePrefiks { get; set; }
     }
 }

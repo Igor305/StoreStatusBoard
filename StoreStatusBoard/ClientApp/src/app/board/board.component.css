@@ -1,0 +1,14 @@
+div {
+  display: inline-block;
+}
+
+.stocks {
+  position: relative;
+  font-size: 25px;
+  width: 100px;
+  height: 100px;
+}
+
+.Nstock {
+  text-align: center;
+}

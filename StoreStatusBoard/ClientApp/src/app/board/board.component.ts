@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StockModel } from '../models/stock.model';
 import { BoardService } from '../services/board.service';
 
 @Component({
@@ -8,11 +9,13 @@ import { BoardService } from '../services/board.service';
 })
 export class BoardComponent implements OnInit {
 
+  stocks: StockModel
+
   constructor(private boardService : BoardService) { }
 
-  ngOnInit() {
-    var board = this.boardService.getBoard();
-    console.log(board);
+  async ngOnInit() {
+    this.stocks = await this.boardService.getBoard();
+    console.log(this.stocks);
   }
 
 }

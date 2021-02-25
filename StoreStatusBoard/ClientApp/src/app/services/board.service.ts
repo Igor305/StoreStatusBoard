@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { StoreModel } from '../models/store.model';
+import { StockModel } from '../models/stock.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class BoardService {
 
   public async getBoard() {
     const url: string = "https://localhost:44341/api/Board";
-    const board = await this.http.get<Array<StoreModel>>(url).toPromise();
+    const board = await this.http.get<StockModel>(url).toPromise();
 
     return board;
   }

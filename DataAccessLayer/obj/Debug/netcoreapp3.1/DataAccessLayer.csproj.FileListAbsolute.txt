@@ -7,3 +7,15 @@ D:\StoreStatusBoard\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.Asse
 D:\StoreStatusBoard\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.csproj.CoreCompileInputs.cache
 D:\StoreStatusBoard\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.dll
 D:\StoreStatusBoard\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.pdb
+C:\Users\i.talavyria\Desktop\StoreStatusBoard\DataAccessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.deps.json
+C:\Users\i.talavyria\Desktop\StoreStatusBoard\DataAccessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.runtimeconfig.json
+C:\Users\i.talavyria\Desktop\StoreStatusBoard\DataAccessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.runtimeconfig.dev.json
+C:\Users\i.talavyria\Desktop\StoreStatusBoard\DataAccessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.dll
+C:\Users\i.talavyria\Desktop\StoreStatusBoard\DataAccessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.pdb
+C:\Users\i.talavyria\Desktop\StoreStatusBoard\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.csprojAssemblyReference.cache
+C:\Users\i.talavyria\Desktop\StoreStatusBoard\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.AssemblyInfoInputs.cache
+C:\Users\i.talavyria\Desktop\StoreStatusBoard\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.AssemblyInfo.cs
+C:\Users\i.talavyria\Desktop\StoreStatusBoard\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\i.talavyria\Desktop\StoreStatusBoard\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.dll
+C:\Users\i.talavyria\Desktop\StoreStatusBoard\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.pdb
+C:\Users\i.talavyria\Desktop\StoreStatusBoard\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.genruntimeconfig.cache

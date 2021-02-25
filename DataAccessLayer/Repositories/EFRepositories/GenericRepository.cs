@@ -5,11 +5,11 @@ namespace DataAccessLayer.Repositories.EFRepositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        protected readonly ApplicationContext _applicationContext;
+        protected readonly NetMonitoringContext _netMonitoringContext;
 
-        public GenericRepository(ApplicationContext applicationContext)
+        public GenericRepository(NetMonitoringContext applicationContext)
         {
-            _applicationContext = applicationContext;
+            _netMonitoringContext = applicationContext;
         }
     }
 }
