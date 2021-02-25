@@ -19,3 +19,6 @@ C:\Users\i.talavyria\Desktop\StoreStatusBoard\DataAccessLayer\obj\Debug\netcorea
 C:\Users\i.talavyria\Desktop\StoreStatusBoard\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.dll
 C:\Users\i.talavyria\Desktop\StoreStatusBoard\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.pdb
 C:\Users\i.talavyria\Desktop\StoreStatusBoard\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.genruntimeconfig.cache
+D:\StoreStatusBoard\DataAccessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.runtimeconfig.json
+D:\StoreStatusBoard\DataAccessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.runtimeconfig.dev.json
+D:\StoreStatusBoard\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.genruntimeconfig.cache

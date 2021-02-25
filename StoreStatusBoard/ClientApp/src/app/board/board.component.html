@@ -1,6 +1,11 @@
-<div *ngFor="let stock of stocks;">
-  <div *ngIf="stock.status == 1" class="stocks" style="background-color: forestgreen;">
-    <div id="Nstock" class="stocks">{{stock.stock}}</div>
-  </div>
-  <div *ngIf="stock.status == 0" class="stocks" style="background-color: red;" (click)="goStock()"> {{stock.stock}} </div>
-</div>
+<mat-tab-group mat-align-tabs="start">
+  <mat-tab label="Board">
+    <div *ngFor="let stock of stocks;">
+      <div *ngIf="stock.status == 1" class="stocks" style="background-color: forestgreen;">
+        <div id="Nstock" class="stocks">{{stock.stock}}</div>
+      </div>
+      <div *ngIf="stock.status == 0" class="stocks" style="background-color: red;" (click)="goStock()"> {{stock.stock}} </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="Stock">Content 2</mat-tab>
+</mat-tab-group>
