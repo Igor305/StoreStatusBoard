@@ -32,6 +32,13 @@ html {
   border: 1px solid #000000;
 }
 
+.hidePingValue {
+  position: absolute;
+  left: 50%;
+  top: 15%;
+  font-size: 21px;
+}
+
 .middlePingStatus {
   position: absolute;
   left: 452px;
@@ -41,6 +48,12 @@ html {
   border: 1px solid #000000;
 }
 
+.middlePingValue {
+  position: absolute;
+  left: 50%;
+  top: 15%;
+  font-size: 21px;
+}
 
 .lowPingStatus {
   position: absolute;
@@ -49,6 +62,13 @@ html {
   width: 105px;
   height: 43px;
   border: 1px solid #000000;
+}
+
+.lowPingValue {
+  position: absolute;
+  left: 50%;
+  top: 15%;
+  font-size: 21px;
 }
 
 #connection1 {
@@ -144,8 +164,8 @@ html {
 #NStocks {
   position: absolute;
   top: 80%;
-  left: 12%;
-  width: 286px;
+  left: 5%;
+  width: 350px;
   height: 21px;
   font-family: 'Roboto', sans-serif;
   font-size: 18px;

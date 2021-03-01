@@ -4,21 +4,24 @@
     <div id="connection1" class="connection1"></div>
     <div id="connection2" class="connection2"></div>
     <div id="connection3" class="connection3"></div>
+    <div id="hidePingValue" class="hidePingValue">{{hideAmountR}}</div>
   </div>
   <div class="middlePingStatus">
     <div id="connection1" class="connection1"></div>
     <div id="connection2" class="connection2"></div>
-  </div>
+    <div id="middlePingValue" class="middlePingValue">{{middleAmountR}}</div>
+    </div>
   <div class="lowPingStatus">
     <div id="connectionLow" class="connectionLow"></div>
+    <div id="lowPingValue" class="lowPingValue">{{lowAmountR}}</div>
   </div>
-  <div class="R">R</div>
+  <div class="R">R {{amountR}}</div>
   <div class="S">S</div>
-  <div class="Router">Router:%</div>
+  <div class="Router">Router: {{routerPercent}} %</div>
   <div class="Sync">Sync:%</div>
   <div id="rightBlock" class="rightBlock">
     <div id="TimeNow">{{timeNow}}</div>
-    <div id="NStocks">Кількість активних магазинів -</div>
+    <div id="NStocks">Кількість активних магазинів - {{stockAmount}}</div>
   </div>
 
 </header>

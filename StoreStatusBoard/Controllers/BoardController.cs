@@ -18,9 +18,9 @@ namespace StoreStatusBoard.Controllers
         }
 
         [HttpGet]
-        public async Task<List<ResponseModel>> Board()
+        public async Task<ResponseModel> Board()
         {
-            List<ResponseModel> boardModelResponses = await _boardService.GetBoard();
+            ResponseModel boardModelResponses = await _boardService.GetBoard();
 
             return boardModelResponses;
         }

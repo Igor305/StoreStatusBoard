@@ -1,11 +1,17 @@
-.back{
-    display:inline-flex;
+a {
+  color: black;
 }
+
+.back {
+  display: inline-flex;
+}
+
 .backText {
   margin-left: 5px;
   margin-top: 8px;
   font-size: 18px;
 }
+
 .arrow {
   margin-left: 15px;
   height: 40px;

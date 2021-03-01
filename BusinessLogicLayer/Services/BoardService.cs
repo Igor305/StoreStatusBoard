@@ -25,14 +25,19 @@ namespace BusinessLogicLayer.Services
             _mapper = mapper;
         }
 
-        public async Task<List<ResponseModel>> GetBoard()
+        public async Task<ResponseModel> GetBoard()
         {
+            ResponseModel responseModel = new ResponseModel();
 
-            int count = await _monitoringRepository.GetCountStock();
-            List<Monitoring> monitorings = await _monitoringRepository.GetAllAsync(count);
-            List<ResponseModel> boardModelResponse = _mapper.Map<List<Monitoring>, List<ResponseModel>>(monitorings);
+            int amount = await _monitoringRepository.GetCountStock();
+            List<Monitoring> monitoringsR = await _monitoringRepository.GetStockR(amount);
+            List<Monitoring> monitoringsS = await _monitoringRepository.GetStockS(amount);
 
-            return boardModelResponse;
+            responseModel.amount = amount;
+            responseModel.monitoringModelsR = _mapper.Map<List<Monitoring>, List<MonitoringModel>>(monitoringsR);
+            responseModel.monitoringModelsS = _mapper.Map<List<Monitoring>, List<MonitoringModel>>(monitoringsS);
+
+            return responseModel;
         }
     }
 }

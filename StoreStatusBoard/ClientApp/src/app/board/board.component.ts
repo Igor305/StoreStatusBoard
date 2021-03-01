@@ -18,19 +18,17 @@ export class BoardComponent implements OnInit {
   constructor(private boardService: BoardService) { }
 
   public async ngOnInit() {
-    this.stocks = await this.boardService.getBoard();
-    console.log(this.stocks);
+    this.getBoard();
     setInterval(() => this.getBoard(), 50000);
   }
 
   public async getBoard() {
 
-    this.stocks = await this.boardService.getBoard();
-    console.log(this.stocks);
-
+    let stocks = await this.boardService.getBoard();
+    this.stocks = stocks.monitoringModelsR;
   }
 
-  public async getStatusStock(): Promise<string> {
+ /* public async getStatusStock(): Promise<string> {
 
     var stock = await this.boardService.getBoard();
     if (!this.badPing) {
@@ -41,6 +39,6 @@ export class BoardComponent implements OnInit {
     this.badPing = false;
 
     return this.badPingStock;
-  }
+  }*/
 
 }

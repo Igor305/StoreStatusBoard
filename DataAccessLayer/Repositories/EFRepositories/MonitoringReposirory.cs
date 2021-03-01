@@ -27,10 +27,17 @@ namespace DataAccessLayer.Repositories.EFRepositories
             return count;
         }
 
-        public async Task<List<Monitoring>> GetAllAsync(int count)
+        public async Task<List<Monitoring>> GetStockR(int count)
         {
 
             List<Monitoring> monitorings = await _netMonitoringContext.Monitorings.Where(x => x.LogTime.Value.Date == DateTime.Today.Date).Where(x => x.Device == "router").OrderByDescending(x => x.LogTime).Reverse().Take(count).ToListAsync();
+
+            return monitorings;
+        }
+
+        public async Task<List<Monitoring>> GetStockS(int count)
+        {
+            List<Monitoring> monitorings = await _netMonitoringContext.Monitorings.Where(x => x.LogTime.Value.Date == DateTime.Today.Date).Where(x => x.Device == "S").OrderByDescending(x => x.LogTime).Reverse().Take(count).ToListAsync();
 
             return monitorings;
         }

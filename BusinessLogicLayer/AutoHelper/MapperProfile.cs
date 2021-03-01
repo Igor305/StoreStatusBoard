@@ -8,7 +8,7 @@ namespace BusinessLogicLayer.AutoHelper
     {
         public MapperProfile()
         {
-            CreateMap<Monitoring, ResponseModel>();
+            CreateMap<Monitoring, MonitoringModel>();
         }
     }
 }
