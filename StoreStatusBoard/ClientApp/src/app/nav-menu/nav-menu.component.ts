@@ -6,13 +6,28 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav-menu.component.css']
 })
 export class NavMenuComponent {
-  isExpanded = false;
 
-  collapse() {
-    this.isExpanded = false;
+  timeNow: string = ""
+
+  constructor() { }
+
+  public async ngOnInit() {
+
+    setInterval(() => this.getTime(), 1000);
+
   }
 
-  toggle() {
-    this.isExpanded = !this.isExpanded;
+  public async getTime() {
+
+    const now = new Date();
+
+    let min, sec = "";
+    if (now.getMinutes()<10) {min = "0"+ now.getMinutes();}
+    if (now.getMinutes()>10) {min = now.getMinutes();}
+    if (now.getSeconds()<10) {sec = "0"+ now.getSeconds();}
+    if (now.getSeconds()>10) {sec = now.getSeconds().toString();}
+    
+    this.timeNow = now.getHours() + ":" + min + ":" + sec;
   }
+
 }

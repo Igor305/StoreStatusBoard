@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qowYhLtfYRq30ZibRo3TjPWj4u5/y+hKZfblleqeavJ6tTGrVCeKWxrhcCi14dJJ6mSinuBtaaPFqYA6eS0lDw==",
+  "dgSpecHash": "sI2d8D+6EPhb6rc4kUELx+VcGYjnP5G5iXiqZ+n6bUDvjHGrvd2WxXeYvuTvdUBSHJxImtOYK2UGowimT8lBkA==",
   "success": true,
-  "projectFilePath": "D:\\StoreStatusBoard\\BusinessLogicLayer\\BusinessLogicLayer.csproj",
+  "projectFilePath": "C:\\Users\\i.talavyria\\Desktop\\StoreStatusBoard\\BusinessLogicLayer\\BusinessLogicLayer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\i.talavyria\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\i.talavyria\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

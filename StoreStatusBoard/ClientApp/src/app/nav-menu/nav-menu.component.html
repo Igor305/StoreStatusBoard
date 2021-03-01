@@ -1,7 +1,25 @@
 <header>
-  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-    <div class="container">
-      <a class="navbar-brand" [routerLink]="['/']">StoreStatusBoard</a>
-    </div>
-  </nav>
+  <img class="logo" src="/assets/Logo.jpg">
+  <div class="hidePingStatus">
+    <div id="connection1" class="connection1"></div>
+    <div id="connection2" class="connection2"></div>
+    <div id="connection3" class="connection3"></div>
+  </div>
+  <div class="middlePingStatus">
+    <div id="connection1" class="connection1"></div>
+    <div id="connection2" class="connection2"></div>
+  </div>
+  <div class="lowPingStatus">
+    <div id="connectionLow" class="connectionLow"></div>
+  </div>
+  <div class="R">R</div>
+  <div class="S">S</div>
+  <div class="Router">Router:%</div>
+  <div class="Sync">Sync:%</div>
+  <div id="rightBlock" class="rightBlock">
+    <div id="TimeNow">{{timeNow}}</div>
+    <div id="NStocks">Кількість активних магазинів -</div>
+  </div>
+
 </header>
+

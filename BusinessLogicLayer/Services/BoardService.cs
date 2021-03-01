@@ -27,11 +27,9 @@ namespace BusinessLogicLayer.Services
 
         public async Task<List<ResponseModel>> GetBoard()
         {
-            List<Device> devices = await _deviceRepository.GetAllAsync();
-            List<Monitoring> monitorings = await _monitoringRepository.GetAllAsync();
-            List<RStock> rstocks = await _stocksRepository.GetAllAsync();
-            List<Stock> stocks = await _stockRepository.GetAllAsync();
 
+            int count = await _monitoringRepository.GetCountStock();
+            List<Monitoring> monitorings = await _monitoringRepository.GetAllAsync(count);
             List<ResponseModel> boardModelResponse = _mapper.Map<List<Monitoring>, List<ResponseModel>>(monitorings);
 
             return boardModelResponse;

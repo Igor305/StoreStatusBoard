@@ -9,13 +9,38 @@ import { BoardService } from '../services/board.service';
 })
 export class BoardComponent implements OnInit {
 
+  badPingStock: string = "";
+  badPing: boolean = false;
   stocks: StockModel
+  showFiller: boolean = true;
 
-  constructor(private boardService : BoardService) { }
 
-  async ngOnInit() {
+  constructor(private boardService: BoardService) { }
+
+  public async ngOnInit() {
     this.stocks = await this.boardService.getBoard();
     console.log(this.stocks);
+    setInterval(() => this.getBoard(), 50000);
+  }
+
+  public async getBoard() {
+
+    this.stocks = await this.boardService.getBoard();
+    console.log(this.stocks);
+
+  }
+
+  public async getStatusStock(): Promise<string> {
+
+    var stock = await this.boardService.getBoard();
+    if (!this.badPing) {
+      this.badPingStock = stock.LogTime.toString();
+      this.badPing = true;
+      }
+    this.badPingStock = stock.Stock.toString();
+    this.badPing = false;
+
+    return this.badPingStock;
   }
 
 }

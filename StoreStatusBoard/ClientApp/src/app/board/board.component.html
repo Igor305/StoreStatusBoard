@@ -1,11 +1,30 @@
-<mat-tab-group mat-align-tabs="start">
-  <mat-tab label="Board">
+<mat-drawer-container autosize>
+  <mat-drawer #drawer mode="side" position="end">
     <div *ngFor="let stock of stocks;">
-      <div *ngIf="stock.status == 1" class="stocks" style="background-color: forestgreen;">
-        <div id="Nstock" class="stocks">{{stock.stock}}</div>
+      <div *ngIf="stock.status == 0" class="stocks" style="background-color: #FF4A3E;">
+        <div id="Nstock" class="stocks">
+          {{stock.stock}}
+          <div id="S">S</div>
+        </div>
       </div>
-      <div *ngIf="stock.status == 0" class="stocks" style="background-color: red;" (click)="goStock()"> {{stock.stock}} </div>
     </div>
-  </mat-tab>
-  <mat-tab label="Stock">Content 2</mat-tab>
-</mat-tab-group>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <div *ngFor="let stock of stocks;">
+      <nav>
+        <a routerLink ="/stock">
+          <div *ngIf="stock.status == 1" class="stocks" style="background-color: #94D196;">
+            <div id="Nstock" class="stocks">{{stock.stock}}</div>
+            <div id="S" class="S">S</div>
+          </div>
+        </a>
+      </nav>
+      <div *ngIf="stock.status == 0" class="stocks" style="background-color: #FF4A3E;" (click)="drawer.toggle()">
+        <div id="Nstock" class="stocks">{{stock.stock}}</div>
+        <div id="Provider" class="Provaider">1</div>
+        <div id="S" class="S">S</div>
+      </div>
+    </div>
+  </div>
+</mat-drawer-container>

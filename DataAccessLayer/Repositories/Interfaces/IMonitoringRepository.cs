@@ -6,6 +6,7 @@ namespace DataAccessLayer.Repositories.Interfaces
 {
     public interface IMonitoringRepository
     {
-        public Task<List<Monitoring>> GetAllAsync();
+        public Task<int> GetCountStock();
+        public Task<List<Monitoring>> GetAllAsync(int count);
     }
 }

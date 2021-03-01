@@ -4,15 +4,149 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+div {
+  display: inline-block;
+}
+
 html {
   font-size: 14px;
 }
+
 @media (min-width: 768px) {
   html {
     font-size: 16px;
   }
 }
 
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+.logo {
+  width: 250px;
+  height: 105px;
+}
+
+.hidePingStatus {
+  position: absolute;
+  left: 288px;
+  top: 7px;
+  width: 105px;
+  height: 43px;
+  border: 1px solid #000000;
+}
+
+.middlePingStatus {
+  position: absolute;
+  left: 452px;
+  top: 7px;
+  width: 105px;
+  height: 43px;
+  border: 1px solid #000000;
+}
+
+
+.lowPingStatus {
+  position: absolute;
+  left: 588px;
+  top: 7px;
+  width: 105px;
+  height: 43px;
+  border: 1px solid #000000;
+}
+
+#connection1 {
+  position: absolute;
+  top: 26px;
+  left: 15px;
+  width: 10px;
+  height: 15px;
+  background: #94D196;
+}
+
+#connection2 {
+  position: absolute;
+  top: 18px;
+  left: 25px;
+  width: 10px;
+  height: 23px;
+  background: #94D196;
+}
+
+#connection3 {
+  position: absolute;
+  top: 11px;
+  left: 35px;
+  width: 10px;
+  height: 30px;
+  background: #94D196;
+}
+
+#connectionLow {
+  position: absolute;
+  top: 26px;
+  left: 15px;
+  width: 10px;
+  height: 15px;
+  background: #C8D904;
+}
+.R {
+  position: absolute;
+  left: 288px;
+  top: 69px;
+  width: 105px;
+  height: 43px;
+  border: 1px solid #FC1203;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+}
+
+.S {
+  position: absolute;
+  left: 452px;
+  top: 69px;
+  width: 105px;
+  height: 43px;
+  border: 1px solid #FC1203;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+}
+
+.Router {
+  position: absolute;
+  left: 720px;
+  top: 7px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+}
+
+.Sync {
+  position: absolute;
+  left: 720px;
+  top: 69px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+}
+.rightBlock {
+  position: relative;
+  margin-left: 65%;
+  width: 350px;
+  height: 100px;
+}
+#TimeNow {
+  position: absolute;
+  top: 1%;
+  left: 45%;
+  width: 180px;
+  height: 56px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 48px;
+}
+
+#NStocks {
+  position: absolute;
+  top: 80%;
+  left: 12%;
+  width: 286px;
+  height: 21px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
 }

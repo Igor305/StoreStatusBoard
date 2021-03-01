@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BoardComponent } from '../board/board.component';
-import { MatTabsModule } from '@angular/material/tabs';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -9,7 +10,8 @@ import { MatTabsModule } from '@angular/material/tabs';
   declarations: [BoardComponent],
   imports: [
     CommonModule,
-    MatTabsModule
+    MatSidenavModule,
+    RouterModule
   ]
 })
 export class BoardModule { }

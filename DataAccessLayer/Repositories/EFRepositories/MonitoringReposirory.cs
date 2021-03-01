@@ -16,9 +16,21 @@ namespace DataAccessLayer.Repositories.EFRepositories
 
         }
 
-        public async Task<List<Monitoring>> GetAllAsync()
+        public async Task<int> GetCountStock()
         {
-            List<Monitoring> monitorings = await _netMonitoringContext.Monitorings.Where(x => x.LogTime.Value.Date == DateTime.Today.Date).Where(x => x.Device == "router").ToListAsync();
+            Monitoring lastStock = await _netMonitoringContext.Monitorings.Where(x => x.LogTime.Value.Date == DateTime.Today.Date).Where(x => x.Device == "router").OrderBy(x => x.Stock).LastAsync();
+
+            int? nStock = lastStock.Stock;
+
+            int count = nStock.GetValueOrDefault();
+
+            return count;
+        }
+
+        public async Task<List<Monitoring>> GetAllAsync(int count)
+        {
+
+            List<Monitoring> monitorings = await _netMonitoringContext.Monitorings.Where(x => x.LogTime.Value.Date == DateTime.Today.Date).Where(x => x.Device == "router").OrderByDescending(x => x.LogTime).Reverse().Take(count).ToListAsync();
 
             return monitorings;
         }
