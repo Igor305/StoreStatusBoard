@@ -16,6 +16,7 @@ export class NavMenuComponent {
   middleAmountR: number 
   lowAmountR: number 
   routerPercent: any
+  syncPercent: any
 
   constructor(private boardService: BoardService) { }
 
@@ -26,29 +27,34 @@ export class NavMenuComponent {
     let stocks = await this.boardService.getBoard();
     this.stockAmount = stocks.amount;
     this.amountR = 0;
+    this.amountS = 0;
     this.hideAmountR = 0;
     this.middleAmountR = 0;
     this.lowAmountR = 0;
     var numStocks = Number(stocks.amount);
-    console.log(stocks.monitoringModelsR);
+    console.log(stocks.monitoringModels);
     for (var x = 0; x < numStocks; x++) {
 
-      if (stocks.monitoringModelsR[x].status == 0) {
+      if (stocks.monitoringModels[x].status == 0) {
         this.amountR++;
       }
-      if (stocks.monitoringModelsR[x].responseTime != 0) {
-        if (stocks.monitoringModelsR[x].responseTime < 40) {
+      if (stocks.monitoringModels[x].statusS == 0) {
+        this.amountS++;
+      }
+      if (stocks.monitoringModels[x].responseTime != 0) {
+        if (stocks.monitoringModels[x].responseTime < 40) {
           this.hideAmountR++;
         }
-        if ((stocks.monitoringModelsR[x].responseTime >= 40) && (stocks.monitoringModelsR[x].responseTime < 80)) {
+        if ((stocks.monitoringModels[x].responseTime >= 40) && (stocks.monitoringModels[x].responseTime < 80)) {
           this.middleAmountR++;
         }
-        if (stocks.monitoringModelsR[x].responseTime >= 80) {
+        if (stocks.monitoringModels[x].responseTime >= 80) {
           this.lowAmountR++;
         }
       }
     }
     this.routerPercent = ((this.hideAmountR + this.middleAmountR + this.lowAmountR) / numStocks * 100).toFixed(2);
+    this.syncPercent = ((numStocks - this.amountS) / numStocks * 100).toFixed(2);
   }
 
   public async getTime() {

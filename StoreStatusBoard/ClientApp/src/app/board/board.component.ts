@@ -25,7 +25,9 @@ export class BoardComponent implements OnInit {
   public async getBoard() {
 
     let stocks = await this.boardService.getBoard();
-    this.stocks = stocks.monitoringModelsR;
+    this.stocks = stocks.monitoringModels;
+    console.log(this.stocks);
+
   }
 
  /* public async getStatusStock(): Promise<string> {

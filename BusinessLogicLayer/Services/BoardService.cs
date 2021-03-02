@@ -33,9 +33,18 @@ namespace BusinessLogicLayer.Services
             List<Monitoring> monitoringsR = await _monitoringRepository.GetStockR(amount);
             List<Monitoring> monitoringsS = await _monitoringRepository.GetStockS(amount);
 
+            int?[] statusS = new int?[amount];
+
+            for (int i = 0; i < amount; i++)
+            {
+                statusS[i] = monitoringsS[i].Status;
+            }
+            
+            int count = 0;
+
             responseModel.amount = amount;
-            responseModel.monitoringModelsR = _mapper.Map<List<Monitoring>, List<MonitoringModel>>(monitoringsR);
-            responseModel.monitoringModelsS = _mapper.Map<List<Monitoring>, List<MonitoringModel>>(monitoringsS);
+            responseModel.monitoringModels = _mapper.Map<List<Monitoring>, List<MonitoringModel>>(monitoringsR);
+            responseModel.monitoringModels.ForEach(x => x.StatusS = statusS[count++]);
 
             return responseModel;
         }

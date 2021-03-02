@@ -6,8 +6,7 @@ namespace BusinessLogicLayer.Models
 
     public class ResponseModel
     {
-        public List<MonitoringModel> monitoringModelsR { get; set; }
-        public List<MonitoringModel> monitoringModelsS { get; set; }
+        public List<MonitoringModel> monitoringModels { get; set; }
         public int amount { get; set; }
     }
 }

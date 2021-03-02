@@ -7,6 +7,7 @@ namespace BusinessLogicLayer.Models
         public string Device { get; set; }
         public int? Stock { get; set; }
         public int? Status { get; set; }
+        public int? StatusS { get; set; }
         public string IpAddress { get; set; }
         public DateTime? LogTime { get; set; }
         public int? ResponseTime { get; set; }

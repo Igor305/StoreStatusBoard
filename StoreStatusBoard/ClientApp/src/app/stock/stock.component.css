@@ -2,7 +2,26 @@ a {
   color: black;
 }
 
-.back {
+nav{
+    display:flex;
+}
+
+hr {
+  flex-grow: 1;
+}
+
+table {
+  margin-top: 15px;
+  margin-left: 10px;
+  border: 1px solid #000000;
+}
+
+th, tr, td {
+  text-align: center;
+  border: 1px solid #000000;
+}
+
+  .back {
   display: inline-flex;
 }
 
@@ -23,4 +42,71 @@ a {
   border: 1px solid #000000;
   box-sizing: border-box;
   border-radius: 25px;
+}
+
+.statusFromDay {
+  position: relative;
+  margin-left: 20px;
+  margin-top: 20px;
+  width: 1300px;
+  height: 100px;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+}
+
+.infoStatusFromDay {
+  position: relative;
+  margin-left: 20px;
+  display: inline-flex;
+}
+
+.circle {
+  position: relative;
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 25px;
+}
+
+.textInfo {
+  position: relative;
+  margin-top: 5px;
+  font-family: Roboto;
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.statusFromDayValue {
+  position: relative;
+  margin-top: 15px;
+  margin-left: 10px;
+  display: flex;
+}
+
+.line {
+  border-top: 1px solid #000000;
+  height: 10px;
+  flex: 1;
+}
+
+.tableStatus {
+  width: 600px;
+  height: 120px;
+}
+
+.tdTableStatus {
+  font-family: Roboto;
+  font-size: 24px;
+}
+
+.tableInfoTT{
+   position: absolute;
+   top: 180px;
+   left:800px;
+}
+
+.tableDevice {
+  width: 500px; 
 }
