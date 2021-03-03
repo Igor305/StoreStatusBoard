@@ -1,24 +1,26 @@
 <mat-drawer-container autosize>
   <mat-drawer #drawer mode="side" position="end">
-    <div *ngFor="let stock of stocks;">
-      <div id="mat-drawer1" class="mat-drawer1">
-        <div *ngIf="stock.status == 0" class="stocks" style="background-color: #FF4A3E;">
+    <div *ngFor="let stock of stocks;" id="mat-drawer" class="mat-drawer">
+      <div>
+        <div *ngIf="(stock.status == 0)&&(stock.isGrey == 0)" class="stocks" style="background-color: #FF4A3E;">
           <div id="Nstock" class="stocks">
             {{stock.stock}}
             <div id="S">S</div>
           </div>
         </div>
       </div>
-      <div id="mat-drawer2" class="mat-drawer2">
-        <div *ngIf="stock.statusS == 0" class="stocks" style=" background-color: #94D196;">
-          <div id="Nstock" class="stocks" style="border: 3px solid #FF4A3E;">
-            {{stock.stock}}
-            <div id="S" style="color: #FF4A3E;">S</div>
+      </div>
+      <div *ngFor="let stock of stocks;" id="mat-drawer" class="mat-drawer">
+        <div>
+          <div *ngIf="(stock.statusS == 0)&&(stock.isGrey == 0)" class="stocks" style=" background-color: #94D196;">
+            <div id="Nstock" class="stocks" style="border: 3px solid #FF4A3E;">
+              {{stock.stock}}
+              <div id="S" style="color: #FF4A3E;">S</div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </mat-drawer>
+</mat-drawer>
   <div class="example-sidenav-content">
     <div *ngFor="let stock of stocks;">
       <nav>
@@ -30,14 +32,19 @@
         </a>
       </nav>
       <div *ngIf="(stock.status == 1)&&(stock.statusS == 0)" class="stocks" style=" background-color: #94D196;" (click)="drawer.toggle()">
-        <div id="Nstock" class="stocks" style="border: 3px solid #FF4A3E;">{{stock.stock}}</div>
+        <div id="Nstock" class="stocks" style="border: 5px solid #FF4A3E;">{{stock.stock}}</div>
         <div id="S" class="S" style="color: #FF4A3E;">S</div>
       </div>
-      <div *ngIf="((stock.status == 0)&&(stock.statusS == 0))||((stock.status == 0)&&(stock.statusS == 1))" class="stocks" style="background-color: #FF4A3E;" (click)="drawer.toggle()">
+      <div *ngIf="(stock.isGrey == 1)" class="stocks" style="background-color: #968B8B;">
         <div id="Nstock" class="stocks">{{stock.stock}}</div>
         <div id="Provider" class="Provaider">1</div>
         <div id="S" class="S">S</div>
+       </div>
+       <div *ngIf="(((stock.status == 0)&&(stock.statusS == 0))||((stock.status == 0)&&(stock.statusS == 1)))&&(stock.isGrey != 1)" class="stocks" style="background-color: #FF4A3E;" (click)="drawer.toggle()">
+          <div id="Nstock" class="stocks">{{stock.stock}}</div>
+          <div id="Provider" class="Provaider">1</div>
+          <div id="S" class="S">S</div>
+       </div>
       </div>
     </div>
-  </div>
 </mat-drawer-container>

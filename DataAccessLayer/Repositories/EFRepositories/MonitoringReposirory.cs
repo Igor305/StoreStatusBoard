@@ -27,6 +27,13 @@ namespace DataAccessLayer.Repositories.EFRepositories
             return count;
         }
 
+        public async Task<List<int?>> GetGreenFrom5Day()
+        {
+            List<int?> greenFrom5Day = await _netMonitoringContext.Monitorings.Where(x => x.LogTime.Value.Date >= DateTime.Today.Date.AddDays(-5)).Where(x => x.Device == "router").Where(x => x.Status == 1).Select(x => x.Stock).Distinct().OrderBy(x => x.Value).ToListAsync();
+
+            return greenFrom5Day;
+        }
+
         public async Task<List<Monitoring>> GetStockR(int count)
         {
 
@@ -42,5 +49,6 @@ namespace DataAccessLayer.Repositories.EFRepositories
 
             return monitorings;
         }
+
     }
 }

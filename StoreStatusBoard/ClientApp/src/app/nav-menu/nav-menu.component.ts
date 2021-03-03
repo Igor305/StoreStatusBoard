@@ -23,7 +23,10 @@ export class NavMenuComponent {
   public async ngOnInit() {
 
     setInterval(() => this.getTime(), 1000);
+    setInterval(() => this.getBoard(), 50000);
+  }
 
+  public async getBoard() {
     let stocks = await this.boardService.getBoard();
     this.stockAmount = stocks.amount;
     this.amountR = 0;
@@ -35,13 +38,13 @@ export class NavMenuComponent {
     console.log(stocks.monitoringModels);
     for (var x = 0; x < numStocks; x++) {
 
-      if (stocks.monitoringModels[x].status == 0) {
+      if ((stocks.monitoringModels[x].status == 0) && (stocks.monitoringModels[x].isGrey == 0)) {
         this.amountR++;
       }
-      if (stocks.monitoringModels[x].statusS == 0) {
+      if ((stocks.monitoringModels[x].statusS == 0) && (stocks.monitoringModels[x].isGrey == 0)) {
         this.amountS++;
       }
-      if (stocks.monitoringModels[x].responseTime != 0) {
+      if ((stocks.monitoringModels[x].responseTime != 0) && (stocks.monitoringModels[x].isGrey == 0)) {
         if (stocks.monitoringModels[x].responseTime < 40) {
           this.hideAmountR++;
         }
@@ -53,7 +56,7 @@ export class NavMenuComponent {
         }
       }
     }
-    this.routerPercent = ((this.hideAmountR + this.middleAmountR + this.lowAmountR) / numStocks * 100).toFixed(2);
+    this.routerPercent = ((numStocks - this.amountR) / numStocks * 100).toFixed(2);
     this.syncPercent = ((numStocks - this.amountS) / numStocks * 100).toFixed(2);
   }
 

@@ -3,6 +3,7 @@ export interface StockModel {
   Stock?: number;
   Status?: number;
   StatusS?: number;
+  isGrey?: number;
   IpAddress?: string;
   LogTime?: Date;
   TTL?: number;
