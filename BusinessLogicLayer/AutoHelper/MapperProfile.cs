@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BusinessLogicLayer.Models;
-using DataAccessLayer.Entities;
+using DataAccessLayer.Entities.NetMonitoring;
+using DataAccessLayer.Entities.Shops;
 
 namespace BusinessLogicLayer.AutoHelper
 {
@@ -9,6 +10,7 @@ namespace BusinessLogicLayer.AutoHelper
         public MapperProfile()
         {
             CreateMap<Monitoring, MonitoringModel>();
+            CreateMap<Shop, ShopModel>();
         }
     }
 }

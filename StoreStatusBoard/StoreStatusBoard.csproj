@@ -28,7 +28,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\models\provider.model.ts" />
     <None Remove="ClientApp\src\app\models\response.model.ts" />
+    <None Remove="ClientApp\src\app\models\response\shop.response.ts" />
     <None Remove="ClientApp\src\app\models\stock.model.ts" />
     <None Remove="ClientApp\src\app\models\StoreModel.ts" />
   </ItemGroup>

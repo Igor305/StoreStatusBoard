@@ -1,10 +1,11 @@
-﻿using BusinessLogicLayer.Models;
+﻿using BusinessLogicLayer.Models.Response;
 using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.Services.Interfaces
 {
     public interface IBoardService
     {
-        public Task<ResponseModel> GetBoard();
+        public Task<BoardResponseModel> getBoard();
+        public Task<ShopResponseModel> getShopInfo(int nshop);
     }
 }

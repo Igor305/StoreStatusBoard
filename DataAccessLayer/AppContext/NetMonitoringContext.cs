@@ -1,4 +1,4 @@
-﻿using DataAccessLayer.Entities;
+﻿using DataAccessLayer.Entities.NetMonitoring;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLayer.AppContext

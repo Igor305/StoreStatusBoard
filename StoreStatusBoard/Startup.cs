@@ -3,8 +3,10 @@ using BusinessLogicLayer.AutoHelper;
 using BusinessLogicLayer.Services;
 using BusinessLogicLayer.Services.Interfaces;
 using DataAccessLayer.AppContext;
-using DataAccessLayer.Repositories.EFRepositories;
-using DataAccessLayer.Repositories.Interfaces;
+using DataAccessLayer.Repositories.EFRepositories.NetMonitoring;
+using DataAccessLayer.Repositories.EFRepositories.Shops;
+using DataAccessLayer.Repositories.Interfaces.NetMonitoring;
+using DataAccessLayer.Repositories.Interfaces.Shops;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
@@ -26,12 +28,20 @@ namespace StoreStatusBoard
 
         public void ConfigureServices(IServiceCollection services)
         {
-            string connectionString = "Data Source=sql08;Initial Catalog=NetMonitoring;Persist Security Info=True;User ID=j-sql08-read-NetMonitoring;Password=9g0sl3l9z1l0";
-            services.AddDbContext<NetMonitoringContext>(opts => opts.UseSqlServer(connectionString));
+            string connectionStringSQL08 = "Data Source=sql08;Initial Catalog=NetMonitoring;Persist Security Info=True;User ID=j-sql08-read-NetMonitoring;Password=9g0sl3l9z1l0";
+            string connectionStringSQL26 = "Data Source=sql26;Initial Catalog=Shops;Persist Security Info=True;User ID=j-sql26-reader-shops;Password=1GAxzpWtGojxCWnW8sYY";
+            services.AddDbContext<NetMonitoringContext>(opts => opts.UseSqlServer(connectionStringSQL08));
+            services.AddDbContext<ShopsContext>(opts => opts.UseSqlServer(connectionStringSQL26));
             services.AddScoped<IDeviceRepository, DeviceRepository>();
             services.AddScoped<IMonitoringRepository, MonitoringReposirory>();
             services.AddScoped<IStockRepository, StockRepository>();
             services.AddScoped<IRStockRepository, RStockRepository>();
+            services.AddScoped<IProviderRepository, ProviderRepository>();
+            services.AddScoped<IShopProvidersRepository, ShopProvidersRepository>();
+            services.AddScoped<IShopWorkTimesRepository, ShopWorkTimesRepository>();
+            services.AddScoped<IShopRegionLocalizationsRepository, ShopRegionLocalizationsRepository>();
+            services.AddScoped<IShopsRepository, ShopsRepository>();
+            services.AddScoped<ITempImportAddressesRepository, TempImportAddressesRepository>();
             services.AddScoped<IBoardService, BoardService>();
             services.AddControllersWithViews();
 

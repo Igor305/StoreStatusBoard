@@ -1,7 +1,6 @@
-﻿using BusinessLogicLayer.Models;
+﻿using BusinessLogicLayer.Models.Response;
 using BusinessLogicLayer.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace StoreStatusBoard.Controllers
@@ -18,11 +17,19 @@ namespace StoreStatusBoard.Controllers
         }
 
         [HttpGet]
-        public async Task<ResponseModel> Board()
+        public async Task<BoardResponseModel> Board()
         {
-            ResponseModel boardModelResponses = await _boardService.GetBoard();
+            BoardResponseModel boardModelResponses = await _boardService.getBoard();
 
             return boardModelResponses;
+        }
+
+        [HttpGet("Shop")]
+        public async Task<ShopResponseModel> Shop(int nshop)
+        {
+            ShopResponseModel shopResponseModel = await _boardService.getShopInfo(nshop);
+
+            return shopResponseModel;
         }
     }
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ShopResponseModel } from '../models/response.models/shop.response';
+import { BoardService } from '../services/board.service';
 
 @Component({
   selector: 'app-stock',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StockComponent implements OnInit {
 
-  constructor() { }
+  shopInfo : ShopResponseModel
 
-  ngOnInit(): void {
+  constructor(private boardService: BoardService) { }
+
+  public async ngOnInit() {
+
+    this.shopInfo = await this.boardService.getShopInfo(5);
+    console.log(this.shopInfo);
   }
 
 

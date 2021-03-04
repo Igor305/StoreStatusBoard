@@ -18,7 +18,7 @@
           Провайдер 1
         </td>
         <td id="tdTableStatus" class="tdTableStatus">
-          Провайдер 2
+          Провайдер 2 
         </td>
         <td id="tdTableStatus" class="tdTableStatus">
           Синхронізація
@@ -69,16 +69,20 @@
         </td>
         <td>
           Графік роботи
+          {{shopInfo.WorkTimeFrom}} {{shopInfo.WorkTimeTo}}
         </td>
       </tr>
       <tr>
         Регіон
+        {{shopInfo.Address.Region}}
       </tr>
       <tr>
         Адреса
+        {{shopInfo.Address.City}} {{shopInfo.Address.Street}} {{shopInfo.Address.Number}}
       </tr>
       <tr>
         Провайдер
+        {{shopInfo.Provider.Name}} {{shopInfo.Provider.PhoneName}}
       </tr>
     </table>
   </div>
