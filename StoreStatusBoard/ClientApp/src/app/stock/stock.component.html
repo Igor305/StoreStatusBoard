@@ -67,22 +67,27 @@
         <td>
           Номер ТТ
         </td>
-        <td>
+       <tr>
           Графік роботи
-          {{shopInfo.WorkTimeFrom}} {{shopInfo.WorkTimeTo}}
-        </td>
+          <td>{{shopInfo.workTimeFrom}}-{{shopInfo.workTimeTo}}</td>
       </tr>
-      <tr>
-        Регіон
-        {{shopInfo.Address.Region}}
-      </tr>
-      <tr>
-        Адреса
-        {{shopInfo.Address.City}} {{shopInfo.Address.Street}} {{shopInfo.Address.Number}}
-      </tr>
+       <tr>
+         Регіон
+         <td>
+         {{shopInfo.region}}
+         </td>
+       </tr>
+       <tr>
+         Адреса
+         <td>
+           {{shopInfo.city}} {{shopInfo.street}} {{shopInfo.number}}
+         </td>
+       </tr>
       <tr>
         Провайдер
-        {{shopInfo.Provider.Name}} {{shopInfo.Provider.PhoneName}}
+        <td *ngFor="let provider of shopInfo.providers">
+          {{provider.name}} {{provider.phoneNumber}}
+        </td>
       </tr>
     </table>
   </div>

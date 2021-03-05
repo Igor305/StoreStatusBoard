@@ -28,7 +28,7 @@ import { StockModule } from './stock/stock.module';
     FormsModule,
     RouterModule.forRoot([
     { path: '', component: BoardComponent, pathMatch: 'full' },
-    { path: 'stock', component: StockComponent }
+    { path: ':idShop', component: StockComponent }
 ], { relativeLinkResolution: 'legacy' }),
     BrowserAnimationsModule
   ],

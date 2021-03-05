@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ShopResponseModel } from '../models/response.models/shop.response';
+import { ShopResponseModel } from '../models/response/shop.response';
 import { BoardService } from '../services/board.service';
 
 @Component({

@@ -24,7 +24,7 @@
   <div class="example-sidenav-content">
     <div *ngFor="let stock of stocks;">
       <nav>
-        <a routerLink="/stock">
+        <a routerLink="/{{stock.stock}}">
           <div *ngIf="(stock.status == 1)&&(stock.statusS == 1)" class="stocks" style="background-color: #94D196;">
             <div id="Nstock" class="stocks">{{stock.stock}}</div>
             <div id="S" class="S">S</div>

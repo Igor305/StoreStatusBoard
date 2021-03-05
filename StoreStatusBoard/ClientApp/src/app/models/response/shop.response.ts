@@ -2,12 +2,12 @@ import { ProviderModel } from "../provider.model";
 
 export interface ShopResponseModel {
 
-  WorkTimeFrom?: Date;
-  WorkTimeTo?: Date;
-  Region?: string;
-  City?: string;
-  Street?: string;
-  Number?: string;
-  Provider?: ProviderModel;
+  workTimeFrom?: Date;
+  workTimeTo?: Date;
+  region?: string;
+  city?: string;
+  street?: string;
+  number?: string;
+  providers?: ProviderModel;
 
 }
