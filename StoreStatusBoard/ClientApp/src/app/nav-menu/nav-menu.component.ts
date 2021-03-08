@@ -8,6 +8,7 @@ import { BoardService } from '../services/board.service';
 })
 export class NavMenuComponent {
 
+  screenWidth1450: boolean = false;
   timeNow: string = ""
   stockAmount: string = ""
   amountR: number 
@@ -18,10 +19,11 @@ export class NavMenuComponent {
   routerPercent: any
   syncPercent: any
 
-  constructor(private boardService: BoardService) { }
+  constructor(private boardService: BoardService, ) { }
 
   public async ngOnInit() {
 
+    this.getBoard();
     setInterval(() => this.getTime(), 1000);
     setInterval(() => this.getBoard(), 50000);
   }

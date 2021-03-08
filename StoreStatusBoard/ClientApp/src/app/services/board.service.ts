@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BoardResponseModel } from '../models/response/board.response.model';
@@ -20,7 +20,11 @@ export class BoardService {
 
   public async getShopInfo(nshop:number): Promise<ShopResponseModel> {
     const url: string = "https://localhost:44341/api/Board/Shop";
-    const shop = await this.http.get<ShopResponseModel>(url).toPromise();
+
+    const params = new HttpParams()
+      .set('nshop', nshop.toString());
+
+    const shop = await this.http.get<ShopResponseModel>(url, { params : params }).toPromise();
 
     return shop;
   }

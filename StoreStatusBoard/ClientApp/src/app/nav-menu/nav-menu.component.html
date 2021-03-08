@@ -1,28 +1,36 @@
-<header>
+<header fxLayout="row wrap"
+        fxLayout.lt-sm="column"
+        fxLayoutGap="32px"
+        fxLayoutAlign="flex-start">
   <img class="logo" src="/assets/Logo.jpg">
-  <div class="hidePingStatus">
-    <div id="connection1" class="connection1"></div>
-    <div id="connection2" class="connection2"></div>
-    <div id="connection3" class="connection3"></div>
-    <div id="hidePingValue" class="hidePingValue">{{hideAmountR}}</div>
-  </div>
-  <div class="middlePingStatus">
-    <div id="connection1" class="connection1"></div>
-    <div id="connection2" class="connection2"></div>
-    <div id="middlePingValue" class="middlePingValue">{{middleAmountR}}</div>
+  <div class="statusHideMiddle">
+    <div class="hidePingStatus">
+      <div id="connection1" class="connection1"></div>
+      <div id="connection2" class="connection2"></div>
+      <div id="connection3" class="connection3"></div>
+      <div id="hidePingValue" class="hidePingValue">{{hideAmountR}}</div>
     </div>
-  <div class="lowPingStatus">
-    <div id="connectionLow" class="connectionLow"></div>
-    <div id="lowPingValue" class="lowPingValue">{{lowAmountR}}</div>
+    <div class="middlePingStatus">
+      <div id="connection1" class="connection1"></div>
+      <div id="connection2" class="connection2"></div>
+      <div id="middlePingValue" class="middlePingValue">{{middleAmountR}}</div>
+    </div>
+    <div class="R">R {{amountR}}</div>
+    <div class="S">S {{amountS}}</div>
   </div>
-  <div class="R">R {{amountR}}</div>
-  <div class="S">S {{amountS}}</div>
-  <div class="Router">Router: {{routerPercent}} %</div>
-  <div class="Sync">Sync: {{syncPercent}} %</div>
+  <div class="statusLow">
+    <div class="lowPingStatus">
+      <div id="connectionLow" class="connectionLow"></div>
+      <div id="lowPingValue" class="lowPingValue">{{lowAmountR}}</div>
+    </div>
+  </div>
+  <div class="percents">
+    <div class="Router">Router: {{routerPercent}} %</div>
+    <div class="Sync">Sync: {{syncPercent}} %</div>
+  </div>
   <div id="rightBlock" class="rightBlock">
     <div id="TimeNow">{{timeNow}}</div>
     <div id="NStocks">Кількість активних магазинів - {{stockAmount}}</div>
   </div>
-
 </header>
 

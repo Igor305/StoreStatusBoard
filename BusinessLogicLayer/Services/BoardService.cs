@@ -6,6 +6,7 @@ using DataAccessLayer.Entities.NetMonitoring;
 using DataAccessLayer.Entities.Shops;
 using DataAccessLayer.Repositories.Interfaces.NetMonitoring;
 using DataAccessLayer.Repositories.Interfaces.Shops;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -90,9 +91,12 @@ namespace BusinessLogicLayer.Services
         public async Task<ShopResponseModel> getShopInfo(int nshop)
         {
             ShopResponseModel shopResponseModel = new ShopResponseModel();
-            nshop = 158;
-            shopResponseModel.WorkTimeFrom = await _shopWorkTimesRepository.getShopWorkTimesFrom(nshop);
-            shopResponseModel.WorkTimeTo = await _shopWorkTimesRepository.getShopWorkTimesTo(nshop);
+
+            DateTime workTimeFrom =  await _shopWorkTimesRepository.getShopWorkTimesFrom(nshop);
+            DateTime workTimeTo = await _shopWorkTimesRepository.getShopWorkTimesTo(nshop);
+
+            shopResponseModel.WorkTimeFrom = workTimeFrom.ToShortTimeString();
+            shopResponseModel.WorkTimeTo = workTimeTo.ToShortTimeString();
 
             Shop shop = await _shopsRepository.getShop(nshop);
 

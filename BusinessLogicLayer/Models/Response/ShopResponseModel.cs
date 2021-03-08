@@ -5,8 +5,8 @@ namespace BusinessLogicLayer.Models.Response
 {
     public class ShopResponseModel
     {
-        public DateTime WorkTimeFrom { get; set; }
-        public DateTime WorkTimeTo { get; set; }
+        public string WorkTimeFrom { get; set; }
+        public string WorkTimeTo { get; set; }
         public string Region { get; set; }
         public string City { get; set; }
         public string Street { get; set; }

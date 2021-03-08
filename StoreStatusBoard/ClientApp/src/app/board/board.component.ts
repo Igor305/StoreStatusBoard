@@ -1,3 +1,4 @@
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { StockModel } from '../models/stock.model';
 import { BoardService } from '../services/board.service';
@@ -15,11 +16,17 @@ export class BoardComponent implements OnInit {
   showFiller: boolean = true;
 
 
-  constructor(private boardService: BoardService) { }
+  constructor(private boardService: BoardService, private breakpointObserver: BreakpointObserver) { }
+
 
   public async ngOnInit() {
+
+    console.log(this.stocks);
     this.getBoard();
     setInterval(() => this.getBoard(), 50000);
+
+    const isSmallScreen = this.breakpointObserver.isMatched('(max-width: 1450px)');
+    console.log(isSmallScreen);
   }
 
   public async getBoard() {
