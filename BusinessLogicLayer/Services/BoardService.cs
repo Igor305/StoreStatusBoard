@@ -92,7 +92,7 @@ namespace BusinessLogicLayer.Services
         {
             ShopResponseModel shopResponseModel = new ShopResponseModel();
 
-            DateTime workTimeFrom =  await _shopWorkTimesRepository.getShopWorkTimesFrom(nshop);
+            DateTime workTimeFrom = await _shopWorkTimesRepository.getShopWorkTimesFrom(nshop);
             DateTime workTimeTo = await _shopWorkTimesRepository.getShopWorkTimesTo(nshop);
 
             shopResponseModel.WorkTimeFrom = workTimeFrom.ToShortTimeString();
@@ -112,9 +112,9 @@ namespace BusinessLogicLayer.Services
 
             List<int> providers = await _shopProvidersRepository.getShopProvider(nshop);
 
-            for (int x = 0; x < providers.Count; x++)   
+            for (int x = 0; x < providers.Count; x++)
             {
-                providerModels.Add (new ProviderModel()
+                providerModels.Add(new ProviderModel()
                 {
                     Name = await _providerRepository.getProviderName(providers[x]),
                     PhoneNumber = await _providerRepository.getProviderPhoneNumber(providers[x])
@@ -124,6 +124,41 @@ namespace BusinessLogicLayer.Services
             shopResponseModel.Providers = providerModels;
 
             return shopResponseModel;
+        }
+
+        public async Task<DeviceInShopResponseModel> getDeviceinShop(int nshop)
+        {
+            DeviceInShopResponseModel deviceInShopResponseModel = new DeviceInShopResponseModel();
+
+            List<string> deviceModels = await _monitoringRepository.getDevicesFromStock(nshop);
+
+            List<Monitoring> devicesOnShop = new List<Monitoring>();
+
+            foreach (string device in deviceModels)
+            {
+                Monitoring deviceOnShop = await _monitoringRepository.getDeviceFromLastLogTime(nshop,device);
+                if (deviceOnShop != null){
+                    devicesOnShop.Add(deviceOnShop);
+                }
+
+                /* switch (device[0])
+                 {
+                     case 'R': device.Substring(1).Insert(0, "Роутер"); break;
+                     case 'S': device.Substring(1).Insert(0, "База магазина"); break;
+                     case 'K': device.Substring(1).Insert(0, "Касса "); break;
+                     case 'V': device.Substring(1).Insert(0, "Видеорегистратор "); break;
+                     case 'P': device.Substring(1).Insert(0, "PriceChecker"); break;
+                     case 'M': device.Substring(1).Insert(0, "Raspberry"); break;
+                     case 'F': device.Substring(1).Insert(0, "Принтер чеков"); break;
+                     case 'T': device.Substring(1).Insert(0, "Терминал"); break;
+                 }*/
+            }
+
+            List<MonitoringModel> devicesModels = _mapper.Map<List<Monitoring>, List<MonitoringModel>>(devicesOnShop);
+
+            deviceInShopResponseModel.Devices = devicesModels;
+
+            return deviceInShopResponseModel;
         }
     }
 }

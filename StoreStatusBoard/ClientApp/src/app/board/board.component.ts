@@ -1,6 +1,7 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { StockModel } from '../models/stock.model';
+import { NavMenuComponent } from '../nav-menu/nav-menu.component';
 import { BoardService } from '../services/board.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { BoardService } from '../services/board.service';
 })
 export class BoardComponent implements OnInit {
 
+  nav: NavMenuComponent
   badPingStock: string = "";
   badPing: boolean = false;
   stocks: StockModel
@@ -21,9 +23,8 @@ export class BoardComponent implements OnInit {
 
   public async ngOnInit() {
 
-    console.log(this.stocks);
     this.getBoard();
-    setInterval(() => this.getBoard(), 50000);
+    //setInterval(() => this.getBoard(), 50000);
 
     const isSmallScreen = this.breakpointObserver.isMatched('(max-width: 1450px)');
     console.log(isSmallScreen);
@@ -33,10 +34,8 @@ export class BoardComponent implements OnInit {
 
     let stocks = await this.boardService.getBoard();
     this.stocks = stocks.monitoringModels;
-    console.log(this.stocks);
 
   }
-
  /* public async getStatusStock(): Promise<string> {
 
     var stock = await this.boardService.getBoard();

@@ -7,7 +7,7 @@
       </div>
     </a>
     <div id="backText" class="backText">
-      > Торговая точка 1
+      > Торговая точка {{shopId}}
     </div>
   </nav>
 
@@ -47,12 +47,15 @@
           Статус
         </td>
       </tr>
-      <tr>
+      <tr *ngFor="let device of deviceInShop.devices" class="tableDeviceName">
         <td>
-          asdf
+          {{device.device}}
         </td>
-        <td>
-          asdf
+        <td *ngIf="(device.status == 1)" style="color: #FF4A3E;">
+          {{device.logTime}}
+        </td>
+        <td *ngIf="(device.status == 0)" style="color: #94D196;">
+          {{device.logTime}}
         </td>
       </tr>
     </table>
@@ -67,7 +70,10 @@
         <td>
           Номер ТТ
         </td>
-       <tr>
+        <td>
+          {{shopId}}
+        </td>
+<tr>
           Графік роботи
           <td>{{shopInfo.workTimeFrom}}-{{shopInfo.workTimeTo}}</td>
       </tr>

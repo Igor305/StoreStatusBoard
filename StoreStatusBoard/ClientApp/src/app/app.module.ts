@@ -31,7 +31,7 @@ import { StockModule } from './stock/stock.module';
     RouterModule.forRoot([
     { path: '', component: BoardComponent, pathMatch: 'full' },
     { path: ':shopId', component: StockComponent }
-], { relativeLinkResolution: 'legacy' }),
+    ], { relativeLinkResolution: 'legacy' }),
     BrowserAnimationsModule
   ],
   providers: [BoardService],

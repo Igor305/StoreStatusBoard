@@ -31,5 +31,14 @@ namespace StoreStatusBoard.Controllers
 
             return shopResponseModel;
         }
+
+
+        [HttpGet("DeviceInShop")]
+        public async Task<DeviceInShopResponseModel> DeviceInShop(int nshop)
+        {
+            DeviceInShopResponseModel deviceInShopResponseModel = await _boardService.getDeviceinShop(nshop);
+
+            return deviceInShopResponseModel;
+        }
     }
 }

@@ -23,12 +23,13 @@ export class NavMenuComponent {
 
   public async ngOnInit() {
 
-    this.getBoard();
+    this.getState();
     setInterval(() => this.getTime(), 1000);
-    setInterval(() => this.getBoard(), 50000);
+    setInterval(() => this.getState(), 50000);
   }
 
-  public async getBoard() {
+  public async getState() {
+
     let stocks = await this.boardService.getBoard();
     this.stockAmount = stocks.amount;
     this.amountR = 0;

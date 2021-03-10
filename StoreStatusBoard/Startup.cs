@@ -28,7 +28,7 @@ namespace StoreStatusBoard
 
         public void ConfigureServices(IServiceCollection services)
         {
-            string connectionStringSQL08 = "Data Source=sql08;Initial Catalog=NetMonitoring;Persist Security Info=True;User ID=j-sql08-read-NetMonitoring;Password=9g0sl3l9z1l0";
+            string connectionStringSQL08 = "Data Source=sql08;Initial Catalog=NetMonitoring;Persist Security Info=True;User ID=j-sql08-read-NetMonitoring;Password=9g0sl3l9z1l0;Connection Timeout=150";
             string connectionStringSQL26 = "Data Source=sql26;Initial Catalog=Shops;Persist Security Info=True;User ID=j-sql26-reader-shops;Password=1GAxzpWtGojxCWnW8sYY";
             services.AddDbContext<NetMonitoringContext>(opts => opts.UseSqlServer(connectionStringSQL08));
             services.AddDbContext<ShopsContext>(opts => opts.UseSqlServer(connectionStringSQL26));

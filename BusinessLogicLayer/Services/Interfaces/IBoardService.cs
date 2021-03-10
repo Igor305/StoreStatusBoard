@@ -7,5 +7,6 @@ namespace BusinessLogicLayer.Services.Interfaces
     {
         public Task<BoardResponseModel> getBoard();
         public Task<ShopResponseModel> getShopInfo(int nshop);
+        public Task<DeviceInShopResponseModel> getDeviceinShop(int nshop);
     }
 }

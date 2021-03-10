@@ -51,5 +51,20 @@ namespace DataAccessLayer.Repositories.EFRepositories.NetMonitoring
             return monitorings;
         }
 
+        public async Task<List<string>> getDevicesFromStock(int nstock)
+        {
+
+            List<string> devices = await _netMonitoringContext.Monitorings.Where(x => x.Stock == nstock).Select(x => x.Device).Distinct().ToListAsync();
+
+            return devices;
+        }
+
+        public async Task<Monitoring> getDeviceFromLastLogTime(int nstock, string device)
+        {
+
+            Monitoring monitorings = await _netMonitoringContext.Monitorings.Where(x => x.Stock == nstock).Where(x => x.Device == device).FirstAsync();
+
+            return monitorings;
+        }
     }
 }
