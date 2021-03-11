@@ -11,10 +11,9 @@ import { BoardService } from '../services/board.service';
 })
 export class BoardComponent implements OnInit {
 
-  nav: NavMenuComponent
   badPingStock: string = "";
   badPing: boolean = false;
-  stocks: StockModel
+  stocks: StockModel = {}
   showFiller: boolean = true;
 
 
@@ -33,6 +32,12 @@ export class BoardComponent implements OnInit {
   public async getBoard() {
 
     let stocks = await this.boardService.getBoard();
+    this.stocks = stocks.monitoringModels;
+
+  }
+  public async getStartBoard() {
+
+    let stocks = await this.boardService.getStartBoard();
     this.stocks = stocks.monitoringModels;
 
   }

@@ -19,13 +19,20 @@ export class BoardService {
     return board;
   }
 
-  public async getShopInfo(nshop:number): Promise<ShopResponseModel> {
-    const url: string = "https://localhost:44341/api/Board/Shop";
+  public async getStartBoard(): Promise<BoardResponseModel> {
+    const url: string = "https://localhost:44341/api/Board/Start";
+    const board = await this.http.get<BoardResponseModel>(url).toPromise();
+
+    return board;
+  }
+
+  public async getShopInfo(nshop: number): Promise<ShopResponseModel> {
+    const url: string = "https://localhost:44341/api/Board/ShopInfo";
 
     const params = new HttpParams()
       .set('nshop', nshop.toString());
 
-    const shop = await this.http.get<ShopResponseModel>(url, { params : params }).toPromise();
+    const shop = await this.http.get<ShopResponseModel>(url, { params: params }).toPromise();
 
     return shop;
   }

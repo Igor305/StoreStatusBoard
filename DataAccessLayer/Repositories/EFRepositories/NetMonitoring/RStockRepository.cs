@@ -1,8 +1,7 @@
 ﻿using DataAccessLayer.AppContext;
-using DataAccessLayer.Entities.NetMonitoring;
 using DataAccessLayer.Repositories.Interfaces.NetMonitoring;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repositories.EFRepositories.NetMonitoring
@@ -15,11 +14,11 @@ namespace DataAccessLayer.Repositories.EFRepositories.NetMonitoring
             _netMonitoringContext = netMonitoringContext;
         }
 
-        public async Task<List<RStock>> getAllAsync()
+        public async Task<int> getAmountShop()
         {
-            List<RStock> rstocks = await _netMonitoringContext.RStocks.ToListAsync();
+            int nstock = await _netMonitoringContext.RStocks.Select(x=>x.StockId).OrderByDescending(x=>x).FirstAsync();
 
-            return rstocks;
+            return nstock;
         }
     }
 }

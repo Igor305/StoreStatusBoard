@@ -11,91 +11,69 @@
     </div>
   </nav>
 
-  <div>
-    <table id="tableStatus" class="tableStatus">
-      <tr>
-        <td id="tdTableStatus" class="tdTableStatus">
-          Провайдер 1
-        </td>
-        <td id="tdTableStatus" class="tdTableStatus">
-          Провайдер 2 
-        </td>
-        <td id="tdTableStatus" class="tdTableStatus">
-          Синхронізація
-        </td>
-      </tr>
-      <tr>
-        <td>
-          adsf
-        </td>
-        <td>
-          adsf
-        </td>
-        <td>
-          adsf
-        </td>
-      </tr>
-    </table>
-  </div>
-  <div>
-    <table id="tableDevice" class="tableDevice">
-      <tr>
-        <td id="tdTableStatus" class="tdTableStatus">
-          Назва пристрою
-        </td>
-        <td id="tdTableStatus" class="tdTableStatus">
-          Статус
-        </td>
-      </tr>
-      <tr *ngFor="let device of deviceInShop.devices" class="tableDeviceName">
-        <td>
-          {{device.device}}
-        </td>
-        <td *ngIf="(device.status == 1)" style="color: #FF4A3E;">
-          {{device.logTime}}
-        </td>
-        <td *ngIf="(device.status == 0)" style="color: #94D196;">
-          {{device.logTime}}
-        </td>
-      </tr>
-    </table>
-  </div>
-
-  <div>
-    <table id="tableInfoTT" class="tableInfoTT">
-      <tr id="tdTableStatus" class="tdTableStatus">
+  <div class="doubleTable">
+    <div class="tableStatusPercent">
+      <table id="tableStatus" class="tableStatus">
+        <tr>
+          <td id="tdTableStatus" class="tdTableStatus">
+            Провайдер 1
+          </td>
+          <td id="tdTableStatus" class="tdTableStatus">
+            Провайдер 2
+          </td>
+          <td id="tdTableStatus" class="tdTableStatus">
+            Синхронізація
+          </td>
+        </tr>
+        <tr>
+          <td>
+            adsf
+          </td>
+          <td>
+            adsf
+          </td>
+          <td>
+            adsf
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="tableInfoTTPercent">
+      <table id="tableInfoTT" class="tableInfoTT">
+        <tr id="tdTableStatus" class="tdTableStatus">
           Інформація по ТТ
-      </tr>
-      <tr>
-        <td>
-          Номер ТТ
-        </td>
-        <td>
-          {{shopId}}
-        </td>
-<tr>
+        </tr>
+        <tr>
+          <td>
+            Номер ТТ
+          </td>
+          <td>
+            {{shopId}}
+          </td>
+        <tr>
           Графік роботи
           <td>{{shopInfo.workTimeFrom}}-{{shopInfo.workTimeTo}}</td>
-      </tr>
-       <tr>
-         Регіон
-         <td>
-         {{shopInfo.region}}
-         </td>
-       </tr>
-       <tr>
-         Адреса
-         <td>
-           {{shopInfo.city}} {{shopInfo.street}} {{shopInfo.number}}
-         </td>
-       </tr>
-      <tr>
-        Провайдер
-        <td *ngFor="let provider of shopInfo.providers">
-          {{provider.name}} {{provider.phoneNumber}}
-        </td>
-      </tr>
-    </table>
+        </tr>
+        <tr>
+          Регіон
+          <td>
+            {{shopInfo.region}}
+          </td>
+        </tr>
+        <tr>
+          Адреса
+          <td>
+            {{shopInfo.city}} {{shopInfo.street}} {{shopInfo.number}}
+          </td>
+        </tr>
+        <tr>
+          Провайдер
+          <td *ngFor="let provider of shopInfo.providers">
+            {{provider.name}} {{provider.phoneNumber}}
+          </td>
+        </tr>
+      </table>
+    </div>
   </div>
   <div id="statusFromDay" class="statusFromDay">
     <div id="infoStatusFromDay" class="infoStatusFromDay">
@@ -149,7 +127,30 @@
       <div id="line" class="line"><hr></div>
       <div id="circle" class="circle" style="background-color: #94D196;"></div>
       <div id="line" class="line"><hr></div>
-
     </div>
   </div>
+  <div>
+    <table id="tableDevice" class="tableDevice">
+      <tr>
+        <td id="tdTableStatus" class="tdTableStatus">
+          Назва пристрою
+        </td>
+        <td id="tdTableStatus" class="tdTableStatus">
+          Статус
+        </td>
+      </tr>
+      <tr *ngFor="let device of deviceInShop.devices" class="tableDeviceName">
+        <td>
+          {{device.device}}
+        </td>
+        <td *ngIf="(device.status == 1)" style="color: #FF4A3E;">
+          {{device.logTime}}
+        </td>
+        <td *ngIf="(device.status == 0)" style="color: #94D196;">
+          {{device.logTime}}
+        </td>
+      </tr>
+    </table>
+  </div>
+
 </div>

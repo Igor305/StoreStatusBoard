@@ -35,7 +35,32 @@ namespace DataAccessLayer.Repositories.EFRepositories.NetMonitoring
             return greenFrom5Day;
         }
 
-        public async Task<List<Monitoring>> getStockR(int count)
+
+       /* public static IEnumerable<Monitoring> getStartStocksR(int? nstock)
+        {
+            Monitoring monitoring = monitorings.Where(x => x.Stock == nstock).FirstOrDefault();
+            if (monitoring != null)
+            {
+                var df = getStartStocksR(monitorings, monitoring.Stock);
+                var resultAsE = new[] { monitoring };
+                if (!monitoring.Stock.HasValue)
+                    return resultAsE;
+                else
+                    return getStartStocksR(monitorings, monitoring.Stock);
+            }
+
+            return new Monitoring[] { };
+        }
+
+        public async Task<Monitoring> getStartStocksS(int nstock)
+        {
+
+            Monitoring monitoring = await _netMonitoringContext.Monitorings.Where(x => x.LogTime.Value.Date == DateTime.Today.Date).Where(x => x.Device == "S").Where(x => x.Stock == nstock).OrderByDescending(x => x.LogTime).FirstOrDefaultAsync();
+
+            return monitoring;
+        }*/
+
+        public async Task<List<Monitoring>> getStocksR(int count)
         {
 
             List<Monitoring> monitorings = await _netMonitoringContext.Monitorings.Where(x => x.LogTime.Value.Date == DateTime.Today.Date).Where(x => x.Device == "router").OrderByDescending(x => x.LogTime).Take(count).OrderBy(x=>x.Stock).ToListAsync();
@@ -43,7 +68,7 @@ namespace DataAccessLayer.Repositories.EFRepositories.NetMonitoring
             return monitorings;
         }
 
-        public async Task<List<Monitoring>> getStockS(int count)
+        public async Task<List<Monitoring>> getStocksS(int count)
         {
 
             List<Monitoring> monitorings = await _netMonitoringContext.Monitorings.Where(x => x.LogTime.Value.Date == DateTime.Today.Date).Where(x => x.Device == "S").OrderByDescending(x => x.LogTime).Take(count).OrderBy(x => x.Stock).ToListAsync();

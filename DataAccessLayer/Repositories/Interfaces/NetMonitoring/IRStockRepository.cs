@@ -1,11 +1,9 @@
-﻿using DataAccessLayer.Entities.NetMonitoring;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repositories.Interfaces.NetMonitoring
 {
     public interface IRStockRepository
     {
-        public Task<List<RStock>> getAllAsync();
+        public Task<int> getAmountShop();
     }
 }

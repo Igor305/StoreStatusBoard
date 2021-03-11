@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { DeviceInShopResponseModel } from '../models/response/device.response';
 import { ShopResponseModel } from '../models/response/shop.response';
+import { StatusTableModel } from '../models/table/status.table.model';
 import { BoardService } from '../services/board.service';
 
 @Component({
@@ -43,4 +44,5 @@ export class StockComponent implements OnInit {
 
     console.log(this.deviceInShop.devices);
   }
+
 }

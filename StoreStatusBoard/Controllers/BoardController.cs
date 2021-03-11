@@ -24,8 +24,16 @@ namespace StoreStatusBoard.Controllers
             return boardModelResponses;
         }
 
-        [HttpGet("Shop")]
-        public async Task<ShopResponseModel> Shop(int nshop)
+        [HttpGet("Start")]
+        public async Task<BoardResponseModel> StartBoard()
+        {
+            BoardResponseModel boardModelResponses = await _boardService.getStartBoard();
+
+            return boardModelResponses;
+        }
+
+        [HttpGet("ShopInfo")]
+        public async Task<ShopResponseModel> ShopInfo(int nshop)
         {
             ShopResponseModel shopResponseModel = await _boardService.getShopInfo(nshop);
 

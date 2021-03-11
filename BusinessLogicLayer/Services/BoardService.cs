@@ -15,6 +15,7 @@ namespace BusinessLogicLayer.Services
     public class BoardService : IBoardService
     {
         private readonly IMonitoringRepository _monitoringRepository;
+        private readonly IRStockRepository _rStockRepository;
 
         private readonly IShopsRepository _shopsRepository;
         private readonly IProviderRepository _providerRepository;
@@ -25,13 +26,14 @@ namespace BusinessLogicLayer.Services
 
         private readonly IMapper _mapper;
 
-        public BoardService (IMonitoringRepository monitoringRepository,
-            IShopsRepository shopsRepository, IProviderRepository providerRepository,
+        public BoardService (IMonitoringRepository monitoringRepository, IRStockRepository rStockRepository,
+        IShopsRepository shopsRepository, IProviderRepository providerRepository,
             IShopProvidersRepository shopProvidersRepository, IShopRegionLocalizationsRepository shopRegionLocalizationsRepository,
             ITempImportAddressesRepository tempImportAddressesRepository, IShopWorkTimesRepository shopWorkTimesRepository,
             IMapper mapper)
         {
             _monitoringRepository = monitoringRepository;
+            _rStockRepository = rStockRepository;
 
             _shopsRepository = shopsRepository;
             _providerRepository = providerRepository;
@@ -43,31 +45,58 @@ namespace BusinessLogicLayer.Services
             _mapper = mapper;
         }
 
+        public async Task<BoardResponseModel> getStartBoard()
+        {
+            BoardResponseModel responseModel = new BoardResponseModel();
+
+            int nstock = await _rStockRepository.getAmountShop();
+
+         /*   List<Monitoring> monitoringsR = await _monitoringRepository.getStartStocksR(nstock);
+            List<Monitoring> monitoringsS = new List<Monitoring>();
+
+            for (int x = 1; x <= nstock; x++)
+            {
+
+                Monitoring monitoringS = await _monitoringRepository.getStartStocksS(x);
+                if (monitoringS != null)
+                {
+                    monitoringsS.Add(monitoringS);
+                }
+            }*/
+
+            return responseModel;
+        }
+
         public async Task<BoardResponseModel> getBoard()
         {
             BoardResponseModel responseModel = new BoardResponseModel();
 
             int amount = await _monitoringRepository.getCountStock();
+
             List<int?> greenFrom5Day = await _monitoringRepository.getGreenFrom5Day();
+
 
             int?[] greyFrom5Day = new int?[amount+1];
 
             for (int i = 1; i <= amount; i++)
             {
-                greyFrom5Day[i] = 1;
 
                 for (int y = 0; y < greenFrom5Day.Count; y++)
                 {
 
                     if (i == greenFrom5Day[y])
                     {
-                        greyFrom5Day[i] = 0;
+                        greyFrom5Day[i] = 0;break;
+                    }
+                    else
+                    {
+                        greyFrom5Day[i] = 1;
                     }
                 }
             }
 
-            List<Monitoring> monitoringsR = await _monitoringRepository.getStockR(amount);
-            List<Monitoring> monitoringsS = await _monitoringRepository.getStockS(amount);
+            List<Monitoring> monitoringsR = await _monitoringRepository.getStocksR(amount);
+            List<Monitoring> monitoringsS = await _monitoringRepository.getStocksS(amount);
 
             int?[] statusS = new int?[amount];
 
@@ -85,7 +114,7 @@ namespace BusinessLogicLayer.Services
             count = 0;
             responseModel.monitoringModels.ForEach(x => x.StatusS = statusS[count++]);
 
-            return responseModel;
+           return responseModel;
         }
 
         public async Task<ShopResponseModel> getShopInfo(int nshop)

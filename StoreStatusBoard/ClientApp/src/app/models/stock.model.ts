@@ -1,6 +1,6 @@
 export interface StockModel {
   Device?: string;
-  Stock?: number;
+  Stock?: string;
   Status?: number;
   StatusS?: number;
   isGrey?: number;

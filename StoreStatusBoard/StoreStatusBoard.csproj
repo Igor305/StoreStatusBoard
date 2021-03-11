@@ -34,6 +34,7 @@
     <None Remove="ClientApp\src\app\models\response\shop.response.ts" />
     <None Remove="ClientApp\src\app\models\stock.model.ts" />
     <None Remove="ClientApp\src\app\models\StoreModel.ts" />
+    <None Remove="ClientApp\src\app\models\table\status.table.model.ts" />
   </ItemGroup>
 
   <ItemGroup>
