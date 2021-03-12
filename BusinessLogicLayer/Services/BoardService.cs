@@ -166,24 +166,31 @@ namespace BusinessLogicLayer.Services
             foreach (string device in deviceModels)
             {
                 Monitoring deviceOnShop = await _monitoringRepository.getDeviceFromLastLogTime(nshop,device);
+
                 if (deviceOnShop != null){
+                    
+                    string dev = device.ToString();
+                    char typeDevice = dev[0];
+
+                    switch (typeDevice)
+                    {
+                        case 'D': deviceOnShop.Device = device.Substring(1).Insert(0, "Датчик дверей "); break;
+                        case 'S': deviceOnShop.Device = device.Substring(1).Insert(0, "База магазину "); break;
+                        case 'K': deviceOnShop.Device = device.Substring(1).Insert(0, "Каса "); break;
+                        case 'V': deviceOnShop.Device = device.Substring(1).Insert(0, "Відеореєстратор "); break;
+                        case 'P': deviceOnShop.Device = device.Substring(1).Insert(0, "PriceChecker "); break;
+                        case 'M': deviceOnShop.Device = device.Substring(1).Insert(0, "Raspberry "); break;
+                        case 'F': deviceOnShop.Device = device.Substring(1).Insert(0, "Принтер чеків "); break;
+                        case 'T': deviceOnShop.Device = device.Substring(1).Insert(0, "Термінал "); break;
+                    }                  
+
                     devicesOnShop.Add(deviceOnShop);
                 }
-
-                /* switch (device[0])
-                 {
-                     case 'R': device.Substring(1).Insert(0, "Роутер"); break;
-                     case 'S': device.Substring(1).Insert(0, "База магазина"); break;
-                     case 'K': device.Substring(1).Insert(0, "Касса "); break;
-                     case 'V': device.Substring(1).Insert(0, "Видеорегистратор "); break;
-                     case 'P': device.Substring(1).Insert(0, "PriceChecker"); break;
-                     case 'M': device.Substring(1).Insert(0, "Raspberry"); break;
-                     case 'F': device.Substring(1).Insert(0, "Принтер чеков"); break;
-                     case 'T': device.Substring(1).Insert(0, "Терминал"); break;
-                 }*/
             }
 
             List<MonitoringModel> devicesModels = _mapper.Map<List<Monitoring>, List<MonitoringModel>>(devicesOnShop);
+
+            devicesModels.ForEach(x => x.StrLogTime = x.LogTime.ToString());
 
             deviceInShopResponseModel.Devices = devicesModels;
 

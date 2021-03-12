@@ -6,16 +6,14 @@ nav{
     display:flex;
 }
 
-hr {
-  flex-grow: 1;
-}
-
 table {
   margin-top: 15px;
   margin-left: 10px;
 }
 
 th, tr, td {
+  font-size: 21px;
+  font-family: lato,sans-serif;
   text-align: center;
   border: 1px solid #000000;
 }
@@ -48,32 +46,50 @@ th, tr, td {
   margin-left: 20px;
   margin-top: 20px;
   width: 96%;
-  height: 100px;
+  height: 200px;
   border: 1px solid #000000;
   box-sizing: border-box;
 }
 
 .infoStatusFromDay {
   position: relative;
+  margin-top: 5px;
   margin-left: 20px;
   display: inline-flex;
+  font-size: 21px;
+  font-family: lato,sans-serif;
+}
+
+.circleBlock{
+    position:relative;
+    margin-right: 0.85%;
 }
 
 .circle {
   position: relative;
+  margin-top: 15px;
+  margin-left: 18px;
+  margin-right: 37px;
+  width: 30px;
+  height: 30px;
+  border-radius: 25px;
+}
+
+.circleTime {
+  position: relative;
   margin-top: 5px;
   margin-left: 10px;
   margin-right: 10px;
-  width: 20px;
+  font-family: lato,sans-serif;
+  font-size: 21px;
+  display: inline-flex;
+  width: 50px;
   height: 20px;
-  border-radius: 25px;
 }
 
 .textInfo {
   position: relative;
-  margin-top: 5px;
-  font-family: Roboto;
-  font-size: 18px;
+  margin-top: 18px;
   line-height: 21px;
 }
 
@@ -87,18 +103,12 @@ th, tr, td {
 .line {
   border-top: 1px solid #000000;
   height: 10px;
-  flex: 1;
 }
 
 .tableStatus {
   position: relative;
   width: 100%;
   height: 300px;
-}
-
-.tdTableStatus {
-  font-family: Roboto;
-  font-size: 24px;
 }
 
 .tableInfoTT {
@@ -112,13 +122,6 @@ th, tr, td {
   position: relative;
   margin-left: 20px;
   width: 96%;
-  font-family: Roboto;
-  font-size: 24px;
-}
-
-.tableDeviceName {
-  font-family: Roboto;
-  font-size: 18px;
 }
 
 .doubleTable {
@@ -133,4 +136,8 @@ th, tr, td {
 }
 .tableInfoTTPercent{
     width:70%;
+}
+
+.thead {
+  text-transform: uppercase !important;
 }

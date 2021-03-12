@@ -1,10 +1,11 @@
 export interface StockModel {
-  Device?: string;
-  Stock?: string;
-  Status?: number;
-  StatusS?: number;
+  device?: string;
+  stock?: string;
+  status?: number;
+  statusS?: number;
   isGrey?: number;
-  IpAddress?: string;
-  LogTime?: Date;
+  ipAddress?: string;
+  logTime?: Date;
+  strLogTime?: string;
   TTL?: number;
 }

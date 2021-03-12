@@ -11,6 +11,7 @@ namespace BusinessLogicLayer.Models
         public int? isGrey { get; set; }
         public string IpAddress { get; set; }
         public DateTime? LogTime { get; set; }
+        public string StrLogTime { get;  set; }
         public int? ResponseTime { get; set; }
         public int? TTL { get; set; }
     }

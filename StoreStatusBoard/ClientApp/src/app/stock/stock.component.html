@@ -14,17 +14,19 @@
   <div class="doubleTable">
     <div class="tableStatusPercent">
       <table id="tableStatus" class="tableStatus">
-        <tr>
-          <td id="tdTableStatus" class="tdTableStatus">
-            Провайдер 1
-          </td>
-          <td id="tdTableStatus" class="tdTableStatus">
-            Провайдер 2
-          </td>
-          <td id="tdTableStatus" class="tdTableStatus">
-            Синхронізація
-          </td>
-        </tr>
+        <thead class="thead">
+          <tr>
+            <th>
+              Провайдер 1
+            </th>
+            <th>
+              Провайдер 2
+            </th>
+            <th>
+              Синхронізація
+            </th>
+          </tr>
+        </thead>
         <tr>
           <td>
             adsf
@@ -40,38 +42,57 @@
     </div>
     <div class="tableInfoTTPercent">
       <table id="tableInfoTT" class="tableInfoTT">
-        <tr id="tdTableStatus" class="tdTableStatus">
-          Інформація по ТТ
-        </tr>
-        <tr>
-          <td>
-            Номер ТТ
-          </td>
-          <td>
-            {{shopId}}
-          </td>
-        <tr>
-          Графік роботи
-          <td>{{shopInfo.workTimeFrom}}-{{shopInfo.workTimeTo}}</td>
-        </tr>
-        <tr>
-          Регіон
-          <td>
-            {{shopInfo.region}}
-          </td>
-        </tr>
-        <tr>
-          Адреса
-          <td>
-            {{shopInfo.city}} {{shopInfo.street}} {{shopInfo.number}}
-          </td>
-        </tr>
-        <tr>
-          Провайдер
-          <td *ngFor="let provider of shopInfo.providers">
-            {{provider.name}} {{provider.phoneNumber}}
-          </td>
-        </tr>
+        <thead class="thead">
+          <tr>
+            <th>
+
+            </th>
+            <th>
+              Інформація по ТТ
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              Номер ТТ
+            </td>
+            <td>
+             {{shopId}}
+            </td>
+          <tr>
+            <td>
+              Графік роботи
+            </td>
+            <td>
+              {{shopInfo.workTimeFrom}}-{{shopInfo.workTimeTo}}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Регіон
+            </td>
+            <td>
+              {{shopInfo.region}}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Адреса
+            </td>
+            <td>
+              {{shopInfo.city}} {{shopInfo.street}} {{shopInfo.number}}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Провайдер
+            </td>
+            <td *ngFor="let provider of shopInfo.providers">
+              {{provider.name}} {{provider.phoneNumber}}
+            </td>
+          </tr>
+        </tbody>
       </table>
     </div>
   </div>
@@ -85,71 +106,160 @@
       <div id="textInfo" class="textInfo">Інформація Відсутня</div>
     </div>
     <div id="statusFromDayValue" class="statusFromDayValue">
-      <div id="circle" class="circle" style="background-color: #94D196;"></div>
       <div id="line" class="line"><hr></div>
-      <div id="circle" class="circle" style="background-color: #94D196;"></div>
-      <div id="line" class="line"><hr></div>
-      <div id="circle" class="circle" style="background-color: #94D196;"></div>
-      <div id="line" class="line"><hr></div>
-      <div id="circle" class="circle" style="background-color: #94D196;"></div>
-      <div id="line" class="line"><hr></div>
-      <div id="circle" class="circle" style="background-color: #94D196;"></div>
-      <div id="line" class="line"><hr></div>
-      <div id="circle" class="circle" style="background-color: #94D196;"></div>
-      <div id="line" class="line"><hr></div>
-      <div id="circle" class="circle" style="background-color: #94D196;"></div>
-      <div id="line" class="line"><hr></div>
-      <div id="circle" class="circle" style="background-color: #94D196;"></div>
-      <div id="line" class="line"><hr></div>
-      <div id="circle" class="circle" style="background-color: #94D196;"></div>
-      <div id="line" class="line"><hr></div>
-      <div id="circle" class="circle" style="background-color: #94D196;"></div>
-      <div id="line" class="line"><hr></div>
-      <div id="circle" class="circle" style="background-color: #94D196;"></div>
-      <div id="line" class="line"><hr></div>
-      <div id="circle" class="circle" style="background-color: #94D196;"></div>
-      <div id="line" class="line"><hr></div>
-      <div id="circle" class="circle" style="background-color: #94D196;"></div>
-      <div id="line" class="line"><hr></div>
-      <div id="circle" class="circle" style="background-color: #94D196;"></div>
-      <div id="line" class="line"><hr></div>
-      <div id="circle" class="circle" style="background-color: #94D196;"></div>
-      <div id="line" class="line"><hr></div>
-      <div id="circle" class="circle" style="background-color: #94D196;"></div>
-      <div id="line" class="line"><hr></div>
-      <div id="circle" class="circle" style="background-color: #94D196;"></div>
-      <div id="line" class="line"><hr></div>
-      <div id="circle" class="circle" style="background-color: #94D196;"></div>
-      <div id="line" class="line"><hr></div>
-      <div id="circle" class="circle" style="background-color: #94D196;"></div>
-      <div id="line" class="line"><hr></div>
-      <div id="circle" class="circle" style="background-color: #94D196;"></div>
-      <div id="line" class="line"><hr></div>
-      <div id="circle" class="circle" style="background-color: #94D196;"></div>
-      <div id="line" class="line"><hr></div>
+      <div class="circleBlock">
+        <div *ngIf="(hideStatusHourForDay < 7)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div id="circleTime" class="circleTime">07:00</div>
+      </div>
+      <div class="circleBlock">
+        <div *ngIf="(hideStatusHourForDay <= 7)&&(!statusMinutsForDay)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div id="circleTime" class="circleTime">07:30</div>
+      </div>
+      <div class="circleBlock">
+        <div *ngIf="(hideStatusHourForDay < 8)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div id="circleTime" class="circleTime">08:00</div>
+      </div>
+      <div class="circleBlock">
+        <div *ngIf="(hideStatusHourForDay <= 8)&&(!statusMinutsForDay)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div id="circleTime" class="circleTime">08:30</div>
+      </div>
+      <div class="circleBlock">
+        <div *ngIf="(hideStatusHourForDay < 9)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div id="circleTime" class="circleTime">09:00</div>
+      </div>
+      <div class="circleBlock">
+        <div *ngIf="(hideStatusHourForDay <= 9)&&(!statusMinutsForDay)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div id="circleTime" class="circleTime">09:30</div>
+      </div>
+      <div class="circleBlock">
+        <div *ngIf="(hideStatusHourForDay < 10)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div id="circleTime" class="circleTime">10:00</div>
+      </div>
+      <div class="circleBlock">
+        <div *ngIf="(hideStatusHourForDay <= 10)&&(!statusMinutsForDay)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div id="circleTime" class="circleTime">10:30</div>
+      </div>
+      <div class="circleBlock">
+        <div *ngIf="(hideStatusHourForDay < 11)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div id="circleTime" class="circleTime">11:00</div>
+      </div>
+      <div class="circleBlock">
+        <div *ngIf="(hideStatusHourForDay <= 11)&&(!statusMinutsForDay)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div id="circleTime" class="circleTime">11:30</div>
+      </div>
+      <div class="circleBlock">
+        <div *ngIf="(hideStatusHourForDay < 12)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div id="circleTime" class="circleTime">12:00</div>
+      </div>
+      <div class="circleBlock">
+        <div *ngIf="(hideStatusHourForDay <= 12)&&(!statusMinutsForDay)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div id="circleTime" class="circleTime">12:30</div>
+      </div>
+      <div class="circleBlock">
+        <div *ngIf="(hideStatusHourForDay < 13)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div id="circleTime" class="circleTime">13:00</div>
+      </div>
+      <div class="circleBlock">
+        <div *ngIf="(hideStatusHourForDay <= 13)&&(!statusMinutsForDay)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div id="circleTime" class="circleTime">13:30</div>
+      </div>
+      <div class="circleBlock">
+        <div *ngIf="(hideStatusHourForDay < 14)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div id="circleTime" class="circleTime">14:00</div>
+      </div>
+      <div class="circleBlock">
+        <div *ngIf="(hideStatusHourForDay <= 14)&&(!statusMinutsForDay)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div id="circleTime" class="circleTime">14:30</div>
+      </div>
+      <div class="circleBlock">
+        <div *ngIf="(hideStatusHourForDay < 15)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div id="circleTime" class="circleTime">15:00</div>
+      </div>
+      <div class="circleBlock">
+        <div *ngIf="(hideStatusHourForDay <= 15)&&(!statusMinutsForDay)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div id="circleTime" class="circleTime">15:30</div>
+      </div>
+      <div class="circleBlock">
+        <div *ngIf="(hideStatusHourForDay < 16)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div id="circleTime" class="circleTime">16:00</div>
+      </div>
+      <div class="circleBlock">
+        <div *ngIf="(hideStatusHourForDay <= 16)&&(!statusMinutsForDay)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div id="circleTime" class="circleTime">16:30</div>
+      </div>
+      <div class="circleBlock">
+        <div *ngIf="(hideStatusHourForDay < 17)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div id="circleTime" class="circleTime">17:00</div>
+      </div>
+      <div class="circleBlock">
+        <div *ngIf="(hideStatusHourForDay <= 17)&&(!statusMinutsForDay)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div id="circleTime" class="circleTime">17:30</div>
+      </div>
+      <div class="circleBlock">
+        <div *ngIf="(hideStatusHourForDay < 18)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div id="circleTime" class="circleTime">18:00</div>
+      </div>
+      <div class="circleBlock">
+        <div *ngIf="(hideStatusHourForDay <= 18)&&(!statusMinutsForDay)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div id="circleTime" class="circleTime">18:30</div>
+      </div>
+      <div class="circleBlock">
+        <div *ngIf="(hideStatusHourForDay < 19)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div id="circleTime" class="circleTime">19:00</div>
+      </div>
+      <div class="circleBlock">
+        <div *ngIf="(hideStatusHourForDay <= 19)&&(!statusMinutsForDay)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div id="circleTime" class="circleTime">19:30</div>
+      </div>
+      <div class="circleBlock">
+        <div *ngIf="(hideStatusHourForDay < 20)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div id="circleTime" class="circleTime">20:00</div>
+      </div>
+      <div class="circleBlock">
+        <div *ngIf="(hideStatusHourForDay <= 20)&&(!statusMinutsForDay)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div id="circleTime" class="circleTime">20:30</div>
+      </div>
+      <div class="circleBlock">
+        <div *ngIf="(hideStatusHourForDay < 21)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div id="circleTime" class="circleTime">21:00</div>
+      </div>
+      <div class="circleBlock">
+        <div *ngIf="(hideStatusHourForDay <= 21)&&(!statusMinutsForDay)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div id="circleTime" class="circleTime">21:30</div>
+      </div>
+      <div class="circleBlock">
+        <div *ngIf="(hideStatusHourForDay < 22)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div id="circleTime" class="circleTime">22:00</div>
+      </div>
+      <div class="circleBlock">
+      </div>
     </div>
   </div>
   <div>
     <table id="tableDevice" class="tableDevice">
-      <tr>
-        <td id="tdTableStatus" class="tdTableStatus">
-          Назва пристрою
-        </td>
-        <td id="tdTableStatus" class="tdTableStatus">
-          Статус
-        </td>
-      </tr>
-      <tr *ngFor="let device of deviceInShop.devices" class="tableDeviceName">
-        <td>
-          {{device.device}}
-        </td>
-        <td *ngIf="(device.status == 1)" style="color: #FF4A3E;">
-          {{device.logTime}}
-        </td>
-        <td *ngIf="(device.status == 0)" style="color: #94D196;">
-          {{device.logTime}}
-        </td>
-      </tr>
+      <thead class="thead">
+        <tr>
+          <th>
+            Назва пристрою
+          </th>
+          <th>
+            Статус
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let device of deviceInShop.devices" class="tableDeviceName">
+          <td>
+            {{device.device}}
+          </td>
+          <td *ngIf="(device.status == 0)" style="color: #FF4A3E; background-color: rgba(0,0,0,.05);">
+            {{device.strLogTime}}
+          </td>
+          <td *ngIf="(device.status == 1)" style="color: #177246;">
+            {{device.strLogTime}}
+          </td>
+        </tr>
+      </tbody>
     </table>
   </div>
 

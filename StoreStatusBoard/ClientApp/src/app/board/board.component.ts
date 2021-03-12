@@ -11,6 +11,7 @@ import { BoardService } from '../services/board.service';
 })
 export class BoardComponent implements OnInit {
 
+  opened: boolean = true;
   badPingStock: string = "";
   badPing: boolean = false;
   stocks: StockModel = {}

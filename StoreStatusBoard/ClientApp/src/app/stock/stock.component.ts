@@ -13,7 +13,9 @@ import { BoardService } from '../services/board.service';
 })
 export class StockComponent implements OnInit {
 
-  shopId: number
+  shopId: number = 0;
+  hideStatusHourForDay: number = 0;
+  statusMinutsForDay: boolean = false;
   shopInfo: ShopResponseModel = {}
   deviceInShop: DeviceInShopResponseModel = {}
 
@@ -24,6 +26,17 @@ export class StockComponent implements OnInit {
     this.shopId = this.route.snapshot.params['shopId'];
 
     this.getShopInfo();
+
+    var date = new Date();
+    let hour = date.getHours();
+    let minutes = date.getMinutes();
+    let count = 7;
+
+    this.getTime(hour, minutes, count);
+
+    console.log(this.hideStatusHourForDay);
+    console.log(this.statusMinutsForDay);
+
     this.getDeviceInShop();
 
   }
@@ -45,4 +58,27 @@ export class StockComponent implements OnInit {
     console.log(this.deviceInShop.devices);
   }
 
+  public getTime(hours: number, minutes: number, count : number) {
+
+    if (hours >= count) {
+      if (hours >= count + 1) {
+
+        this.getTime(hours, minutes, ++count);
+      }
+      else {
+
+        if (minutes >= 30) {
+
+          this.statusMinutsForDay = true;
+
+        }
+        if (minutes < 30) {
+
+          this.statusMinutsForDay = false;
+
+        }
+      }
+    }
+    this.hideStatusHourForDay = hours;
+  }
 }
