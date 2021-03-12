@@ -155,6 +155,19 @@ namespace BusinessLogicLayer.Services
             return shopResponseModel;
         }
 
+        public async Task<StatusForDayResponseModel> getStatusForDay(int nshop, int hour)
+        {
+            StatusForDayResponseModel statusForDayResponseModel = new StatusForDayResponseModel();
+
+            List<Monitoring> monitorings = await _monitoringRepository.getStatusStockFromHours(nshop, hour);
+
+            List<MonitoringModel> monitoringModels = _mapper.Map<List<Monitoring>, List < MonitoringModel >> (monitorings);
+
+            statusForDayResponseModel.monitorings = monitoringModels;
+
+            return statusForDayResponseModel;
+        }
+
         public async Task<DeviceInShopResponseModel> getDeviceinShop(int nshop)
         {
             DeviceInShopResponseModel deviceInShopResponseModel = new DeviceInShopResponseModel();

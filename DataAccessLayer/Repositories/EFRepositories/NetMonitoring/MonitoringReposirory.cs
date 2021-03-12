@@ -91,5 +91,23 @@ namespace DataAccessLayer.Repositories.EFRepositories.NetMonitoring
 
             return monitorings;
         }
+
+        public async Task<List<Monitoring>> getStatusStockFromHours(int nstock, int hour)
+        {
+            List<Monitoring> monitorings = await _netMonitoringContext.Monitorings.Where(x => x.LogTime.Value.Date == DateTime.Today.Date &&
+                x.LogTime.Value.Hour == hour - 1 && x.LogTime.Value.Hour < hour && x.LogTime.Value.Minute > 29 &&
+                x.Stock == nstock && (x.Device == "router" || x.Device == "S")).ToListAsync();
+
+            return monitorings;
+        }
+
+        public async Task<List<Monitoring>> getStatusStockFrom30Minutes(int nstock, int hour)
+        {
+            List<Monitoring> monitorings = await _netMonitoringContext.Monitorings.Where(x => x.LogTime.Value.Date == DateTime.Today.Date &&
+                x.LogTime.Value.Hour == hour - 1 && x.LogTime.Value.Hour < hour && x.LogTime.Value.Minute >= 0 && x.LogTime.Value.Minute < 30 &&
+                x.Stock == nstock && (x.Device == "router" || x.Device == "S")).ToListAsync();
+
+            return monitorings;
+        }
     }
 }
