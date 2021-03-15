@@ -41,9 +41,9 @@ namespace StoreStatusBoard.Controllers
         }
 
         [HttpGet("ShopStatusForDay")]
-        public async Task<StatusForDayResponseModel> ShopStatusForDay(int nshop, int hour)
+        public async Task<StatusForDayResponseModel> ShopStatusForDay(int nshop)
         {
-            StatusForDayResponseModel statusForDayResponseModel = await _boardService.getStatusForDay(nshop,hour);
+            StatusForDayResponseModel statusForDayResponseModel = await _boardService.getStatusForDay(nshop);
 
             return statusForDayResponseModel;
         }

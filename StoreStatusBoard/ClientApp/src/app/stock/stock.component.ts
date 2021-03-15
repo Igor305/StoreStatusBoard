@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
-import { DeviceInShopResponseModel } from '../models/response/device.response';
-import { ShopResponseModel } from '../models/response/shop.response';
+import { DeviceInShopResponseModel } from '../models/response/device.response.model';
+import { ShopResponseModel } from '../models/response/shop.response.model';
+import { StatusForDayResponseModel } from '../models/response/status.forday.response.model';
 import { StatusTableModel } from '../models/table/status.table.model';
 import { BoardService } from '../services/board.service';
 
@@ -17,6 +17,7 @@ export class StockComponent implements OnInit {
   hideStatusHourForDay: number = 0;
   statusMinutsForDay: boolean = false;
   shopInfo: ShopResponseModel = {}
+  statusForDay: StatusForDayResponseModel = {}
   deviceInShop: DeviceInShopResponseModel = {}
 
   constructor(private boardService: BoardService, private route: ActivatedRoute) { }
@@ -25,19 +26,21 @@ export class StockComponent implements OnInit {
 
     this.shopId = this.route.snapshot.params['shopId'];
 
+    this.getStatusForDay();
+
+    this.getDeviceInShop();
+
     this.getShopInfo();
 
-    var date = new Date();
+ /*   var date = new Date();
     let hour = date.getHours();
     let minutes = date.getMinutes();
     let count = 7;
 
-    this.getTime(hour, minutes, count);
+    this.getTime(hour, minutes, count);*/
 
     console.log(this.hideStatusHourForDay);
     console.log(this.statusMinutsForDay);
-
-    this.getDeviceInShop();
 
   }
 
@@ -51,6 +54,12 @@ export class StockComponent implements OnInit {
 
   }
 
+  public async getStatusForDay() {
+
+    this.statusForDay = await this.boardService.getStatusForDay(this.shopId);
+    console.log(this.statusForDay);
+  }
+
   public async getDeviceInShop() {
 
     this.deviceInShop = await this.boardService.getDeviceInShop(this.shopId);
@@ -58,7 +67,9 @@ export class StockComponent implements OnInit {
     console.log(this.deviceInShop.devices);
   }
 
-  public getTime(hours: number, minutes: number, count : number) {
+
+
+  /*public getTime(hours: number, minutes: number, count : number) {
 
     if (hours >= count) {
       if (hours >= count + 1) {
@@ -80,5 +91,5 @@ export class StockComponent implements OnInit {
       }
     }
     this.hideStatusHourForDay = hours;
-  }
+  }*/
 }

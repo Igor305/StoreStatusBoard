@@ -155,18 +155,467 @@ namespace BusinessLogicLayer.Services
             return shopResponseModel;
         }
 
-        public async Task<StatusForDayResponseModel> getStatusForDay(int nshop, int hour)
+        public async Task<StatusForDayResponseModel> getStatusForDay(int nshop)
         {
             StatusForDayResponseModel statusForDayResponseModel = new StatusForDayResponseModel();
 
-            List<Monitoring> monitorings = await _monitoringRepository.getStatusStockFromHours(nshop, hour);
+            List<Monitoring> monitorings7 = await _monitoringRepository.getStatusStockHours(nshop, 7);
+            List<Monitoring> monitorings7m = await _monitoringRepository.getStatusStock30Minutes(nshop, 7);     
 
-            List<MonitoringModel> monitoringModels = _mapper.Map<List<Monitoring>, List < MonitoringModel >> (monitorings);
+            List<Monitoring> monitorings8 = await _monitoringRepository.getStatusStockHours(nshop, 8);
+            List<Monitoring> monitorings8m = await _monitoringRepository.getStatusStock30Minutes(nshop, 8);
 
-            statusForDayResponseModel.monitorings = monitoringModels;
+            List<Monitoring> monitorings9 = await _monitoringRepository.getStatusStockHours(nshop, 9);
+            List<Monitoring> monitorings9m = await _monitoringRepository.getStatusStock30Minutes(nshop, 9);
+
+            List<Monitoring> monitorings10 = await _monitoringRepository.getStatusStockHours(nshop, 10);
+            List<Monitoring> monitorings10m = await _monitoringRepository.getStatusStock30Minutes(nshop, 10);
+
+            List<Monitoring> monitorings11 = await _monitoringRepository.getStatusStockHours(nshop, 11);
+            List<Monitoring> monitorings11m = await _monitoringRepository.getStatusStock30Minutes(nshop, 11);
+
+            List<Monitoring> monitorings12 = await _monitoringRepository.getStatusStockHours(nshop, 12);
+            List<Monitoring> monitorings12m = await _monitoringRepository.getStatusStock30Minutes(nshop, 12);
+
+            List<Monitoring> monitorings13 = await _monitoringRepository.getStatusStockHours(nshop, 13);
+            List<Monitoring> monitorings13m = await _monitoringRepository.getStatusStock30Minutes(nshop, 13);
+
+            List<Monitoring> monitorings14 = await _monitoringRepository.getStatusStockHours(nshop, 14);
+            List<Monitoring> monitorings14m = await _monitoringRepository.getStatusStock30Minutes(nshop, 14);
+
+            List<Monitoring> monitorings15 = await _monitoringRepository.getStatusStockHours(nshop, 15);
+            List<Monitoring> monitorings15m = await _monitoringRepository.getStatusStock30Minutes(nshop, 15);
+
+            List<Monitoring> monitorings16 = await _monitoringRepository.getStatusStockHours(nshop, 16);
+            List<Monitoring> monitorings16m = await _monitoringRepository.getStatusStock30Minutes(nshop, 16);
+
+            List<Monitoring> monitorings17 = await _monitoringRepository.getStatusStockHours(nshop, 17);
+            List<Monitoring> monitorings17m = await _monitoringRepository.getStatusStock30Minutes(nshop, 17);
+
+            List<Monitoring> monitorings18 = await _monitoringRepository.getStatusStockHours(nshop, 18);
+            List<Monitoring> monitorings18m = await _monitoringRepository.getStatusStock30Minutes(nshop, 18);
+
+            List<Monitoring> monitorings19 = await _monitoringRepository.getStatusStockHours(nshop, 19);
+            List<Monitoring> monitorings19m = await _monitoringRepository.getStatusStock30Minutes(nshop, 19);
+
+            List<Monitoring> monitorings20 = await _monitoringRepository.getStatusStockHours(nshop, 20);
+            List<Monitoring> monitorings20m = await _monitoringRepository.getStatusStock30Minutes(nshop, 20);
+
+            List<Monitoring> monitorings21 = await _monitoringRepository.getStatusStockHours(nshop, 21);
+            List<Monitoring> monitorings21m = await _monitoringRepository.getStatusStock30Minutes(nshop, 21);
+
+            List<Monitoring> monitorings22 = await _monitoringRepository.getStatusStockHours(nshop, 22);
+            List<Monitoring> monitorings22m = await _monitoringRepository.getStatusStock30Minutes(nshop, 22);
+
+            if (monitorings7.Count == 0) statusForDayResponseModel.Status7 = 0;
+            if (monitorings7.Count != 0)
+            {
+                statusForDayResponseModel.Status7 = 1;
+                foreach (Monitoring x in monitorings7)
+                {
+                    if (x.Status == 0)
+                    {
+                        statusForDayResponseModel.Status7 = -1;
+                    }
+                }
+            }
+            if (monitorings7m.Count == 0) statusForDayResponseModel.Status7m = 0;
+            if (monitorings7m.Count != 0) 
+            {
+                statusForDayResponseModel.Status7m = 1;
+                foreach (Monitoring x in monitorings7m)
+                {
+                    if (x.Status == 0)
+                    {
+                        statusForDayResponseModel.Status7m = -1;
+                    }
+                }
+            }
+
+            if (monitorings8.Count == 0) statusForDayResponseModel.Status8 = 0;
+            if (monitorings8.Count != 0)
+            {
+                statusForDayResponseModel.Status8 = 1;
+                foreach (Monitoring x in monitorings8)
+                {
+                    if (x.Status == 0)
+                    {
+                        statusForDayResponseModel.Status8 = -1;
+                    }
+                }
+            }
+            if (monitorings8m.Count == 0) statusForDayResponseModel.Status8m = 0;
+            if (monitorings8m.Count != 0)
+            {
+                statusForDayResponseModel.Status8m = 1;
+                foreach (Monitoring x in monitorings8m)
+                {
+                    if (x.Status == 0)
+                    {
+                        statusForDayResponseModel.Status8m = -1;
+                    }
+                }
+            }
+
+            if (monitorings9.Count == 0) statusForDayResponseModel.Status9 = 0;
+            if (monitorings9.Count != 0)
+            {
+                statusForDayResponseModel.Status9 = 1;
+                foreach (Monitoring x in monitorings9)
+                {
+                    if (x.Status == 0)
+                    {
+                        statusForDayResponseModel.Status9 = -1;
+                    }
+                }
+            }
+            if (monitorings9m.Count == 0) statusForDayResponseModel.Status9m = 0;
+            if (monitorings9m.Count != 0)
+            {
+                statusForDayResponseModel.Status9m = 1;
+                foreach (Monitoring x in monitorings9m)
+                {
+                    if (x.Status == 0)
+                    {
+                        statusForDayResponseModel.Status9m = -1;
+                    }
+                }
+            }
+
+            if (monitorings10.Count == 0) statusForDayResponseModel.Status10 = 0;
+            if (monitorings10.Count != 0)
+            {
+                statusForDayResponseModel.Status10 = 1;
+                foreach (Monitoring x in monitorings10)
+                {
+                    if (x.Status == 0)
+                    {
+                        statusForDayResponseModel.Status10 = -1;
+                    }
+                }
+            }
+
+            if (monitorings10m.Count == 0) statusForDayResponseModel.Status10m = 0;
+            if (monitorings10m.Count != 0)
+            {
+                statusForDayResponseModel.Status10m = 1;
+                foreach (Monitoring x in monitorings10m)
+                {
+                    if (x.Status == 0)
+                    {
+                        statusForDayResponseModel.Status10m = -1;
+                    }
+                }
+            }
+
+            if (monitorings11.Count == 0) statusForDayResponseModel.Status11 = 0;
+            if (monitorings11.Count != 0) statusForDayResponseModel.Status11 = 1;
+            {
+                statusForDayResponseModel.Status11 = 1;
+                foreach (Monitoring x in monitorings11)
+                {
+                    if (x.Status == 0)
+                    {
+                        statusForDayResponseModel.Status11 = -1;
+                    }
+                }
+            }
+            if (monitorings11m.Count == 0) statusForDayResponseModel.Status11m = 0;
+            if (monitorings11m.Count != 0)
+            {
+                statusForDayResponseModel.Status11m = 1;
+                foreach (Monitoring x in monitorings11m)
+                {
+                    if (x.Status == 0)
+                    {
+                        statusForDayResponseModel.Status11m = -1;
+                    }
+                }
+            }
+
+            if (monitorings12.Count == 0) statusForDayResponseModel.Status12 = 0;
+            if (monitorings12.Count != 0) 
+            {
+                statusForDayResponseModel.Status12 = 1;
+                foreach (Monitoring x in monitorings12)
+                {
+                    if (x.Status == 0)
+                    {
+                        statusForDayResponseModel.Status12 = -1;
+                    }
+                }
+            }
+
+            if (monitorings12m.Count == 0) statusForDayResponseModel.Status12m = 0;
+            if (monitorings12m.Count != 0)
+            {
+                statusForDayResponseModel.Status12m = 1;
+                foreach (Monitoring x in monitorings12m)
+                {
+                    if (x.Status == 0)
+                    {
+                        statusForDayResponseModel.Status12m = -1;
+                    }
+                }
+            }
+
+            if (monitorings13.Count == 0) statusForDayResponseModel.Status13 = 0;
+            if (monitorings13.Count != 0)
+            {
+                statusForDayResponseModel.Status13 = 1;
+                foreach (Monitoring x in monitorings13)
+                {
+                    if (x.Status == 0)
+                    {
+                        statusForDayResponseModel.Status13 = -1;
+                    }
+                }
+            }
+            if (monitorings13m.Count == 0) statusForDayResponseModel.Status13m = 0;
+            if (monitorings13m.Count != 0)
+            {
+                statusForDayResponseModel.Status13m = 1;
+                foreach (Monitoring x in monitorings13m)
+                {
+                    if (x.Status == 0)
+                    {
+                        statusForDayResponseModel.Status13m = -1;
+                    }
+                }
+            }
+
+            if (monitorings14.Count == 0) statusForDayResponseModel.Status14 = 0;
+            if (monitorings14.Count != 0)
+            {
+                statusForDayResponseModel.Status14 = 1;
+                foreach (Monitoring x in monitorings14)
+                {
+                    if (x.Status == 0)
+                    {
+                        statusForDayResponseModel.Status14 = -1;
+                    }
+                }
+            }
+            if (monitorings14m.Count == 0) statusForDayResponseModel.Status14m = 0;
+            if (monitorings14m.Count != 0)
+            {
+                statusForDayResponseModel.Status14m = 1;
+                foreach (Monitoring x in monitorings14m)
+                {
+                    if (x.Status == 0)
+                    {
+                        statusForDayResponseModel.Status14m = -1;
+                    }
+                }
+            }
+
+            if (monitorings15.Count == 0) statusForDayResponseModel.Status15 = 0;
+            if (monitorings15.Count != 0)
+            {
+                statusForDayResponseModel.Status15 = 1;
+                foreach (Monitoring x in monitorings15)
+                {
+                    if (x.Status == 0)
+                    {
+                        statusForDayResponseModel.Status15 = -1;
+                    }
+                }
+            }
+
+            if (monitorings15m.Count == 0) statusForDayResponseModel.Status15m = 0;
+            if (monitorings15m.Count != 0)
+            {
+                statusForDayResponseModel.Status15m = 1;
+                foreach (Monitoring x in monitorings15m)
+                {
+                    if (x.Status == 0)
+                    {
+                        statusForDayResponseModel.Status15m = -1;
+                    }
+                }
+            }
+
+            if (monitorings16.Count == 0) statusForDayResponseModel.Status16 = 0;
+            if (monitorings16.Count != 0)
+            {
+                statusForDayResponseModel.Status16 = 1;
+                foreach (Monitoring x in monitorings16)
+                {
+                    if (x.Status == 0)
+                    {
+                        statusForDayResponseModel.Status16 = -1;
+                    }
+                }
+            }
+            if (monitorings16m.Count == 0) statusForDayResponseModel.Status16m = 0;
+            if (monitorings16m.Count != 0)
+            {
+                statusForDayResponseModel.Status16m = 1;
+                foreach (Monitoring x in monitorings16m)
+                {
+                    if (x.Status == 0)
+                    {
+                        statusForDayResponseModel.Status16m = -1;
+                    }
+                }
+            }
+
+            if (monitorings17.Count == 0) statusForDayResponseModel.Status17 = 0;
+            if (monitorings17.Count != 0)
+            {
+                statusForDayResponseModel.Status17 = 1;
+                foreach (Monitoring x in monitorings17)
+                {
+                    if (x.Status == 0)
+                    {
+                        statusForDayResponseModel.Status17 = -1;
+                    }
+                }
+            }
+            if (monitorings17m.Count == 0) statusForDayResponseModel.Status17m = 0;
+            if (monitorings17m.Count != 0)
+            {
+                statusForDayResponseModel.Status17m = 1;
+                foreach (Monitoring x in monitorings17m)
+                {
+                    if (x.Status == 0)
+                    {
+                        statusForDayResponseModel.Status17m = -1;
+                    }
+                }
+            }
+
+            if (monitorings18.Count == 0) statusForDayResponseModel.Status18 = 0;
+            if (monitorings18.Count != 0) 
+            {
+                statusForDayResponseModel.Status18 = 1;
+                foreach (Monitoring x in monitorings18)
+                {
+                    if (x.Status == 0)
+                    {
+                        statusForDayResponseModel.Status18 = -1;
+                    }
+                }
+            }
+            if (monitorings18m.Count == 0) statusForDayResponseModel.Status18m = 0;
+            if (monitorings18m.Count != 0)
+            {
+                statusForDayResponseModel.Status18m = 1;
+                foreach (Monitoring x in monitorings18m)
+                {
+                    if (x.Status == 0)
+                    {
+                        statusForDayResponseModel.Status18m = -1;
+                    }
+                }
+            }
+
+            if (monitorings19.Count == 0) statusForDayResponseModel.Status19 = 0;
+            if (monitorings19.Count != 0)
+            {
+                statusForDayResponseModel.Status19 = 1;
+                foreach (Monitoring x in monitorings19)
+                {
+                    if (x.Status == 0)
+                    {
+                        statusForDayResponseModel.Status19 = -1;
+                    }
+                }
+            }
+            if (monitorings19m.Count == 0) statusForDayResponseModel.Status19m = 0;
+            if (monitorings19m.Count != 0)
+            {
+                statusForDayResponseModel.Status19m = 1;
+                foreach (Monitoring x in monitorings19m)
+                {
+                    if (x.Status == 0)
+                    {
+                        statusForDayResponseModel.Status19m = -1;
+                    }
+                }
+            }
+
+            if (monitorings20.Count == 0) statusForDayResponseModel.Status20 = 0;
+            if (monitorings20.Count != 0)
+            {
+                statusForDayResponseModel.Status20 = 1;
+                foreach (Monitoring x in monitorings20)
+                {
+                    if (x.Status == 0)
+                    {
+                        statusForDayResponseModel.Status20 = -1;
+                    }
+                }
+            }
+            if (monitorings20m.Count == 0) statusForDayResponseModel.Status20m = 0;
+            if (monitorings20m.Count != 0)
+            {
+                statusForDayResponseModel.Status20m = 1;
+                foreach (Monitoring x in monitorings20m)
+                {
+                    if (x.Status == 0)
+                    {
+                        statusForDayResponseModel.Status20m = -1;
+                    }
+                }
+            }
+
+            if (monitorings21.Count == 0) statusForDayResponseModel.Status21 = 0;
+            if (monitorings21.Count != 0)
+            {
+                statusForDayResponseModel.Status21 = 1;
+                foreach (Monitoring x in monitorings21)
+                {
+                    if (x.Status == 0)
+                    {
+                        statusForDayResponseModel.Status21 = -1;
+                    }
+                }
+            }
+            if (monitorings21m.Count == 0) statusForDayResponseModel.Status21m = 0;
+            if (monitorings21m.Count != 0)
+            {
+                statusForDayResponseModel.Status21m = 1;
+                foreach (Monitoring x in monitorings21m)
+                {
+                    if (x.Status == 0)
+                    {
+                        statusForDayResponseModel.Status21m = -1;
+                    }
+                }
+            }
+
+            if (monitorings22.Count == 0) statusForDayResponseModel.Status22 = 0;
+            if (monitorings22.Count != 0)
+            {
+                statusForDayResponseModel.Status22 = 1;
+                foreach (Monitoring x in monitorings22)
+                {
+                    if (x.Status == 0)
+                    {
+                        statusForDayResponseModel.Status22 = -1;
+                    }
+                }
+            }
+
+            if (monitorings22m.Count == 0) statusForDayResponseModel.Status22 = 0;
+            if (monitorings22m.Count != 0)
+            {
+                statusForDayResponseModel.Status22m = 1;
+                foreach (Monitoring x in monitorings22m)
+                {
+                    if (x.Status == 0)
+                    {
+                        statusForDayResponseModel.Status22m = -1;
+                    }
+                }
+            }
 
             return statusForDayResponseModel;
         }
+
+         
+        
 
         public async Task<DeviceInShopResponseModel> getDeviceinShop(int nshop)
         {

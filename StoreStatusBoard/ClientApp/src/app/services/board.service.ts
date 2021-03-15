@@ -2,8 +2,9 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BoardResponseModel } from '../models/response/board.response.model';
-import { DeviceInShopResponseModel } from '../models/response/device.response';
-import { ShopResponseModel } from '../models/response/shop.response';
+import { DeviceInShopResponseModel } from '../models/response/device.response.model';
+import { ShopResponseModel } from '../models/response/shop.response.model';
+import { StatusForDayResponseModel } from '../models/response/status.forday.response.model';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +34,16 @@ export class BoardService {
       .set('nshop', nshop.toString());
 
     const shop = await this.http.get<ShopResponseModel>(url, { params: params }).toPromise();
+    return shop;
+  }
 
+  public async getStatusForDay(nshop: number): Promise<StatusForDayResponseModel> {
+    const url: string = "https://localhost:44341/api/Board/ShopStatusForDay";
+
+    const params = new HttpParams()
+      .set('nshop', nshop.toString());
+
+    const shop = await this.http.get<StatusForDayResponseModel>(url, { params: params }).toPromise();
     return shop;
   }
 
@@ -44,7 +54,7 @@ export class BoardService {
       .set('nshop', nshop.toString());
 
     const shop = await this.http.get<DeviceInShopResponseModel>(url, { params: params }).toPromise();
-
+    console.log(shop);
     return shop;
   }
 }

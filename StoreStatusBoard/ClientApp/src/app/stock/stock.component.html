@@ -108,127 +108,189 @@
     <div id="statusFromDayValue" class="statusFromDayValue">
       <div id="line" class="line"><hr></div>
       <div class="circleBlock">
-        <div *ngIf="(hideStatusHourForDay < 7)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status7 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status7 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+        <div *ngIf="(statusForDay.status7 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
         <div id="circleTime" class="circleTime">07:00</div>
       </div>
       <div class="circleBlock">
-        <div *ngIf="(hideStatusHourForDay <= 7)&&(!statusMinutsForDay)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status7m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status7m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+        <div *ngIf="(statusForDay.status7m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
         <div id="circleTime" class="circleTime">07:30</div>
       </div>
       <div class="circleBlock">
-        <div *ngIf="(hideStatusHourForDay < 8)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status8 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status8 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+        <div *ngIf="(statusForDay.status8 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
         <div id="circleTime" class="circleTime">08:00</div>
       </div>
       <div class="circleBlock">
-        <div *ngIf="(hideStatusHourForDay <= 8)&&(!statusMinutsForDay)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status8m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status8m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+        <div *ngIf="(statusForDay.status8m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
         <div id="circleTime" class="circleTime">08:30</div>
       </div>
       <div class="circleBlock">
-        <div *ngIf="(hideStatusHourForDay < 9)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status9 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status9 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+        <div *ngIf="(statusForDay.status9 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
         <div id="circleTime" class="circleTime">09:00</div>
       </div>
       <div class="circleBlock">
-        <div *ngIf="(hideStatusHourForDay <= 9)&&(!statusMinutsForDay)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status9m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status9m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+        <div *ngIf="(statusForDay.status9m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
         <div id="circleTime" class="circleTime">09:30</div>
       </div>
       <div class="circleBlock">
-        <div *ngIf="(hideStatusHourForDay < 10)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status10 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status10 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+        <div *ngIf="(statusForDay.status10 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
         <div id="circleTime" class="circleTime">10:00</div>
       </div>
       <div class="circleBlock">
-        <div *ngIf="(hideStatusHourForDay <= 10)&&(!statusMinutsForDay)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status10m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status10m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+        <div *ngIf="(statusForDay.status10m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
         <div id="circleTime" class="circleTime">10:30</div>
       </div>
       <div class="circleBlock">
-        <div *ngIf="(hideStatusHourForDay < 11)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status11 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status11 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+        <div *ngIf="(statusForDay.status11 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
         <div id="circleTime" class="circleTime">11:00</div>
       </div>
       <div class="circleBlock">
-        <div *ngIf="(hideStatusHourForDay <= 11)&&(!statusMinutsForDay)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status11m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status11m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+        <div *ngIf="(statusForDay.status11m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
         <div id="circleTime" class="circleTime">11:30</div>
       </div>
       <div class="circleBlock">
-        <div *ngIf="(hideStatusHourForDay < 12)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status12 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status12 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+        <div *ngIf="(statusForDay.status12 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
         <div id="circleTime" class="circleTime">12:00</div>
       </div>
       <div class="circleBlock">
-        <div *ngIf="(hideStatusHourForDay <= 12)&&(!statusMinutsForDay)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status12m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status12m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+        <div *ngIf="(statusForDay.status12m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
         <div id="circleTime" class="circleTime">12:30</div>
       </div>
       <div class="circleBlock">
-        <div *ngIf="(hideStatusHourForDay < 13)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status13 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status13 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+        <div *ngIf="(statusForDay.status13 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
         <div id="circleTime" class="circleTime">13:00</div>
       </div>
       <div class="circleBlock">
-        <div *ngIf="(hideStatusHourForDay <= 13)&&(!statusMinutsForDay)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status13m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status13m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+        <div *ngIf="(statusForDay.status13m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
         <div id="circleTime" class="circleTime">13:30</div>
       </div>
       <div class="circleBlock">
-        <div *ngIf="(hideStatusHourForDay < 14)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status14 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status14 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+        <div *ngIf="(statusForDay.status14 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
         <div id="circleTime" class="circleTime">14:00</div>
       </div>
       <div class="circleBlock">
-        <div *ngIf="(hideStatusHourForDay <= 14)&&(!statusMinutsForDay)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status14m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status14m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+        <div *ngIf="(statusForDay.status14m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
         <div id="circleTime" class="circleTime">14:30</div>
       </div>
       <div class="circleBlock">
-        <div *ngIf="(hideStatusHourForDay < 15)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status15 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status15 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+        <div *ngIf="(statusForDay.status15 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
         <div id="circleTime" class="circleTime">15:00</div>
       </div>
       <div class="circleBlock">
-        <div *ngIf="(hideStatusHourForDay <= 15)&&(!statusMinutsForDay)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status15m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status15m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+        <div *ngIf="(statusForDay.status15m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
         <div id="circleTime" class="circleTime">15:30</div>
       </div>
       <div class="circleBlock">
-        <div *ngIf="(hideStatusHourForDay < 16)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status16 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status16 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+        <div *ngIf="(statusForDay.status16 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
         <div id="circleTime" class="circleTime">16:00</div>
       </div>
       <div class="circleBlock">
-        <div *ngIf="(hideStatusHourForDay <= 16)&&(!statusMinutsForDay)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status16m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status16m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+        <div *ngIf="(statusForDay.status16m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
         <div id="circleTime" class="circleTime">16:30</div>
       </div>
       <div class="circleBlock">
-        <div *ngIf="(hideStatusHourForDay < 17)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status17 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status17 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+        <div *ngIf="(statusForDay.status17 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
         <div id="circleTime" class="circleTime">17:00</div>
       </div>
       <div class="circleBlock">
-        <div *ngIf="(hideStatusHourForDay <= 17)&&(!statusMinutsForDay)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status17m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status17m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+        <div *ngIf="(statusForDay.status17m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
         <div id="circleTime" class="circleTime">17:30</div>
       </div>
       <div class="circleBlock">
-        <div *ngIf="(hideStatusHourForDay < 18)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status18 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status18 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+        <div *ngIf="(statusForDay.status18 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
         <div id="circleTime" class="circleTime">18:00</div>
       </div>
       <div class="circleBlock">
-        <div *ngIf="(hideStatusHourForDay <= 18)&&(!statusMinutsForDay)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status18m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status18m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+        <div *ngIf="(statusForDay.status18m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
         <div id="circleTime" class="circleTime">18:30</div>
       </div>
       <div class="circleBlock">
-        <div *ngIf="(hideStatusHourForDay < 19)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status19 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status19 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+        <div *ngIf="(statusForDay.status19 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
         <div id="circleTime" class="circleTime">19:00</div>
       </div>
       <div class="circleBlock">
-        <div *ngIf="(hideStatusHourForDay <= 19)&&(!statusMinutsForDay)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status19m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status19m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+        <div *ngIf="(statusForDay.status19m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
         <div id="circleTime" class="circleTime">19:30</div>
       </div>
       <div class="circleBlock">
-        <div *ngIf="(hideStatusHourForDay < 20)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status20 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status20 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+        <div *ngIf="(statusForDay.status20 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
         <div id="circleTime" class="circleTime">20:00</div>
       </div>
       <div class="circleBlock">
-        <div *ngIf="(hideStatusHourForDay <= 20)&&(!statusMinutsForDay)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status20m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status20m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+        <div *ngIf="(statusForDay.status20m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
         <div id="circleTime" class="circleTime">20:30</div>
       </div>
       <div class="circleBlock">
-        <div *ngIf="(hideStatusHourForDay < 21)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status21 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status21 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+        <div *ngIf="(statusForDay.status21 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
         <div id="circleTime" class="circleTime">21:00</div>
       </div>
       <div class="circleBlock">
-        <div *ngIf="(hideStatusHourForDay <= 21)&&(!statusMinutsForDay)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status21m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status21m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+        <div *ngIf="(statusForDay.status21m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
         <div id="circleTime" class="circleTime">21:30</div>
       </div>
       <div class="circleBlock">
-        <div *ngIf="(hideStatusHourForDay < 22)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status22 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+        <div *ngIf="(statusForDay.status22 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+        <div *ngIf="(statusForDay.status22 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
         <div id="circleTime" class="circleTime">22:00</div>
       </div>
       <div class="circleBlock">
