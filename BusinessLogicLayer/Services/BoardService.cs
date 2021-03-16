@@ -205,7 +205,6 @@ namespace BusinessLogicLayer.Services
             List<Monitoring> monitorings21m = await _monitoringRepository.getStatusStock30Minutes(nshop, 21);
 
             List<Monitoring> monitorings22 = await _monitoringRepository.getStatusStockHours(nshop, 22);
-            List<Monitoring> monitorings22m = await _monitoringRepository.getStatusStock30Minutes(nshop, 22);
 
             if (monitorings7.Count == 0) statusForDayResponseModel.Status7 = 0;
             if (monitorings7.Count != 0)
@@ -216,7 +215,9 @@ namespace BusinessLogicLayer.Services
                     if (x.Status == 0)
                     {
                         statusForDayResponseModel.Status7 = -1;
+                        statusForDayResponseModel.statusForDayModels7.Add(new StatusForDayModel() { Device = x.Device, LogTime = x.LogTime.Value.ToLongTimeString() });
                     }
+
                 }
             }
             if (monitorings7m.Count == 0) statusForDayResponseModel.Status7m = 0;
@@ -228,6 +229,7 @@ namespace BusinessLogicLayer.Services
                     if (x.Status == 0)
                     {
                         statusForDayResponseModel.Status7m = -1;
+                        statusForDayResponseModel.statusForDayModels7m.Add(new StatusForDayModel() { Device = x.Device, LogTime = x.LogTime.Value.ToLongTimeString() });
                     }
                 }
             }
@@ -241,6 +243,7 @@ namespace BusinessLogicLayer.Services
                     if (x.Status == 0)
                     {
                         statusForDayResponseModel.Status8 = -1;
+                        statusForDayResponseModel.statusForDayModels8.Add(new StatusForDayModel() { Device = x.Device, LogTime = x.LogTime.Value.ToLongTimeString() });
                     }
                 }
             }
@@ -253,6 +256,7 @@ namespace BusinessLogicLayer.Services
                     if (x.Status == 0)
                     {
                         statusForDayResponseModel.Status8m = -1;
+                        statusForDayResponseModel.statusForDayModels8m.Add(new StatusForDayModel() { Device = x.Device, LogTime = x.LogTime.Value.ToLongTimeString() });
                     }
                 }
             }
@@ -266,6 +270,7 @@ namespace BusinessLogicLayer.Services
                     if (x.Status == 0)
                     {
                         statusForDayResponseModel.Status9 = -1;
+                        statusForDayResponseModel.statusForDayModels9.Add(new StatusForDayModel() { Device = x.Device, LogTime = x.LogTime.Value.ToLongTimeString() });
                     }
                 }
             }
@@ -278,6 +283,7 @@ namespace BusinessLogicLayer.Services
                     if (x.Status == 0)
                     {
                         statusForDayResponseModel.Status9m = -1;
+                        statusForDayResponseModel.statusForDayModels9m.Add(new StatusForDayModel() { Device = x.Device, LogTime = x.LogTime.Value.ToLongTimeString() });
                     }
                 }
             }
@@ -291,6 +297,7 @@ namespace BusinessLogicLayer.Services
                     if (x.Status == 0)
                     {
                         statusForDayResponseModel.Status10 = -1;
+                        statusForDayResponseModel.statusForDayModels10.Add(new StatusForDayModel() { Device = x.Device, LogTime = x.LogTime.Value.ToLongTimeString() });
                     }
                 }
             }
@@ -304,6 +311,7 @@ namespace BusinessLogicLayer.Services
                     if (x.Status == 0)
                     {
                         statusForDayResponseModel.Status10m = -1;
+                        statusForDayResponseModel.statusForDayModels10m.Add(new StatusForDayModel() { Device = x.Device, LogTime = x.LogTime.Value.ToLongTimeString() });
                     }
                 }
             }
@@ -317,6 +325,7 @@ namespace BusinessLogicLayer.Services
                     if (x.Status == 0)
                     {
                         statusForDayResponseModel.Status11 = -1;
+                        statusForDayResponseModel.statusForDayModels11.Add(new StatusForDayModel() { Device = x.Device, LogTime = x.LogTime.Value.ToLongTimeString() });
                     }
                 }
             }
@@ -329,6 +338,7 @@ namespace BusinessLogicLayer.Services
                     if (x.Status == 0)
                     {
                         statusForDayResponseModel.Status11m = -1;
+                        statusForDayResponseModel.statusForDayModels11m.Add(new StatusForDayModel() { Device = x.Device, LogTime = x.LogTime.Value.ToLongTimeString() });
                     }
                 }
             }
@@ -342,6 +352,7 @@ namespace BusinessLogicLayer.Services
                     if (x.Status == 0)
                     {
                         statusForDayResponseModel.Status12 = -1;
+                        statusForDayResponseModel.statusForDayModels12.Add(new StatusForDayModel() { Device = x.Device, LogTime = x.LogTime.Value.ToLongTimeString() });
                     }
                 }
             }
@@ -355,6 +366,7 @@ namespace BusinessLogicLayer.Services
                     if (x.Status == 0)
                     {
                         statusForDayResponseModel.Status12m = -1;
+                        statusForDayResponseModel.statusForDayModels12m.Add(new StatusForDayModel() { Device = x.Device, LogTime = x.LogTime.Value.ToLongTimeString() });
                     }
                 }
             }
@@ -368,6 +380,7 @@ namespace BusinessLogicLayer.Services
                     if (x.Status == 0)
                     {
                         statusForDayResponseModel.Status13 = -1;
+                        statusForDayResponseModel.statusForDayModels13.Add(new StatusForDayModel() { Device = x.Device, LogTime = x.LogTime.Value.ToLongTimeString() });
                     }
                 }
             }
@@ -380,6 +393,7 @@ namespace BusinessLogicLayer.Services
                     if (x.Status == 0)
                     {
                         statusForDayResponseModel.Status13m = -1;
+                        statusForDayResponseModel.statusForDayModels13m.Add(new StatusForDayModel() { Device = x.Device, LogTime = x.LogTime.Value.ToLongTimeString() });
                     }
                 }
             }
@@ -393,6 +407,7 @@ namespace BusinessLogicLayer.Services
                     if (x.Status == 0)
                     {
                         statusForDayResponseModel.Status14 = -1;
+                        statusForDayResponseModel.statusForDayModels14.Add(new StatusForDayModel() { Device = x.Device, LogTime = x.LogTime.Value.ToLongTimeString() });
                     }
                 }
             }
@@ -405,6 +420,7 @@ namespace BusinessLogicLayer.Services
                     if (x.Status == 0)
                     {
                         statusForDayResponseModel.Status14m = -1;
+                        statusForDayResponseModel.statusForDayModels14m.Add(new StatusForDayModel() { Device = x.Device, LogTime = x.LogTime.Value.ToLongTimeString() });
                     }
                 }
             }
@@ -418,6 +434,7 @@ namespace BusinessLogicLayer.Services
                     if (x.Status == 0)
                     {
                         statusForDayResponseModel.Status15 = -1;
+                        statusForDayResponseModel.statusForDayModels15.Add(new StatusForDayModel() { Device = x.Device, LogTime = x.LogTime.Value.ToLongTimeString() });
                     }
                 }
             }
@@ -431,6 +448,7 @@ namespace BusinessLogicLayer.Services
                     if (x.Status == 0)
                     {
                         statusForDayResponseModel.Status15m = -1;
+                        statusForDayResponseModel.statusForDayModels15m.Add(new StatusForDayModel() { Device = x.Device, LogTime = x.LogTime.Value.ToLongTimeString() });
                     }
                 }
             }
@@ -444,6 +462,7 @@ namespace BusinessLogicLayer.Services
                     if (x.Status == 0)
                     {
                         statusForDayResponseModel.Status16 = -1;
+                        statusForDayResponseModel.statusForDayModels16.Add(new StatusForDayModel() { Device = x.Device, LogTime = x.LogTime.Value.ToLongTimeString() });
                     }
                 }
             }
@@ -456,6 +475,7 @@ namespace BusinessLogicLayer.Services
                     if (x.Status == 0)
                     {
                         statusForDayResponseModel.Status16m = -1;
+                        statusForDayResponseModel.statusForDayModels16m.Add(new StatusForDayModel() { Device = x.Device, LogTime = x.LogTime.Value.ToLongTimeString() });
                     }
                 }
             }
@@ -469,6 +489,7 @@ namespace BusinessLogicLayer.Services
                     if (x.Status == 0)
                     {
                         statusForDayResponseModel.Status17 = -1;
+                        statusForDayResponseModel.statusForDayModels17.Add(new StatusForDayModel() { Device = x.Device, LogTime = x.LogTime.Value.ToLongTimeString() });
                     }
                 }
             }
@@ -481,6 +502,7 @@ namespace BusinessLogicLayer.Services
                     if (x.Status == 0)
                     {
                         statusForDayResponseModel.Status17m = -1;
+                        statusForDayResponseModel.statusForDayModels17m.Add(new StatusForDayModel() { Device = x.Device, LogTime = x.LogTime.Value.ToLongTimeString() });
                     }
                 }
             }
@@ -494,6 +516,7 @@ namespace BusinessLogicLayer.Services
                     if (x.Status == 0)
                     {
                         statusForDayResponseModel.Status18 = -1;
+                        statusForDayResponseModel.statusForDayModels18.Add(new StatusForDayModel() { Device = x.Device, LogTime = x.LogTime.Value.ToLongTimeString() });
                     }
                 }
             }
@@ -506,6 +529,7 @@ namespace BusinessLogicLayer.Services
                     if (x.Status == 0)
                     {
                         statusForDayResponseModel.Status18m = -1;
+                        statusForDayResponseModel.statusForDayModels18m.Add(new StatusForDayModel() { Device = x.Device, LogTime = x.LogTime.Value.ToLongTimeString() });
                     }
                 }
             }
@@ -519,6 +543,7 @@ namespace BusinessLogicLayer.Services
                     if (x.Status == 0)
                     {
                         statusForDayResponseModel.Status19 = -1;
+                        statusForDayResponseModel.statusForDayModels19.Add(new StatusForDayModel() { Device = x.Device, LogTime = x.LogTime.Value.ToLongTimeString() });
                     }
                 }
             }
@@ -531,6 +556,7 @@ namespace BusinessLogicLayer.Services
                     if (x.Status == 0)
                     {
                         statusForDayResponseModel.Status19m = -1;
+                        statusForDayResponseModel.statusForDayModels19m.Add(new StatusForDayModel() { Device = x.Device, LogTime = x.LogTime.Value.ToLongTimeString() });
                     }
                 }
             }
@@ -544,6 +570,7 @@ namespace BusinessLogicLayer.Services
                     if (x.Status == 0)
                     {
                         statusForDayResponseModel.Status20 = -1;
+                        statusForDayResponseModel.statusForDayModels20.Add(new StatusForDayModel() { Device = x.Device, LogTime = x.LogTime.Value.ToLongTimeString() });
                     }
                 }
             }
@@ -556,6 +583,7 @@ namespace BusinessLogicLayer.Services
                     if (x.Status == 0)
                     {
                         statusForDayResponseModel.Status20m = -1;
+                        statusForDayResponseModel.statusForDayModels20m.Add(new StatusForDayModel() { Device = x.Device, LogTime = x.LogTime.Value.ToLongTimeString() });
                     }
                 }
             }
@@ -569,6 +597,7 @@ namespace BusinessLogicLayer.Services
                     if (x.Status == 0)
                     {
                         statusForDayResponseModel.Status21 = -1;
+                        statusForDayResponseModel.statusForDayModels21.Add(new StatusForDayModel() { Device = x.Device, LogTime = x.LogTime.Value.ToLongTimeString() });
                     }
                 }
             }
@@ -581,6 +610,7 @@ namespace BusinessLogicLayer.Services
                     if (x.Status == 0)
                     {
                         statusForDayResponseModel.Status21m = -1;
+                        statusForDayResponseModel.statusForDayModels21m.Add(new StatusForDayModel() { Device = x.Device, LogTime = x.LogTime.Value.ToLongTimeString() });
                     }
                 }
             }
@@ -594,23 +624,10 @@ namespace BusinessLogicLayer.Services
                     if (x.Status == 0)
                     {
                         statusForDayResponseModel.Status22 = -1;
+                        statusForDayResponseModel.statusForDayModels22.Add(new StatusForDayModel() { Device = x.Device, LogTime = x.LogTime.Value.ToLongTimeString() });
                     }
                 }
             }
-
-            if (monitorings22m.Count == 0) statusForDayResponseModel.Status22 = 0;
-            if (monitorings22m.Count != 0)
-            {
-                statusForDayResponseModel.Status22m = 1;
-                foreach (Monitoring x in monitorings22m)
-                {
-                    if (x.Status == 0)
-                    {
-                        statusForDayResponseModel.Status22m = -1;
-                    }
-                }
-            }
-
             return statusForDayResponseModel;
         }
 

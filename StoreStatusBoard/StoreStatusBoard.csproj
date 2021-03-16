@@ -33,6 +33,7 @@
     <None Remove="ClientApp\src\app\models\response\device.response.model.ts" />
     <None Remove="ClientApp\src\app\models\response\shop.response.model.ts" />
     <None Remove="ClientApp\src\app\models\response\status.forday.response.model.ts" />
+    <None Remove="ClientApp\src\app\models\status.forday.model.ts" />
     <None Remove="ClientApp\src\app\models\stock.model.ts" />
     <None Remove="ClientApp\src\app\models\StoreModel.ts" />
     <None Remove="ClientApp\src\app\models\table\status.table.model.ts" />

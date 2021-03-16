@@ -54,7 +54,6 @@ export class BoardService {
       .set('nshop', nshop.toString());
 
     const shop = await this.http.get<DeviceInShopResponseModel>(url, { params: params }).toPromise();
-    console.log(shop);
     return shop;
   }
 }

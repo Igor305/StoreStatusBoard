@@ -38,7 +38,7 @@ export class NavMenuComponent {
     this.middleAmountR = 0;
     this.lowAmountR = 0;
     var numStocks = Number(stocks.amount);
-    console.log(stocks.monitoringModels);
+
     for (var x = 0; x < numStocks; x++) {
 
       if ((stocks.monitoringModels[x].status == 0) && (stocks.monitoringModels[x].isGrey == 0)) {

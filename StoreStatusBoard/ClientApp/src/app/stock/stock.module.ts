@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { StockComponent } from '../stock/stock.component';
 import { RouterModule } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 
@@ -11,7 +12,8 @@ import { MatTableModule } from '@angular/material/table';
   imports: [
     CommonModule,
     RouterModule,
-    MatTableModule
+    MatTableModule,
+    MatTooltipModule
   ]
 })
 export class StockModule { }

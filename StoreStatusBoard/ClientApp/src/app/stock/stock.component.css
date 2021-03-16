@@ -65,7 +65,12 @@ th, tr, td {
     margin-right: 0.85%;
 }
 
-.circle {
+/deep/ .mat-tooltip {
+  font-size: 21px;
+  white-space: pre-line;
+}
+
+ .circle {
   position: relative;
   margin-top: 15px;
   margin-left: 18px;
