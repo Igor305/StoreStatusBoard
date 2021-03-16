@@ -120,7 +120,7 @@ export class StockComponent implements OnInit  {
     }
     if (this.statusForDay.status10m == -1) {
       for (let status10m of this.statusForDay.statusForDayModels10m) {
-        this.status10m = this.status7m + status10m.device + " : " + status10m.logTime + "\r\n";
+        this.status10m = this.status10m + status10m.device + " : " + status10m.logTime + "\r\n";
       }
     }
     if (this.statusForDay.status11 == -1) {

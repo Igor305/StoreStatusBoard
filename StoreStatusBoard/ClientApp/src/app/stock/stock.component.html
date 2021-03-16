@@ -28,13 +28,13 @@
           </tr>
         </thead>
         <tr>
-          <td>
+          <td class="td">
            
           </td>
-          <td>
+          <td class="td">
            
           </td>
-          <td>
+          <td class="td">
            
           </td>
         </tr>
@@ -54,42 +54,42 @@
         </thead>
         <tbody>
           <tr>
-            <td>
+            <td class="td">
               Номер ТТ
             </td>
             <td>
              {{shopId}}
             </td>
           <tr>
-            <td>
+            <td class="td">
               Графік роботи
             </td>
-            <td>
+            <td class="td">
               {{shopInfo.workTimeFrom}}-{{shopInfo.workTimeTo}}
             </td>
           </tr>
           <tr>
-            <td>
+            <td class="td">
               Регіон
             </td>
-            <td>
+            <td class="td">
               {{shopInfo.region}}
             </td>
           </tr>
           <tr>
-            <td>
+            <td class="td">
               Адреса
             </td>
-            <td>
+            <td class="td">
               {{shopInfo.city}} {{shopInfo.street}} {{shopInfo.number}}
             </td>
           </tr>
           <tr>
-            <td>
+            <td class="td">
               Провайдер
             </td>
-            <td *ngFor="let provider of shopInfo.providers">
-              {{provider.name}} {{provider.phoneNumber}}
+            <td class="td">
+              <div *ngFor="let provider of shopInfo.providers">{{provider.name}} {{provider.phoneNumber}}</div>
             </td>
           </tr>
         </tbody>
@@ -106,7 +106,7 @@
       <div id="textInfo" class="textInfo">Інформація Відсутня</div>
     </div>
     <div id="statusFromDayValue" class="statusFromDayValue">
-      <div id="line" class="line"><hr></div>
+      <div id="line" class="line"></div>
       <div matTooltip="{{status7}}" class="circleBlock">
         <div  *ngIf="(statusForDay.status7 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
         <div *ngIf="(statusForDay.status7 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
@@ -314,7 +314,7 @@
               <td>
                 {{device.device}}
               </td>
-              <td *ngIf="(device.status == 0)" style="color: #FF4A3E; background-color: rgba(0,0,0,.05);">
+              <td *ngIf="(device.status == 0)" style="color: #FF4A3E;">
                 {{device.strLogTime}}
               </td>
               <td *ngIf="(device.status == 1)" style="color: #177246;">

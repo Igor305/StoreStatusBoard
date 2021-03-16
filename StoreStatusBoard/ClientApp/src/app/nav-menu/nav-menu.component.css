@@ -19,6 +19,8 @@ html {
 }
 
 .logo {
+  position:relative;
+  margin-left: 5px;
   width: 250px;
   height: 105px;
 }

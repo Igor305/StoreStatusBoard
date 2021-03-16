@@ -11,15 +11,26 @@ table {
   margin-left: 10px;
 }
 
-th, tr, td {
+ tr {
   font-size: 21px;
   font-family: lato,sans-serif;
   text-align: center;
   border: 1px solid #000000;
 }
 
-  .back {
-  display: inline-flex;
+.tableDeviceName:nth-of-type(even) {
+  background-color: #F3F3F3;
+}
+
+.td {
+  font-size: 21px;
+  font-family: lato,sans-serif;
+  text-align: center;
+  border: 1px solid #000000;
+}
+
+.back {
+display: inline-flex;
 }
 
 .backText {
@@ -46,7 +57,7 @@ th, tr, td {
   margin-left: 20px;
   margin-top: 20px;
   width: 96%;
-  height: 200px;
+  height: 150px;
   border: 1px solid #000000;
   box-sizing: border-box;
 }
@@ -62,7 +73,7 @@ th, tr, td {
 
 .circleBlock{
     position:relative;
-    margin-right: 0.85%;
+    margin-left: 0.45%;
 }
 
 /deep/ .mat-tooltip {
@@ -73,18 +84,15 @@ th, tr, td {
  .circle {
   position: relative;
   margin-top: 15px;
-  margin-left: 18px;
-  margin-right: 37px;
-  width: 30px;
-  height: 30px;
+  margin-left: 15px;
+  width: 25px;
+  height: 25px;
   border-radius: 25px;
 }
 
 .circleTime {
   position: relative;
   margin-top: 5px;
-  margin-left: 10px;
-  margin-right: 10px;
   font-family: lato,sans-serif;
   font-size: 21px;
   display: inline-flex;
@@ -94,6 +102,7 @@ th, tr, td {
 
 .textInfo {
   position: relative;
+  margin-left: 10px;
   margin-top: 18px;
   line-height: 21px;
 }
@@ -101,13 +110,16 @@ th, tr, td {
 .statusFromDayValue {
   position: relative;
   margin-top: 15px;
-  margin-left: 10px;
   display: flex;
 }
 
 .line {
-  border-top: 1px solid #000000;
-  height: 10px;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  height: 5px;
+  width: 1800px;
+  color: #000000;
 }
 
 .tableStatus {
@@ -141,8 +153,4 @@ th, tr, td {
 }
 .tableInfoTTPercent{
     width:70%;
-}
-
-.thead {
-  text-transform: uppercase !important;
 }
