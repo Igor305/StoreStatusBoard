@@ -9,17 +9,17 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repositories.EFRepositories.NetMonitoring
 {
-    public class MonitoringReposirory : IMonitoringRepository
+    public class MonitoringRepository : IMonitoringRepository
     {
         private readonly NetMonitoringContext _netMonitoringContext;
-        public MonitoringReposirory (NetMonitoringContext netMonitoringContext)
+        public MonitoringRepository (NetMonitoringContext netMonitoringContext)
         {
             _netMonitoringContext = netMonitoringContext;
         }
 
         public async Task<int> getCountStock()
         {
-            Monitoring lastStock = await _netMonitoringContext.Monitorings.Where(x => x.LogTime.Value.Date == DateTime.Today.Date).Where(x => x.Device == "router").OrderByDescending(x => x.Stock).FirstAsync();
+            Monitoring lastStock = await _netMonitoringContext.Monitorings.Where(x => x.LogTime.Value.Date == DateTime.Today.Date && x.Device == "router").OrderByDescending(x => x.Stock).FirstAsync();
 
             int? nStock = lastStock.Stock;
 
@@ -30,7 +30,7 @@ namespace DataAccessLayer.Repositories.EFRepositories.NetMonitoring
 
         public async Task<List<int?>> getGreenFrom5Day()
         {
-            List<int?> greenFrom5Day = await _netMonitoringContext.Monitorings.Where(x => x.LogTime.Value.Date >= DateTime.Today.Date.AddDays(-5)).Where(x => x.Device == "router").Where(x => x.Status == 1).Select(x => x.Stock).Distinct().OrderBy(x => x.Value).ToListAsync();
+            List<int?> greenFrom5Day = await _netMonitoringContext.Monitorings.Where(x => x.LogTime.Value.Date >= DateTime.Today.Date.AddDays(-5) && x.Device == "router" && x.Status == 1).Select(x => x.Stock).Distinct().OrderBy(x => x.Value).ToListAsync();
 
             return greenFrom5Day;
         }
@@ -38,7 +38,7 @@ namespace DataAccessLayer.Repositories.EFRepositories.NetMonitoring
 
        /* public static IEnumerable<Monitoring> getStartStocksR(int? nstock)
         {
-            Monitoring monitoring = monitorings.Where(x => x.Stock == nstock).FirstOrDefault();
+            Monitoring monitoring = monitorings. Where(x => x.Stock == nstock).FirstOrDefault();
             if (monitoring != null)
             {
                 var df = getStartStocksR(monitorings, monitoring.Stock);
@@ -50,15 +50,8 @@ namespace DataAccessLayer.Repositories.EFRepositories.NetMonitoring
             }
 
             return new Monitoring[] { };
-        }
-
-        public async Task<Monitoring> getStartStocksS(int nstock)
-        {
-
-            Monitoring monitoring = await _netMonitoringContext.Monitorings.Where(x => x.LogTime.Value.Date == DateTime.Today.Date).Where(x => x.Device == "S").Where(x => x.Stock == nstock).OrderByDescending(x => x.LogTime).FirstOrDefaultAsync();
-
-            return monitoring;
         }*/
+
 
         public async Task<List<Monitoring>> getStocksR(int count)
         {

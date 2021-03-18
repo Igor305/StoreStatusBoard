@@ -47,7 +47,7 @@ export class NavMenuComponent {
       if ((stocks.monitoringModels[x].statusS == 0) && (stocks.monitoringModels[x].isGrey == 0)) {
         this.amountS++;
       }
-      if ((stocks.monitoringModels[x].responseTime != 0) && (stocks.monitoringModels[x].isGrey == 0)) {
+    /*  if ((stocks.monitoringModels[x].responseTime != 0) && (stocks.monitoringModels[x].isGrey == 0)) {
         if (stocks.monitoringModels[x].responseTime < 40) {
           this.hideAmountR++;
         }
@@ -57,7 +57,7 @@ export class NavMenuComponent {
         if (stocks.monitoringModels[x].responseTime >= 80) {
           this.lowAmountR++;
         }
-      }
+      }*/
     }
     this.routerPercent = ((numStocks - this.amountR) / numStocks * 100).toFixed(2);
     this.syncPercent = ((numStocks - this.amountS) / numStocks * 100).toFixed(2);

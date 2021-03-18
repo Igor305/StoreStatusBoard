@@ -4,6 +4,7 @@ using BusinessLogicLayer.Models.Response;
 using BusinessLogicLayer.Services.Interfaces;
 using DataAccessLayer.Entities.NetMonitoring;
 using DataAccessLayer.Entities.Shops;
+using DataAccessLayer.Repositories.EFRepositories.NetMonitoring;
 using DataAccessLayer.Repositories.Interfaces.NetMonitoring;
 using DataAccessLayer.Repositories.Interfaces.Shops;
 using System;
@@ -317,7 +318,7 @@ namespace BusinessLogicLayer.Services
             }
 
             if (monitorings11.Count == 0) statusForDayResponseModel.Status11 = 0;
-            if (monitorings11.Count != 0) statusForDayResponseModel.Status11 = 1;
+            if (monitorings11.Count != 0)
             {
                 statusForDayResponseModel.Status11 = 1;
                 foreach (Monitoring x in monitorings11)

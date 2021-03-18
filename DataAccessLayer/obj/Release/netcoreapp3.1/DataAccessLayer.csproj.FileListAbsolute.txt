@@ -1,0 +1,12 @@
+D:\StoreStatusBoard\DataAccessLayer\bin\Release\netcoreapp3.1\DataAccessLayer.deps.json
+D:\StoreStatusBoard\DataAccessLayer\bin\Release\netcoreapp3.1\DataAccessLayer.runtimeconfig.json
+D:\StoreStatusBoard\DataAccessLayer\bin\Release\netcoreapp3.1\DataAccessLayer.runtimeconfig.dev.json
+D:\StoreStatusBoard\DataAccessLayer\bin\Release\netcoreapp3.1\DataAccessLayer.dll
+D:\StoreStatusBoard\DataAccessLayer\bin\Release\netcoreapp3.1\DataAccessLayer.pdb
+D:\StoreStatusBoard\DataAccessLayer\obj\Release\netcoreapp3.1\DataAccessLayer.csprojAssemblyReference.cache
+D:\StoreStatusBoard\DataAccessLayer\obj\Release\netcoreapp3.1\DataAccessLayer.AssemblyInfoInputs.cache
+D:\StoreStatusBoard\DataAccessLayer\obj\Release\netcoreapp3.1\DataAccessLayer.AssemblyInfo.cs
+D:\StoreStatusBoard\DataAccessLayer\obj\Release\netcoreapp3.1\DataAccessLayer.csproj.CoreCompileInputs.cache
+D:\StoreStatusBoard\DataAccessLayer\obj\Release\netcoreapp3.1\DataAccessLayer.dll
+D:\StoreStatusBoard\DataAccessLayer\obj\Release\netcoreapp3.1\DataAccessLayer.pdb
+D:\StoreStatusBoard\DataAccessLayer\obj\Release\netcoreapp3.1\DataAccessLayer.genruntimeconfig.cache

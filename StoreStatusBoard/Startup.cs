@@ -33,7 +33,7 @@ namespace StoreStatusBoard
             services.AddDbContext<NetMonitoringContext>(opts => opts.UseSqlServer(connectionStringSQL08));
             services.AddDbContext<ShopsContext>(opts => opts.UseSqlServer(connectionStringSQL26));
             services.AddScoped<IDeviceRepository, DeviceRepository>();
-            services.AddScoped<IMonitoringRepository, MonitoringReposirory>();
+            services.AddScoped<IMonitoringRepository, MonitoringRepository>();
             services.AddScoped<IStockRepository, StockRepository>();
             services.AddScoped<IRStockRepository, RStockRepository>();
             services.AddScoped<IProviderRepository, ProviderRepository>();

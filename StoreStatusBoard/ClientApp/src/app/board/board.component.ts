@@ -14,7 +14,7 @@ export class BoardComponent implements OnInit {
   opened: boolean = true;
   badPingStock: string = "";
   badPing: boolean = false;
-  stocks: StockModel = {}
+  stocks: StockModel[] = [];
   showFiller: boolean = true;
 
 
@@ -24,7 +24,7 @@ export class BoardComponent implements OnInit {
   public async ngOnInit() {
 
     this.getBoard();
-    //setInterval(() => this.getBoard(), 50000);
+    setInterval(() => this.getBoard(), 50000);
 
     const isSmallScreen = this.breakpointObserver.isMatched('(max-width: 1450px)');
     console.log(isSmallScreen);
@@ -34,12 +34,11 @@ export class BoardComponent implements OnInit {
 
     let stocks = await this.boardService.getBoard();
     this.stocks = stocks.monitoringModels;
+    console.log(this.stocks);
 
   }
   public async getStartBoard() {
 
-    let stocks = await this.boardService.getStartBoard();
-    this.stocks = stocks.monitoringModels;
 
   }
  /* public async getStatusStock(): Promise<string> {
