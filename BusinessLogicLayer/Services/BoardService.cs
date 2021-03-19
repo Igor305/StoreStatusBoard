@@ -4,7 +4,6 @@ using BusinessLogicLayer.Models.Response;
 using BusinessLogicLayer.Services.Interfaces;
 using DataAccessLayer.Entities.NetMonitoring;
 using DataAccessLayer.Entities.Shops;
-using DataAccessLayer.Repositories.EFRepositories.NetMonitoring;
 using DataAccessLayer.Repositories.Interfaces.NetMonitoring;
 using DataAccessLayer.Repositories.Interfaces.Shops;
 using System;
@@ -109,7 +108,6 @@ namespace BusinessLogicLayer.Services
 
             int count = 1;
 
-            responseModel.amount = amount;
             responseModel.monitoringModels = _mapper.Map<List<Monitoring>, List<MonitoringModel>>(monitoringsR);
             responseModel.monitoringModels.ForEach(x => x.isGrey = greyFrom5Day[count++]);
             count = 0;

@@ -7,5 +7,6 @@ export interface StockModel {
   ipAddress?: string;
   logTime?: Date;
   strLogTime?: string;
+  responseTime?: number;
   TTL?: number;
 }

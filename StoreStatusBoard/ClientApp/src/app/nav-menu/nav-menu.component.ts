@@ -31,36 +31,34 @@ export class NavMenuComponent {
   public async getState() {
 
     let stocks = await this.boardService.getBoard();
-    this.stockAmount = stocks.amount;
     this.amountR = 0;
     this.amountS = 0;
     this.hideAmountR = 0;
     this.middleAmountR = 0;
     this.lowAmountR = 0;
-    var numStocks = Number(stocks.amount);
 
-    for (var x = 0; x < numStocks; x++) {
+    for (var x  of stocks.monitoringModels) {
 
-      if ((stocks.monitoringModels[x].status == 0) && (stocks.monitoringModels[x].isGrey == 0)) {
+      if ((x.status == 0) && (x.isGrey == 0)) {
         this.amountR++;
       }
-      if ((stocks.monitoringModels[x].statusS == 0) && (stocks.monitoringModels[x].isGrey == 0)) {
+      if ((x.statusS == 0) && (x.isGrey == 0)) {
         this.amountS++;
       }
-    /*  if ((stocks.monitoringModels[x].responseTime != 0) && (stocks.monitoringModels[x].isGrey == 0)) {
-        if (stocks.monitoringModels[x].responseTime < 40) {
+      if ((x.responseTime != 0) && (x.isGrey == 0)) {
+        if (x.responseTime < 40) {
           this.hideAmountR++;
         }
-        if ((stocks.monitoringModels[x].responseTime >= 40) && (stocks.monitoringModels[x].responseTime < 80)) {
+        if ((x.responseTime >= 40) && (x.responseTime < 80)) {
           this.middleAmountR++;
         }
-        if (stocks.monitoringModels[x].responseTime >= 80) {
+        if (x.responseTime >= 80) {
           this.lowAmountR++;
         }
-      }*/
+      }
     }
-    this.routerPercent = ((numStocks - this.amountR) / numStocks * 100).toFixed(2);
-    this.syncPercent = ((numStocks - this.amountS) / numStocks * 100).toFixed(2);
+    this.routerPercent = ((stocks.monitoringModels.length - this.amountR) / stocks.monitoringModels.length * 100).toFixed(2);
+    this.syncPercent = ((stocks.monitoringModels.length - this.amountS) / stocks.monitoringModels.length * 100).toFixed(2);
   }
 
   public async getTime() {

@@ -34,7 +34,6 @@ export class BoardComponent implements OnInit {
 
     let stocks = await this.boardService.getBoard();
     this.stocks = stocks.monitoringModels;
-    console.log(this.stocks);
 
   }
   public async getStartBoard() {

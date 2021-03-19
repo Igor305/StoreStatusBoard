@@ -10,3 +10,15 @@ D:\StoreStatusBoard\BusinessLogicLayer\obj\Release\netcoreapp3.1\BusinessLogicLa
 D:\StoreStatusBoard\BusinessLogicLayer\obj\Release\netcoreapp3.1\BusinessLogicLayer.csproj.CopyComplete
 D:\StoreStatusBoard\BusinessLogicLayer\obj\Release\netcoreapp3.1\BusinessLogicLayer.dll
 D:\StoreStatusBoard\BusinessLogicLayer\obj\Release\netcoreapp3.1\BusinessLogicLayer.pdb
+C:\Users\i.talavyria\Desktop\StoreStatusBoard\BusinessLogicLayer\bin\Release\netcoreapp3.1\BusinessLogicLayer.deps.json
+C:\Users\i.talavyria\Desktop\StoreStatusBoard\BusinessLogicLayer\bin\Release\netcoreapp3.1\BusinessLogicLayer.dll
+C:\Users\i.talavyria\Desktop\StoreStatusBoard\BusinessLogicLayer\bin\Release\netcoreapp3.1\BusinessLogicLayer.pdb
+C:\Users\i.talavyria\Desktop\StoreStatusBoard\BusinessLogicLayer\bin\Release\netcoreapp3.1\DataAccessLayer.dll
+C:\Users\i.talavyria\Desktop\StoreStatusBoard\BusinessLogicLayer\bin\Release\netcoreapp3.1\DataAccessLayer.pdb
+C:\Users\i.talavyria\Desktop\StoreStatusBoard\BusinessLogicLayer\obj\Release\netcoreapp3.1\BusinessLogicLayer.csprojAssemblyReference.cache
+C:\Users\i.talavyria\Desktop\StoreStatusBoard\BusinessLogicLayer\obj\Release\netcoreapp3.1\BusinessLogicLayer.AssemblyInfoInputs.cache
+C:\Users\i.talavyria\Desktop\StoreStatusBoard\BusinessLogicLayer\obj\Release\netcoreapp3.1\BusinessLogicLayer.AssemblyInfo.cs
+C:\Users\i.talavyria\Desktop\StoreStatusBoard\BusinessLogicLayer\obj\Release\netcoreapp3.1\BusinessLogicLayer.csproj.CoreCompileInputs.cache
+C:\Users\i.talavyria\Desktop\StoreStatusBoard\BusinessLogicLayer\obj\Release\netcoreapp3.1\BusinessLogicLayer.csproj.CopyComplete
+C:\Users\i.talavyria\Desktop\StoreStatusBoard\BusinessLogicLayer\obj\Release\netcoreapp3.1\BusinessLogicLayer.dll
+C:\Users\i.talavyria\Desktop\StoreStatusBoard\BusinessLogicLayer\obj\Release\netcoreapp3.1\BusinessLogicLayer.pdb

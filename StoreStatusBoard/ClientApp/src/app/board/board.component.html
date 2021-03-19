@@ -41,7 +41,7 @@
             <div id="Nstock" class="stocksRed">{{stock.stock}}</div>
             <div id="S" class="S" style="color: #FF4A3E;">S</div>
           </div>
-          <div *ngIf="(stock.isGrey == 1)" class="stocks" >
+          <div *ngIf="(stock.isGrey == 1)&&(stock.status == 0)" class="stocks" >
             <div id="Nstock" class="stocks" style="background-color: #968B8B;">{{stock.stock}}</div>
             <div id="S" class="S">S</div>
           </div>
