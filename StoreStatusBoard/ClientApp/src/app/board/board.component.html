@@ -41,11 +41,11 @@
             <div id="Nstock" class="stocksRed">{{stock.stock}}</div>
             <div id="S" class="S" style="color: #FF4A3E;">S</div>
           </div>
-          <div *ngIf="(stock.isGrey == 1)&&(stock.status == 0)" class="stocks" >
+          <div *ngIf="(stock.isGrey == 1)&&(stock.status == 0)" class="stocks">
             <div id="Nstock" class="stocks" style="background-color: #968B8B;">{{stock.stock}}</div>
             <div id="S" class="S">S</div>
           </div>
-          <div *ngIf="(((stock.status == 0)&&(stock.statusS == 0))||((stock.status == 0)&&(stock.statusS == 1)))&&(stock.isGrey != 1)" class="stocks" >
+          <div *ngIf="(((stock.status == 0)&&(stock.statusS == 0))||((stock.status == 0)&&(stock.statusS == 1)))&&(stock.isGrey != 1)" class="stocks">
             <div id="Nstock" class="stocks" style="background-color: #FF4A3E;">{{stock.stock}}</div>
             <div id="Provider" class="Provaider">1</div>
             <div id="S" class="S">S</div>
@@ -56,3 +56,18 @@
     <div class="buttonSidenav" (click)="sidenav.toggle()"></div>
   </div>
 </mat-sidenav-container>
+<lottie-animation-view [options]="lottieConfig"
+                       [width]="1200"
+                       [height]="1200"
+                       (animCreated)="handleAnimation($event)">
+</lottie-animation-view>
+<div id="cisco">
+  <p>Speed: x{{animationSpeed}}</p>
+  <div class="range-container">
+    <input #range type="range" value="1" min="0" max="3" step="0.5"
+           (change)="setSpeed(range.value)">
+  </div>
+  <button (click)="stop()">stop</button>
+  <button (click)="pause()">pause</button>
+  <button (click)="play()">play</button>
+</div>`

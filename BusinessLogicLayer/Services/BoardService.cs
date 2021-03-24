@@ -51,19 +51,18 @@ namespace BusinessLogicLayer.Services
 
             int nstock = await _rStockRepository.getAmountShop();
 
-         /*   List<Monitoring> monitoringsR = await _monitoringRepository.getStartStocksR(nstock);
-            List<Monitoring> monitoringsS = new List<Monitoring>();
+            /*   List<Monitoring> monitoringsR = await _monitoringRepository.getStartStocksR(nstock);
+               List<Monitoring> monitoringsS = new List<Monitoring>();
 
-            for (int x = 1; x <= nstock; x++)
-            {
+               for (int x = 1; x <= nstock; x++)
+               {
 
-                Monitoring monitoringS = await _monitoringRepository.getStartStocksS(x);
-                if (monitoringS != null)
-                {
-                    monitoringsS.Add(monitoringS);
-                }
-            }*/
-
+                   Monitoring monitoringS = await _monitoringRepository.getStartStocksS(x);
+                   if (monitoringS != null)
+                   {
+                       monitoringsS.Add(monitoringS);
+                   }
+               }*/
             return responseModel;
         }
 
@@ -628,10 +627,7 @@ namespace BusinessLogicLayer.Services
                 }
             }
             return statusForDayResponseModel;
-        }
-
-         
-        
+        }   
 
         public async Task<DeviceInShopResponseModel> getDeviceinShop(int nshop)
         {

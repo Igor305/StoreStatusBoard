@@ -16,13 +16,21 @@ export class BoardComponent implements OnInit {
   badPing: boolean = false;
   stocks: StockModel[] = [];
   showFiller: boolean = true;
-
+  lottieConfig: Object;
+  anim: any;
+  animationSpeed: number = 1;
 
   constructor(private boardService: BoardService, private breakpointObserver: BreakpointObserver) { }
 
 
   public async ngOnInit() {
-
+    this.lottieConfig = {
+      path: 'assets/cisco.json',
+      renderer: 'canvas',
+      autoplay: true,
+      loop: true
+    }
+    this.stocks = JSON.parse(sessionStorage.getItem("board"));
     this.getBoard();
     setInterval(() => this.getBoard(), 50000);
 
@@ -33,14 +41,16 @@ export class BoardComponent implements OnInit {
   public async getBoard() {
 
     let stocks = await this.boardService.getBoard();
-    this.stocks = stocks.monitoringModels;
 
+    sessionStorage.setItem("board", JSON.stringify(stocks.monitoringModels));
+    this.stocks = JSON.parse(sessionStorage.getItem("board"));
   }
   public async getStartBoard() {
 
 
   }
- /* public async getStatusStock(): Promise<string> {
+ /* public a
+  * sync getStatusStock(): Promise<string> {
 
     var stock = await this.boardService.getBoard();
     if (!this.badPing) {
@@ -53,4 +63,24 @@ export class BoardComponent implements OnInit {
     return this.badPingStock;
   }*/
 
+  handleAnimation(anim: any) {
+    this.anim = anim;
+  }
+
+  stop() {
+    this.anim.stop();
+  }
+
+  play() {
+    this.anim.play();
+  }
+
+  pause() {
+    this.anim.pause();
+  }
+
+  setSpeed(speed: number) {
+    this.animationSpeed = speed;
+    this.anim.setSpeed(speed);
+  }
 }

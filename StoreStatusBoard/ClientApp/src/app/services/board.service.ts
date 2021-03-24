@@ -14,21 +14,21 @@ export class BoardService {
   constructor(private http: HttpClient, private router: Router) { }
 
   public async getBoard(): Promise<BoardResponseModel> {
-    const url: string = "https://localhost:44341/api/Board";
+    const url: string = "/api/Board"; //https://localhost:44341
     const board = await this.http.get<BoardResponseModel>(url).toPromise();
 
     return board;
   }
 
   public async getStartBoard(): Promise<BoardResponseModel> {
-    const url: string = "https://localhost:44341/api/Board/Start";
+    const url: string = "/api/Board/Start";
     const board = await this.http.get<BoardResponseModel>(url).toPromise();
 
     return board;
   }
 
   public async getShopInfo(nshop: number): Promise<ShopResponseModel> {
-    const url: string = "https://localhost:44341/api/Board/ShopInfo";
+    const url: string = "/api/Board/ShopInfo";
 
     const params = new HttpParams()
       .set('nshop', nshop.toString());
@@ -38,7 +38,7 @@ export class BoardService {
   }
 
   public async getStatusForDay(nshop: number): Promise<StatusForDayResponseModel> {
-    const url: string = "https://localhost:44341/api/Board/ShopStatusForDay";
+    const url: string = "/api/Board/ShopStatusForDay";
 
     const params = new HttpParams()
       .set('nshop', nshop.toString());
@@ -48,7 +48,7 @@ export class BoardService {
   }
 
   public async getDeviceInShop(nshop: number): Promise<DeviceInShopResponseModel> {
-    const url: string = "https://localhost:44341/api/Board/DeviceInShop";
+    const url: string = "/api/Board/DeviceInShop";
 
     const params = new HttpParams()
       .set('nshop', nshop.toString());

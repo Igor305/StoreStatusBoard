@@ -4,6 +4,7 @@ import { BoardComponent } from '../board/board.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { LayoutModule } from '@angular/cdk/layout';
 import { RouterModule } from '@angular/router';
+import { LottieAnimationViewModule } from 'ng-lottie';
 
 
 
@@ -13,7 +14,8 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     MatSidenavModule,
     LayoutModule,
-    RouterModule
+    RouterModule,
+    LottieAnimationViewModule
   ]
 })
 export class BoardModule { }
