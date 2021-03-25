@@ -5,6 +5,8 @@ import { ShopResponseModel } from '../models/response/shop.response.model';
 import { StatusForDayResponseModel } from '../models/response/status.forday.response.model';
 import { StatusTableModel } from '../models/table/status.table.model';
 import { BoardService } from '../services/board.service';
+import { AnimationItem } from 'lottie-web';
+import { AnimationOptions } from 'ngx-lottie';
 
 @Component({
   selector: 'app-stock',
@@ -20,6 +22,10 @@ export class StockComponent implements OnInit  {
   shopInfo: ShopResponseModel = {};
   statusForDay: StatusForDayResponseModel = {};
   deviceInShop: DeviceInShopResponseModel = {};
+
+  options: AnimationOptions = {
+    path: '/assets/data.json',
+  };
 
   status7 : string = "";
   status7m : string = "";
@@ -76,7 +82,6 @@ export class StockComponent implements OnInit  {
   public async getDeviceInShop() {
 
     this.deviceInShop = await this.boardService.getDeviceInShop(this.shopId);
-
   }
 
   public async getStatusForDay() {

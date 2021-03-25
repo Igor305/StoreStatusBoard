@@ -4,9 +4,12 @@ import { BoardComponent } from '../board/board.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { LayoutModule } from '@angular/cdk/layout';
 import { RouterModule } from '@angular/router';
-import { LottieAnimationViewModule } from 'ng-lottie';
+import { LottieModule } from 'ngx-lottie';
+import player from 'lottie-web';
 
-
+export function playerFactory() {
+  return player;
+}
 
 @NgModule({
   declarations: [BoardComponent],
@@ -15,7 +18,7 @@ import { LottieAnimationViewModule } from 'ng-lottie';
     MatSidenavModule,
     LayoutModule,
     RouterModule,
-    LottieAnimationViewModule
+    LottieModule.forRoot({ player: playerFactory })
   ]
 })
 export class BoardModule { }

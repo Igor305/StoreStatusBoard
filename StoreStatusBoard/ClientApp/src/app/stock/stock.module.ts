@@ -4,7 +4,12 @@ import { StockComponent } from '../stock/stock.component';
 import { RouterModule } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { LottieModule } from 'ngx-lottie';
+import player from 'lottie-web';
 
+export function playerFactory() {
+  return player;
+}
 
 
 @NgModule({
@@ -13,7 +18,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     CommonModule,
     RouterModule,
     MatTableModule,
-    MatTooltipModule
+    MatTooltipModule,
+    LottieModule.forRoot({ player: playerFactory })
   ]
 })
 export class StockModule { }

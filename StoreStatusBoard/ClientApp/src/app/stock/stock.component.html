@@ -29,13 +29,10 @@
         </thead>
         <tr>
           <td class="td">
-           
           </td>
           <td class="td">
-           
           </td>
           <td class="td">
-           
           </td>
         </tr>
       </table>
@@ -58,7 +55,7 @@
               Номер ТТ
             </td>
             <td>
-             {{shopId}}
+              {{shopId}}
             </td>
           <tr>
             <td class="td">
@@ -96,232 +93,237 @@
       </table>
     </div>
   </div>
-  <div id="statusFromDay" class="statusFromDay">
-    <div id="infoStatusFromDay" class="infoStatusFromDay">
-      <div id="circle" class="circle" style="background-color: #94D196;"></div>
-      <div id="textInfo" class="textInfo">TT назв'язку</div>
-      <div id="circle" class="circle" style="background-color: #FF4A3E;"></div>
-      <div id="textInfo" class="textInfo">Проблеми в роботі</div>
-      <div id="circle" class="circle" style="background-color: #C4C4C4;"></div>
-      <div id="textInfo" class="textInfo">Інформація Відсутня</div>
+</div>
+<div id="cisco" *ngIf="((deviceInShop.devices == null)&&(statusForDay.status7 == null))">
+  <ng-lottie 
+             [options]="options">
+  </ng-lottie>
+</div>
+<div *ngIf="((deviceInShop.devices != null)&&(statusForDay.status7 != null))" id="statusFromDay" class="statusFromDay">
+  <div id="infoStatusFromDay" class="infoStatusFromDay">
+    <div id="circle" class="circle" style="background-color: #94D196;"></div>
+    <div id="textInfo" class="textInfo">TT назв'язку</div>
+    <div id="circle" class="circle" style="background-color: #FF4A3E;"></div>
+    <div id="textInfo" class="textInfo">Проблеми в роботі</div>
+    <div id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+    <div id="textInfo" class="textInfo">Інформація Відсутня</div>
+  </div>
+  <div id="statusFromDayValue" class="statusFromDayValue">
+    <div id="line" class="line"></div>
+    <div matTooltip="{{status7}}" class="circleBlock">
+      <div *ngIf="(statusForDay.status7 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+      <div *ngIf="(statusForDay.status7 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+      <div *ngIf="(statusForDay.status7 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
+      <div id="circleTime" class="circleTime">07:00</div>
     </div>
-    <div id="statusFromDayValue" class="statusFromDayValue">
-      <div id="line" class="line"></div>
-      <div matTooltip="{{status7}}" class="circleBlock">
-        <div  *ngIf="(statusForDay.status7 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
-        <div *ngIf="(statusForDay.status7 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
-        <div *ngIf="(statusForDay.status7 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
-        <div id="circleTime" class="circleTime">07:00</div>
-      </div>
-      <div matTooltip="{{status7m}}" class="circleBlock">
-        <div *ngIf="(statusForDay.status7m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
-        <div *ngIf="(statusForDay.status7m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
-        <div *ngIf="(statusForDay.status7m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
-        <div id="circleTime" class="circleTime">07:30</div>
-      </div>
-      <div matTooltip="{{status8}}" class="circleBlock">
-        <div *ngIf="(statusForDay.status8 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
-        <div *ngIf="(statusForDay.status8 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
-        <div *ngIf="(statusForDay.status8 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
-        <div id="circleTime" class="circleTime">08:00</div>
-      </div>
-      <div matTooltip="{{status8m}}" class="circleBlock">
-        <div *ngIf="(statusForDay.status8m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
-        <div *ngIf="(statusForDay.status8m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
-        <div *ngIf="(statusForDay.status8m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
-        <div id="circleTime" class="circleTime">08:30</div>
-      </div>
-      <div matTooltip="{{status9}}" class="circleBlock">
-        <div *ngIf="(statusForDay.status9 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
-        <div *ngIf="(statusForDay.status9 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
-        <div *ngIf="(statusForDay.status9 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
-        <div id="circleTime" class="circleTime">09:00</div>
-      </div>
-      <div matTooltip="{{status9m}}" class="circleBlock">
-        <div *ngIf="(statusForDay.status9m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
-        <div *ngIf="(statusForDay.status9m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
-        <div *ngIf="(statusForDay.status9m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
-        <div id="circleTime" class="circleTime">09:30</div>
-      </div>
-      <div matTooltip="{{status10}}" class="circleBlock">
-        <div *ngIf="(statusForDay.status10 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
-        <div *ngIf="(statusForDay.status10 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
-        <div *ngIf="(statusForDay.status10 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
-        <div id="circleTime" class="circleTime">10:00</div>
-      </div>
-      <div matTooltip="{{status10m}}" class="circleBlock">
-        <div *ngIf="(statusForDay.status10m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
-        <div *ngIf="(statusForDay.status10m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
-        <div *ngIf="(statusForDay.status10m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
-        <div id="circleTime" class="circleTime">10:30</div>
-      </div>
-      <div matTooltip="{{status11}}" class="circleBlock">
-        <div *ngIf="(statusForDay.status11 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
-        <div *ngIf="(statusForDay.status11 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
-        <div *ngIf="(statusForDay.status11 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
-        <div id="circleTime" class="circleTime">11:00</div>
-      </div>
-      <div matTooltip="{{status11m}}" class="circleBlock">
-        <div *ngIf="(statusForDay.status11m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
-        <div *ngIf="(statusForDay.status11m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
-        <div *ngIf="(statusForDay.status11m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
-        <div id="circleTime" class="circleTime">11:30</div>
-      </div>
-      <div matTooltip="{{status12}}" class="circleBlock">
-        <div *ngIf="(statusForDay.status12 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
-        <div *ngIf="(statusForDay.status12 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
-        <div *ngIf="(statusForDay.status12 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
-        <div id="circleTime" class="circleTime">12:00</div>
-      </div>
-      <div matTooltip="{{status12m}}" class="circleBlock">
-        <div *ngIf="(statusForDay.status12m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
-        <div *ngIf="(statusForDay.status12m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
-        <div *ngIf="(statusForDay.status12m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
-        <div id="circleTime" class="circleTime">12:30</div>
-      </div>
-      <div matTooltip="{{status13}}" class="circleBlock">
-        <div *ngIf="(statusForDay.status13 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
-        <div *ngIf="(statusForDay.status13 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
-        <div *ngIf="(statusForDay.status13 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
-        <div id="circleTime" class="circleTime">13:00</div>
-      </div>
-      <div matTooltip="{{status13m}}" class="circleBlock">
-        <div *ngIf="(statusForDay.status13m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
-        <div *ngIf="(statusForDay.status13m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
-        <div *ngIf="(statusForDay.status13m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
-        <div id="circleTime" class="circleTime">13:30</div>
-      </div>
-      <div matTooltip="{{status14}}" class="circleBlock">
-        <div *ngIf="(statusForDay.status14 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
-        <div *ngIf="(statusForDay.status14 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
-        <div *ngIf="(statusForDay.status14 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
-        <div id="circleTime" class="circleTime">14:00</div>
-      </div>
-      <div matTooltip="{{status14m}}" class="circleBlock">
-        <div *ngIf="(statusForDay.status14m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
-        <div *ngIf="(statusForDay.status14m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
-        <div *ngIf="(statusForDay.status14m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
-        <div id="circleTime" class="circleTime">14:30</div>
-      </div>
-      <div matTooltip="{{status15}}" class="circleBlock">
-        <div *ngIf="(statusForDay.status15 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
-        <div *ngIf="(statusForDay.status15 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
-        <div *ngIf="(statusForDay.status15 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
-        <div id="circleTime" class="circleTime">15:00</div>
-      </div>
-      <div matTooltip="{{status15m}}" class="circleBlock">
-        <div *ngIf="(statusForDay.status15m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
-        <div *ngIf="(statusForDay.status15m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
-        <div *ngIf="(statusForDay.status15m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
-        <div id="circleTime" class="circleTime">15:30</div>
-      </div>
-      <div matTooltip="{{status16}}" class="circleBlock">
-        <div *ngIf="(statusForDay.status16 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
-        <div *ngIf="(statusForDay.status16 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
-        <div *ngIf="(statusForDay.status16 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
-        <div id="circleTime" class="circleTime">16:00</div>
-      </div>
-      <div matTooltip="{{status16m}}" class="circleBlock">
-        <div *ngIf="(statusForDay.status16m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
-        <div *ngIf="(statusForDay.status16m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
-        <div *ngIf="(statusForDay.status16m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
-        <div id="circleTime" class="circleTime">16:30</div>
-      </div>
-      <div matTooltip="{{status17}}" class="circleBlock">
-        <div *ngIf="(statusForDay.status17 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
-        <div *ngIf="(statusForDay.status17 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
-        <div *ngIf="(statusForDay.status17 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
-        <div id="circleTime" class="circleTime">17:00</div>
-      </div>
-      <div matTooltip="{{status17m}}" class="circleBlock">
-        <div *ngIf="(statusForDay.status17m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
-        <div *ngIf="(statusForDay.status17m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
-        <div *ngIf="(statusForDay.status17m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
-        <div id="circleTime" class="circleTime">17:30</div>
-      </div>
-      <div matTooltip="{{status18}}" class="circleBlock">
-        <div *ngIf="(statusForDay.status18 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
-        <div *ngIf="(statusForDay.status18 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
-        <div *ngIf="(statusForDay.status18 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
-        <div id="circleTime" class="circleTime">18:00</div>
-      </div>
-      <div matTooltip="{{status18m}}" class="circleBlock">
-        <div *ngIf="(statusForDay.status18m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
-        <div *ngIf="(statusForDay.status18m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
-        <div *ngIf="(statusForDay.status18m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
-        <div id="circleTime" class="circleTime">18:30</div>
-      </div>
-      <div matTooltip="{{status19}}" class="circleBlock">
-        <div *ngIf="(statusForDay.status19 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
-        <div *ngIf="(statusForDay.status19 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
-        <div *ngIf="(statusForDay.status19 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
-        <div id="circleTime" class="circleTime">19:00</div>
-      </div>
-      <div matTooltip="{{status19m}}" class="circleBlock">
-        <div *ngIf="(statusForDay.status19m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
-        <div *ngIf="(statusForDay.status19m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
-        <div *ngIf="(statusForDay.status19m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
-        <div id="circleTime" class="circleTime">19:30</div>
-      </div>
-      <div matTooltip="{{status20}}" class="circleBlock">
-        <div *ngIf="(statusForDay.status20 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
-        <div *ngIf="(statusForDay.status20 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
-        <div *ngIf="(statusForDay.status20 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
-        <div id="circleTime" class="circleTime">20:00</div>
-      </div>
-      <div matTooltip="{{status20m}}" class="circleBlock">
-        <div *ngIf="(statusForDay.status20m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
-        <div *ngIf="(statusForDay.status20m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
-        <div *ngIf="(statusForDay.status20m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
-        <div id="circleTime" class="circleTime">20:30</div>
-      </div>
-      <div matTooltip="{{status21}}" class="circleBlock">
-        <div *ngIf="(statusForDay.status21 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
-        <div *ngIf="(statusForDay.status21 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
-        <div *ngIf="(statusForDay.status21 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
-        <div id="circleTime" class="circleTime">21:00</div>
-      </div>
-      <div matTooltip="{{status21m}}" class="circleBlock">
-        <div *ngIf="(statusForDay.status21m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
-        <div *ngIf="(statusForDay.status21m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
-        <div *ngIf="(statusForDay.status21m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
-        <div id="circleTime" class="circleTime">21:30</div>
-      </div>
-      <div matTooltip="{{status22}}" class="circleBlock">
-        <div *ngIf="(statusForDay.status22 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
-        <div *ngIf="(statusForDay.status22 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
-        <div *ngIf="(statusForDay.status22 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
-        <div id="circleTime" class="circleTime">22:00</div>
-      </div>
-      <div class="circleBlock">
-      </div>
+    <div matTooltip="{{status7m}}" class="circleBlock">
+      <div *ngIf="(statusForDay.status7m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+      <div *ngIf="(statusForDay.status7m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+      <div *ngIf="(statusForDay.status7m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
+      <div id="circleTime" class="circleTime">07:30</div>
     </div>
-      </div>
-      <div>
-        <table id="tableDevice" class="tableDevice">
-          <thead class="thead">
-            <tr>
-              <th>
-                Назва пристрою
-              </th>
-              <th>
-                Статус
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let device of deviceInShop.devices" class="tableDeviceName">
-              <td>
-                {{device.device}}
-              </td>
-              <td *ngIf="(device.status == 0)" style="color: #FF4A3E;">
-                {{device.strLogTime}}
-              </td>
-              <td *ngIf="(device.status == 1)" style="color: #177246;">
-                {{device.strLogTime}}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    <div matTooltip="{{status8}}" class="circleBlock">
+      <div *ngIf="(statusForDay.status8 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+      <div *ngIf="(statusForDay.status8 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+      <div *ngIf="(statusForDay.status8 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
+      <div id="circleTime" class="circleTime">08:00</div>
     </div>
+    <div matTooltip="{{status8m}}" class="circleBlock">
+      <div *ngIf="(statusForDay.status8m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+      <div *ngIf="(statusForDay.status8m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+      <div *ngIf="(statusForDay.status8m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
+      <div id="circleTime" class="circleTime">08:30</div>
+    </div>
+    <div matTooltip="{{status9}}" class="circleBlock">
+      <div *ngIf="(statusForDay.status9 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+      <div *ngIf="(statusForDay.status9 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+      <div *ngIf="(statusForDay.status9 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
+      <div id="circleTime" class="circleTime">09:00</div>
+    </div>
+    <div matTooltip="{{status9m}}" class="circleBlock">
+      <div *ngIf="(statusForDay.status9m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+      <div *ngIf="(statusForDay.status9m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+      <div *ngIf="(statusForDay.status9m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
+      <div id="circleTime" class="circleTime">09:30</div>
+    </div>
+    <div matTooltip="{{status10}}" class="circleBlock">
+      <div *ngIf="(statusForDay.status10 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+      <div *ngIf="(statusForDay.status10 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+      <div *ngIf="(statusForDay.status10 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
+      <div id="circleTime" class="circleTime">10:00</div>
+    </div>
+    <div matTooltip="{{status10m}}" class="circleBlock">
+      <div *ngIf="(statusForDay.status10m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+      <div *ngIf="(statusForDay.status10m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+      <div *ngIf="(statusForDay.status10m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
+      <div id="circleTime" class="circleTime">10:30</div>
+    </div>
+    <div matTooltip="{{status11}}" class="circleBlock">
+      <div *ngIf="(statusForDay.status11 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+      <div *ngIf="(statusForDay.status11 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+      <div *ngIf="(statusForDay.status11 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
+      <div id="circleTime" class="circleTime">11:00</div>
+    </div>
+    <div matTooltip="{{status11m}}" class="circleBlock">
+      <div *ngIf="(statusForDay.status11m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+      <div *ngIf="(statusForDay.status11m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+      <div *ngIf="(statusForDay.status11m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
+      <div id="circleTime" class="circleTime">11:30</div>
+    </div>
+    <div matTooltip="{{status12}}" class="circleBlock">
+      <div *ngIf="(statusForDay.status12 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+      <div *ngIf="(statusForDay.status12 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+      <div *ngIf="(statusForDay.status12 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
+      <div id="circleTime" class="circleTime">12:00</div>
+    </div>
+    <div matTooltip="{{status12m}}" class="circleBlock">
+      <div *ngIf="(statusForDay.status12m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+      <div *ngIf="(statusForDay.status12m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+      <div *ngIf="(statusForDay.status12m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
+      <div id="circleTime" class="circleTime">12:30</div>
+    </div>
+    <div matTooltip="{{status13}}" class="circleBlock">
+      <div *ngIf="(statusForDay.status13 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+      <div *ngIf="(statusForDay.status13 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+      <div *ngIf="(statusForDay.status13 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
+      <div id="circleTime" class="circleTime">13:00</div>
+    </div>
+    <div matTooltip="{{status13m}}" class="circleBlock">
+      <div *ngIf="(statusForDay.status13m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+      <div *ngIf="(statusForDay.status13m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+      <div *ngIf="(statusForDay.status13m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
+      <div id="circleTime" class="circleTime">13:30</div>
+    </div>
+    <div matTooltip="{{status14}}" class="circleBlock">
+      <div *ngIf="(statusForDay.status14 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+      <div *ngIf="(statusForDay.status14 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+      <div *ngIf="(statusForDay.status14 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
+      <div id="circleTime" class="circleTime">14:00</div>
+    </div>
+    <div matTooltip="{{status14m}}" class="circleBlock">
+      <div *ngIf="(statusForDay.status14m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+      <div *ngIf="(statusForDay.status14m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+      <div *ngIf="(statusForDay.status14m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
+      <div id="circleTime" class="circleTime">14:30</div>
+    </div>
+    <div matTooltip="{{status15}}" class="circleBlock">
+      <div *ngIf="(statusForDay.status15 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+      <div *ngIf="(statusForDay.status15 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+      <div *ngIf="(statusForDay.status15 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
+      <div id="circleTime" class="circleTime">15:00</div>
+    </div>
+    <div matTooltip="{{status15m}}" class="circleBlock">
+      <div *ngIf="(statusForDay.status15m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+      <div *ngIf="(statusForDay.status15m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+      <div *ngIf="(statusForDay.status15m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
+      <div id="circleTime" class="circleTime">15:30</div>
+    </div>
+    <div matTooltip="{{status16}}" class="circleBlock">
+      <div *ngIf="(statusForDay.status16 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+      <div *ngIf="(statusForDay.status16 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+      <div *ngIf="(statusForDay.status16 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
+      <div id="circleTime" class="circleTime">16:00</div>
+    </div>
+    <div matTooltip="{{status16m}}" class="circleBlock">
+      <div *ngIf="(statusForDay.status16m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+      <div *ngIf="(statusForDay.status16m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+      <div *ngIf="(statusForDay.status16m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
+      <div id="circleTime" class="circleTime">16:30</div>
+    </div>
+    <div matTooltip="{{status17}}" class="circleBlock">
+      <div *ngIf="(statusForDay.status17 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+      <div *ngIf="(statusForDay.status17 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+      <div *ngIf="(statusForDay.status17 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
+      <div id="circleTime" class="circleTime">17:00</div>
+    </div>
+    <div matTooltip="{{status17m}}" class="circleBlock">
+      <div *ngIf="(statusForDay.status17m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+      <div *ngIf="(statusForDay.status17m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+      <div *ngIf="(statusForDay.status17m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
+      <div id="circleTime" class="circleTime">17:30</div>
+    </div>
+    <div matTooltip="{{status18}}" class="circleBlock">
+      <div *ngIf="(statusForDay.status18 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+      <div *ngIf="(statusForDay.status18 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+      <div *ngIf="(statusForDay.status18 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
+      <div id="circleTime" class="circleTime">18:00</div>
+    </div>
+    <div matTooltip="{{status18m}}" class="circleBlock">
+      <div *ngIf="(statusForDay.status18m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+      <div *ngIf="(statusForDay.status18m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+      <div *ngIf="(statusForDay.status18m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
+      <div id="circleTime" class="circleTime">18:30</div>
+    </div>
+    <div matTooltip="{{status19}}" class="circleBlock">
+      <div *ngIf="(statusForDay.status19 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+      <div *ngIf="(statusForDay.status19 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+      <div *ngIf="(statusForDay.status19 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
+      <div id="circleTime" class="circleTime">19:00</div>
+    </div>
+    <div matTooltip="{{status19m}}" class="circleBlock">
+      <div *ngIf="(statusForDay.status19m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+      <div *ngIf="(statusForDay.status19m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+      <div *ngIf="(statusForDay.status19m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
+      <div id="circleTime" class="circleTime">19:30</div>
+    </div>
+    <div matTooltip="{{status20}}" class="circleBlock">
+      <div *ngIf="(statusForDay.status20 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+      <div *ngIf="(statusForDay.status20 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+      <div *ngIf="(statusForDay.status20 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
+      <div id="circleTime" class="circleTime">20:00</div>
+    </div>
+    <div matTooltip="{{status20m}}" class="circleBlock">
+      <div *ngIf="(statusForDay.status20m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+      <div *ngIf="(statusForDay.status20m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+      <div *ngIf="(statusForDay.status20m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
+      <div id="circleTime" class="circleTime">20:30</div>
+    </div>
+    <div matTooltip="{{status21}}" class="circleBlock">
+      <div *ngIf="(statusForDay.status21 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+      <div *ngIf="(statusForDay.status21 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+      <div *ngIf="(statusForDay.status21 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
+      <div id="circleTime" class="circleTime">21:00</div>
+    </div>
+    <div matTooltip="{{status21m}}" class="circleBlock">
+      <div *ngIf="(statusForDay.status21m == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+      <div *ngIf="(statusForDay.status21m == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+      <div *ngIf="(statusForDay.status21m == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
+      <div id="circleTime" class="circleTime">21:30</div>
+    </div>
+    <div matTooltip="{{status22}}" class="circleBlock">
+      <div *ngIf="(statusForDay.status22 == 0)" id="circle" class="circle" style="background-color: #C4C4C4;"></div>
+      <div *ngIf="(statusForDay.status22 == 1)" id="circle" class="circle" style="background-color: #94D196;"></div>
+      <div *ngIf="(statusForDay.status22 == -1)" id="circle" class="circle" style="background-color: #FF4A3E;"></div>
+      <div id="circleTime" class="circleTime">22:00</div>
+    </div>
+    <div class="circleBlock">
+    </div>
+  </div>
+</div>
+<div *ngIf="((deviceInShop.devices != null)&&(statusForDay.status7 != null))">
+  <table id="tableDevice" class="tableDevice">
+    <thead class="thead">
+      <tr>
+        <th>
+          Назва пристрою
+        </th>
+        <th>
+          Статус
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let device of deviceInShop.devices" class="tableDeviceName">
+        <td>
+          {{device.device}}
+        </td>
+        <td *ngIf="(device.status == 0)" style="color: #FF4A3E;">
+          {{device.strLogTime}}
+        </td>
+        <td *ngIf="(device.status == 1)" style="color: #177246;">
+          {{device.strLogTime}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
