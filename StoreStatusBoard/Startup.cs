@@ -32,6 +32,8 @@ namespace StoreStatusBoard
             string connectionStringSQL26 = "Data Source=sql26;Initial Catalog=Shops;Persist Security Info=True;User ID=j-sql26-reader-shops;Password=1GAxzpWtGojxCWnW8sYY";
             services.AddDbContext<NetMonitoringContext>(opts => opts.UseSqlServer(connectionStringSQL08));
             services.AddDbContext<ShopsContext>(opts => opts.UseSqlServer(connectionStringSQL26));
+            services.AddDistributedMemoryCache();
+            services.AddSession();
             services.AddScoped<IDeviceRepository, DeviceRepository>();
             services.AddScoped<IMonitoringRepository, MonitoringRepository>();
             services.AddScoped<IStockRepository, StockRepository>();
@@ -44,6 +46,7 @@ namespace StoreStatusBoard
             services.AddScoped<ITempImportAddressesRepository, TempImportAddressesRepository>();
             services.AddScoped<IBoardService, BoardService>();
             services.AddControllersWithViews();
+
 
             MapperConfiguration mapperconfig = new MapperConfiguration(cfg =>
             {   
@@ -73,6 +76,7 @@ namespace StoreStatusBoard
                 app.UseHsts();
             }
 
+            app.UseSession();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             if (!env.IsDevelopment())

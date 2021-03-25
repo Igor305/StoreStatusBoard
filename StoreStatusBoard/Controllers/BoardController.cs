@@ -1,6 +1,8 @@
 ﻿using BusinessLogicLayer.Models.Response;
 using BusinessLogicLayer.Services.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace StoreStatusBoard.Controllers
@@ -20,6 +22,19 @@ namespace StoreStatusBoard.Controllers
         public async Task<BoardResponseModel> Board()
         {
             BoardResponseModel boardModelResponses = await _boardService.getBoard();
+
+            int x = 0;
+
+            if (x == 0)
+            {
+                HttpContext.Session.SetString("board", JsonSerializer.Serialize(boardModelResponses));
+                x++;
+            }
+            else
+            {
+                var value = HttpContext.Session.GetString("board");
+                boardModelResponses = JsonSerializer.Deserialize<BoardResponseModel>(value);
+            }
 
             return boardModelResponses;
         }
