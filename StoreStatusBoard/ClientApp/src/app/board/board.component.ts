@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { StockModel } from '../models/stock.model';
 import { NavMenuComponent } from '../nav-menu/nav-menu.component';
 import { BoardService } from '../services/board.service';
-import { AnimationItem } from 'lottie-web';
 import { AnimationOptions } from 'ngx-lottie';
 
 @Component({
@@ -28,9 +27,10 @@ export class BoardComponent implements OnInit {
 
   public async ngOnInit() {
 
+    setInterval(() => this.getBoard(), 5000);
+    //await this.boardService.getRecordSession();
     //this.stocks = JSON.parse(sessionStorage.getItem("board"));
-    this.getBoard();
-    setInterval(() => this.getBoard(), 50000);
+
 
     const isSmallScreen = this.breakpointObserver.isMatched('(max-width: 1450px)');
     console.log(isSmallScreen);
@@ -38,11 +38,13 @@ export class BoardComponent implements OnInit {
 
   public async getBoard() {
 
-    let stocks = await this.boardService.getBoard();
+    let stocks = await this.boardService.getSession();
     this.stocks = stocks.monitoringModels;
+    console.log(this.stocks);
    // sessionStorage.setItem("board", JSON.stringify(stocks.monitoringModels));
   //  this.stocks = JSON.parse(sessionStorage.getItem("board"));
   }
+
   public async getStartBoard() {
 
 

@@ -49,20 +49,55 @@ namespace BusinessLogicLayer.Services
         {
             BoardResponseModel responseModel = new BoardResponseModel();
 
-            int nstock = await _rStockRepository.getAmountShop();
+          //  int nstock = await _rStockRepository.getAmountShop();
+            int nstock = 100;
 
-            /*   List<Monitoring> monitoringsR = await _monitoringRepository.getStartStocksR(nstock);
-               List<Monitoring> monitoringsS = new List<Monitoring>();
+            List<Monitoring> monitorings = new List<Monitoring>();
 
-               for (int x = 1; x <= nstock; x++)
-               {
+            List<int?> greenFrom5Day = await _monitoringRepository.getGreenFrom5Day();
 
-                   Monitoring monitoringS = await _monitoringRepository.getStartStocksS(x);
-                   if (monitoringS != null)
-                   {
-                       monitoringsS.Add(monitoringS);
-                   }
-               }*/
+            Monitoring monitoringR = new Monitoring();
+            Monitoring monitoringS = new Monitoring();
+            Monitoring green = new Monitoring();
+            List<int?> s = new List<int?>();
+            List<int?> grey = new List<int?>();
+            for (int x = 1; x <= nstock; x++)
+            {
+                monitoringR = await _monitoringRepository.getStartStocksR(x);
+                monitoringS = await _monitoringRepository.getStartStocksS(x);
+                monitorings.Add(monitoringR);
+                s.Add(monitoringS.Status);
+
+                if (monitoringR.Status != 1)
+                {
+                    green = await _monitoringRepository.getStartGreenFrom5Day(x);
+
+                    if(green != null)
+                    {
+                        grey.Add(0);
+                    }
+                    else
+                    {
+                        grey.Add(1);
+                    }
+                }
+                else
+                {
+                    grey.Add(0);
+                }
+
+            }
+
+            int count = 0;
+
+            responseModel.monitoringModels = _mapper.Map<List<Monitoring>, List<MonitoringModel>>(monitorings);
+
+            responseModel.monitoringModels.ForEach(x => x.StatusS = s[count++]);
+
+            count = 0;
+
+            responseModel.monitoringModels.ForEach(x => x.isGrey = grey[count++]);
+
             return responseModel;
         }
 
@@ -73,7 +108,6 @@ namespace BusinessLogicLayer.Services
             int amount = await _monitoringRepository.getCountStock();
 
             List<int?> greenFrom5Day = await _monitoringRepository.getGreenFrom5Day();
-
 
             int?[] greyFrom5Day = new int?[amount+1];
 

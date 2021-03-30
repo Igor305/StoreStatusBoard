@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\StoreStatusBoard\\DataAccessLayer\\DataAccessLayer.csproj": {}
+    "C:\\Users\\i.talavyria\\Desktop\\StoreStatusBoard\\DataAccessLayer\\DataAccessLayer.csproj": {}
   },
   "projects": {
-    "D:\\StoreStatusBoard\\DataAccessLayer\\DataAccessLayer.csproj": {
+    "C:\\Users\\i.talavyria\\Desktop\\StoreStatusBoard\\DataAccessLayer\\DataAccessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\StoreStatusBoard\\DataAccessLayer\\DataAccessLayer.csproj",
+        "projectUniqueName": "C:\\Users\\i.talavyria\\Desktop\\StoreStatusBoard\\DataAccessLayer\\DataAccessLayer.csproj",
         "projectName": "DataAccessLayer",
-        "projectPath": "D:\\StoreStatusBoard\\DataAccessLayer\\DataAccessLayer.csproj",
+        "projectPath": "C:\\Users\\i.talavyria\\Desktop\\StoreStatusBoard\\DataAccessLayer\\DataAccessLayer.csproj",
         "packagesPath": "C:\\Users\\i.talavyria\\.nuget\\packages\\",
-        "outputPath": "D:\\StoreStatusBoard\\DataAccessLayer\\obj\\",
+        "outputPath": "C:\\Users\\i.talavyria\\Desktop\\StoreStatusBoard\\DataAccessLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\i.talavyria\\AppData\\Roaming\\NuGet\\NuGet.Config",

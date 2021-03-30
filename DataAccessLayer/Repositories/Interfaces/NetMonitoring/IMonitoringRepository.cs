@@ -8,6 +8,9 @@ namespace DataAccessLayer.Repositories.Interfaces.NetMonitoring
     {
         public Task<int> getCountStock();
         public Task<List<int?>> getGreenFrom5Day();
+        public Task<Monitoring> getStartStocksR(int? nstock);
+        public Task<Monitoring> getStartStocksS(int? nstock);
+        public Task<Monitoring> getStartGreenFrom5Day(int? nstock);
         public Task<List<Monitoring>> getStocksR(int nstock);
         public Task<List<Monitoring>> getStocksS(int nstock);
         public Task<List<string>> getDevicesFromStock(int nstock);

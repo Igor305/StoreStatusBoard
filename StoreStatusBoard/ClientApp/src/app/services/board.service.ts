@@ -20,6 +20,20 @@ export class BoardService {
     return board;
   }
 
+  public async getRecordSession(): Promise<void> {
+
+    const url: string = "/api/Board/RecordSession"; //https://localhost:44341
+    const board = await this.http.get(url).toPromise();
+  }
+
+  public async getSession(): Promise<BoardResponseModel> {
+
+    const url: string = "/api/Board/GetSession"; //https://localhost:44341
+    const board = await this.http.get<BoardResponseModel>(url).toPromise();
+
+    return board;
+  }
+
   public async getStartBoard(): Promise<BoardResponseModel> {
     const url: string = "/api/Board/Start";
     const board = await this.http.get<BoardResponseModel>(url).toPromise();
