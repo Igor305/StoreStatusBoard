@@ -1,33 +1,37 @@
 <div *ngIf="(stocks != [])">
   <mat-sidenav-container>
     <mat-sidenav #sidenav mode="side" position="end" [(opened)]="opened">
-      <div *ngFor="let stock of stocks;">
-        <nav>
-          <a routerLink="/{{stock.stock}}">
-            <div class="sideRouter">
-              <div *ngIf="(stock.status == 0)&&(stock.isGrey == 0)" class="stocks">
-                <div id="Nstock" class="stocks" style="background-color: #FF4A3E;">
-                  {{stock.stock}}
-                  <div id="S">S</div>
+      <div class="errorRouter">
+        <div *ngFor="let stock of stocks;">
+          <nav>
+            <a routerLink="/{{stock.stock}}">
+              <div class="sideRouter">
+                <div *ngIf="(stock.status == 0)&&(stock.isGrey == 0)" class="stocks">
+                  <div id="Nstock" class="stocks" style="background-color: #FF4A3E;">
+                    {{stock.stock}}
+                    <div id="S">S</div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </a>
-        </nav>
+            </a>
+          </nav>
+        </div>
       </div>
-      <div *ngFor="let stock of stocks;">
-        <nav>
-          <a routerLink="/{{stock.stock}}">
-            <div class="sideSync">
-              <div *ngIf="(stock.statusS == 0)&&(stock.isGrey == 0)" class="stocks" style=" background-color: #94D196;">
-                <div id="Nstock" class="stocksRed">
-                  {{stock.stock}}
-                  <div id="S" style="color: #FF4A3E;">S</div>
+      <div class="errorS">
+        <div *ngFor="let stock of stocks;">
+          <nav>
+            <a routerLink="/{{stock.stock}}">
+              <div class="sideSync">
+                <div *ngIf="(stock.statusS == 0)&&(stock.isGrey == 0)" class="stocks" style=" background-color: #94D196;">
+                  <div id="Nstock" class="stocksRed">
+                    {{stock.stock}}
+                    <div id="S" style="color: #FF4A3E;">S</div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </a>
-        </nav>
+            </a>
+          </nav>
+        </div>
       </div>
     </mat-sidenav>
     <div class="example-sidenav-content">
@@ -42,7 +46,7 @@
               <div id="Nstock" class="stocksRed">{{stock.stock}}</div>
               <div id="S" class="S" style="color: #FF4A3E;">S</div>
             </div>
-            <div *ngIf="(stock.isGrey == 1)&&(stock.status == 0)" class="stocks">
+            <div *ngIf="(stock.isGrey == 1)" class="stocks">
               <div id="Nstock" class="stocks" style="background-color: #968B8B;">{{stock.stock}}</div>
               <div id="S" class="S">S</div>
             </div>
@@ -58,8 +62,10 @@
     </div>
   </mat-sidenav-container>
 </div>
-<div id="cisco">
-  <ng-lottie *ngIf="(stocks.length == 0)"
-             [options]="options">
-  </ng-lottie>
-</div>
+
+  <div id="cisco">
+    <ng-lottie *ngIf="(stocks.length == 0)"
+               [options]="options">
+    </ng-lottie>
+  </div>
+

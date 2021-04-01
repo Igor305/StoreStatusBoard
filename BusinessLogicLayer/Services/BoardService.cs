@@ -49,8 +49,96 @@ namespace BusinessLogicLayer.Services
         {
             BoardResponseModel responseModel = new BoardResponseModel();
 
-          //  int nstock = await _rStockRepository.getAmountShop();
-            int nstock = 100;
+            List<Monitoring> monitorings = await _monitoringRepository.getStocksFor5Day();
+
+            List<Monitoring> newlistStosks = new List<Monitoring>();
+            List<Monitoring> s = new List<Monitoring>();
+            List<Monitoring> red = new List<Monitoring>();
+
+            int allstock = await _rStockRepository.getAmountShop();
+
+            int nstock = 1;
+
+            do
+            {
+                foreach (Monitoring monitoring in monitorings)
+                {
+                    if ((monitoring.Device == "router") && (monitoring.Stock == nstock))
+                    {
+                        newlistStosks.Add(monitoring);
+                        break;
+                    }
+                }
+
+                foreach (Monitoring monitoring in monitorings)
+                {
+                    if ((monitoring.Device == "S") && (monitoring.Stock == nstock))
+                    {
+                        s.Add(monitoring);
+                        break;
+                    }
+                }
+
+                foreach (Monitoring monitoring in monitorings)
+                {
+                    if ((monitoring.Device == "router") && (monitoring.Stock == nstock) && (monitoring.Status == 1))
+                    {
+                        red.Add(monitoring);
+                        break;
+                    }
+                }
+
+                nstock++;
+
+            } while (nstock <= allstock);
+
+            List<MonitoringModel> monitoringModels = _mapper.Map<List<Monitoring>, List<MonitoringModel>>(newlistStosks);
+
+            for (int x = 1; x <= allstock; x++)
+            {
+                bool isAdd = false;
+
+                foreach (MonitoringModel monitoringModel in monitoringModels)
+                {
+                    if (x == monitoringModel.Stock)
+                    {
+                        foreach (Monitoring monitoring in red)
+                        {
+                            if (x == monitoring.Stock)
+                            {
+                                monitoringModel.isGrey = 0;
+                                break;
+                            }
+                        }
+
+                        foreach (Monitoring monitoring in s)
+                        {
+                            if (x == monitoring.Stock)
+                            {
+                                monitoringModel.StatusS = monitoring.Status;
+                                break;
+                            }
+                        }
+                        
+                        if (monitoringModel.isGrey != 0)
+                        {
+                            monitoringModel.isGrey = 1;
+                        }
+
+                        isAdd = true;
+
+                        responseModel.monitoringModels.Add(monitoringModel);
+                    }
+                }
+
+                if (!isAdd)
+                {
+                    responseModel.monitoringModels.Add( new MonitoringModel() { Stock = x, isGrey = 1 });
+                }
+            }
+
+            //  int nstock = await _rStockRepository.getAmountShop();
+            /*   int nstock = 100;
 
             List<Monitoring> monitorings = new List<Monitoring>();
 
@@ -97,6 +185,7 @@ namespace BusinessLogicLayer.Services
             count = 0;
 
             responseModel.monitoringModels.ForEach(x => x.isGrey = grey[count++]);
+            */
 
             return responseModel;
         }
@@ -147,6 +236,22 @@ namespace BusinessLogicLayer.Services
             responseModel.monitoringModels.ForEach(x => x.StatusS = statusS[count++]);
 
            return responseModel;
+        }
+
+        public async Task<StatusResponseModel> getStatus(int nshop)
+        {
+            StatusResponseModel statusResponseModel = new StatusResponseModel();
+
+            Monitoring provider1 = await _monitoringRepository.getDeviceFromLastLogTime(nshop, "router");
+            Monitoring sunc = await _monitoringRepository.getDeviceFromLastLogTime(nshop, "S");
+
+            statusResponseModel.Provider1 = _mapper.Map<Monitoring, MonitoringModel>(provider1);
+            statusResponseModel.Sunc = _mapper.Map<Monitoring, MonitoringModel>(sunc);
+
+            statusResponseModel.Provider1.StrLogTime = provider1.LogTime.ToString();
+            statusResponseModel.Sunc.StrLogTime = sunc.LogTime.ToString();
+
+            return statusResponseModel;
         }
 
         public async Task<ShopResponseModel> getShopInfo(int nshop)

@@ -5,6 +5,7 @@ import { BoardResponseModel } from '../models/response/board.response.model';
 import { DeviceInShopResponseModel } from '../models/response/device.response.model';
 import { ShopResponseModel } from '../models/response/shop.response.model';
 import { StatusForDayResponseModel } from '../models/response/status.forday.response.model';
+import { StatusResponseModel } from '../models/response/status.response.model';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +40,16 @@ export class BoardService {
     const board = await this.http.get<BoardResponseModel>(url).toPromise();
 
     return board;
+  }
+
+  public async getStatus(nshop: number): Promise<StatusResponseModel> {
+    const url: string = "/api/Board/GetStatus";
+
+    const params = new HttpParams()
+      .set('nshop', nshop.toString());
+
+    const shop = await this.http.get<StatusResponseModel>(url, { params: params }).toPromise();
+    return shop;
   }
 
   public async getShopInfo(nshop: number): Promise<ShopResponseModel> {

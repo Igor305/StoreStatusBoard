@@ -27,7 +27,8 @@ export class BoardComponent implements OnInit {
 
   public async ngOnInit() {
 
-    setInterval(() => this.getBoard(), 5000);
+    this.getBoard();
+    setInterval(() => this.getBoard(), 50000);
     //await this.boardService.getRecordSession();
     //this.stocks = JSON.parse(sessionStorage.getItem("board"));
 

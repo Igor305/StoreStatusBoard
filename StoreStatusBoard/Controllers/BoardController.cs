@@ -62,6 +62,14 @@ namespace StoreStatusBoard.Controllers
             return boardModelResponses;
         }
 
+        [HttpGet("GetStatus")]
+        public async Task<StatusResponseModel> GetStatus(int nshop)
+        {
+            StatusResponseModel statusResponseModel = await _boardService.getStatus(nshop);
+
+            return statusResponseModel;
+        }
+
         [HttpGet("ShopInfo")]
         public async Task<ShopResponseModel> ShopInfo(int nshop)
         {
