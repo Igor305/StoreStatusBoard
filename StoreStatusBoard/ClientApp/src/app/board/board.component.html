@@ -1,4 +1,4 @@
-<div *ngIf="(stocks != [])">
+<div *ngIf="stocks.length != 0">
   <mat-sidenav-container>
     <mat-sidenav #sidenav mode="side" position="end" [(opened)]="opened">
       <div class="errorRouter">
@@ -17,6 +17,7 @@
           </nav>
         </div>
       </div>
+      <div class="errorLine"></div>
       <div class="errorS">
         <div *ngFor="let stock of stocks;">
           <nav>
@@ -62,10 +63,8 @@
     </div>
   </mat-sidenav-container>
 </div>
-
-  <div id="cisco">
-    <ng-lottie *ngIf="(stocks.length == 0)"
-               [options]="options">
-    </ng-lottie>
-  </div>
+<div id="cisco" *ngIf="stocks.length == 0">
+  <ng-lottie [options]="options">
+  </ng-lottie>
+</div>
 

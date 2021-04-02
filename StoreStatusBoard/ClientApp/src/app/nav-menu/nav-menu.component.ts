@@ -10,7 +10,7 @@ export class NavMenuComponent {
 
   screenWidth1450: boolean = false;
   timeNow: string = ""
-  stockAmount: string = ""
+  stockAmount: number;
   amountR: number 
   amountS: number
   hideAmountR: number 
@@ -39,6 +39,7 @@ export class NavMenuComponent {
   public async getState() {
 
     let stocks = await this.boardService.getSession();
+    this.stockAmount = 0;
     this.amountR = 0;
     this.amountS = 0;
     this.hideAmountR = 0;
@@ -53,6 +54,7 @@ export class NavMenuComponent {
       if ((x.statusS == 0) && (x.isGrey == 0)) {
         this.amountS++;
       }
+
       if ((x.responseTime != 0) && (x.isGrey == 0)) {
         if (x.responseTime < 40) {
           this.hideAmountR++;
@@ -64,7 +66,12 @@ export class NavMenuComponent {
           this.lowAmountR++;
         }
       }
+
+      if (x.isGrey == 0) {
+        this.stockAmount++;
+      }
     }
+
     this.routerPercent = ((stocks.monitoringModels.length - this.amountR) / stocks.monitoringModels.length * 100).toFixed(2);
     this.syncPercent = ((stocks.monitoringModels.length - this.amountS) / stocks.monitoringModels.length * 100).toFixed(2);
   }

@@ -68,13 +68,15 @@ export class StockComponent implements OnInit {
 
     this.shopId = this.route.snapshot.params['shopId'];
 
+    this.getStatusTable();
+
+    this.getShopInfo();
+
     this.getStatusForDay();
 
     this.getDeviceInShop();
 
-    this.getStatusTable();
 
-    this.getShopInfo();
 
   }
 
