@@ -10,7 +10,7 @@ export class NavMenuComponent {
 
   screenWidth1450: boolean = false;
   timeNow: string = ""
-  stockAmount: number;
+  stockAmount: number = 0;
   amountR: number 
   amountS: number
   hideAmountR: number 
@@ -18,6 +18,7 @@ export class NavMenuComponent {
   lowAmountR: number 
   routerPercent: string
   syncPercent: string
+  stocks: any
 
   constructor(private boardService: BoardService, ) { }
 
@@ -25,20 +26,37 @@ export class NavMenuComponent {
 
     setInterval(() => this.getTime(), 1000);
 
-    this.getRecordSession();
-    setInterval(() => this.getState(), 5000);
-    setInterval(() => this.getRecordSession(), 50000);
 
+    this.getState();
+
+    if (this.stocks == undefined) {
+
+      console.log(this.stocks);
+      this.getRecordSession();
+
+    }
+
+    //setInterval(() => this.getRecordSession(), 300000);
+    //setInterval(() => this.getState(), 50000);
 
   }
 
   public async getRecordSession() {
-    await this.boardService.getRecordSession();
+
+    let stocks = await this.boardService.getRecordSession();
+    this.getHeader(stocks);
+
   }
 
   public async getState() {
 
-    let stocks = await this.boardService.getSession();
+   this.stocks = await this.boardService.getSession();
+    this.getHeader(this.stocks);
+
+
+  }
+
+  public getHeader(stocks : any) {
     this.stockAmount = 0;
     this.amountR = 0;
     this.amountS = 0;

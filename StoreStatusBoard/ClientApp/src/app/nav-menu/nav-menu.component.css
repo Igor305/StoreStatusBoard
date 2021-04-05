@@ -163,7 +163,7 @@ html {
   font-size: 24px;
 }
 .rightBlock {
-  position: fixed;
+  position: absolute;
   right: 0;
   width: 350px;
   height: 100px;
@@ -189,11 +189,7 @@ html {
 }
 
 @media(max-width: 1200px) {
-  header {
-    flex-direction: column;
-    height: 200px;
-  }
-  .statusHideMiddle {
-    margin-top: 125px;
+  #TimeNow, #NStocks {
+    display: none;
   }
 }

@@ -28,10 +28,8 @@ export class BoardComponent implements OnInit {
   public async ngOnInit() {
 
     this.getBoard();
-    setInterval(() => this.getBoard(), 50000);
+    setInterval(() => this.getBoard(), 10000);
 
-    const isSmallScreen = this.breakpointObserver.isMatched('(max-width: 1450px)');
-    console.log(isSmallScreen);
   }
 
   public async getBoard() {

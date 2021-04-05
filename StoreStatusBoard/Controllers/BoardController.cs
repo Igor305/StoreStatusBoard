@@ -27,26 +27,15 @@ namespace StoreStatusBoard.Controllers
         }
 
         [HttpGet("RecordSession")]
-        public async Task<string> RecordSession()
+        public async Task<BoardResponseModel> RecordSession()
         {
-            string result;
             BoardResponseModel boardModelResponses =  await _boardService.getBoard();
 
-            try
-            {
+            HttpContext.Session.SetString("board", JsonSerializer.Serialize(boardModelResponses));
 
-                HttpContext.Session.SetString("board", JsonSerializer.Serialize(boardModelResponses));
+            boardModelResponses = GetSession();
 
-            }
-            catch
-            {
-
-                result = "error";
-
-            }
-            result = "successful";
-
-            return result;
+            return boardModelResponses;
         }
 
 
@@ -56,8 +45,6 @@ namespace StoreStatusBoard.Controllers
             BoardResponseModel boardModelResponses = new BoardResponseModel();
             try
             {
-
-
                 var board = HttpContext.Session.GetString("board");
                 boardModelResponses = JsonSerializer.Deserialize<BoardResponseModel>(board);
             }

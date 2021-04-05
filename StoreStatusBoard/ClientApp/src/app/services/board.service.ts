@@ -21,10 +21,12 @@ export class BoardService {
     return board;
   }
 
-  public async getRecordSession(): Promise<void> {
+  public async getRecordSession(): Promise<BoardResponseModel> {
 
     const url: string = "/api/Board/RecordSession"; //https://localhost:44341
-    const board = await this.http.get(url).toPromise();
+    const board = await this.http.get<BoardResponseModel>(url).toPromise();
+
+    return board;
   }
 
   public async getSession(): Promise<BoardResponseModel> {
