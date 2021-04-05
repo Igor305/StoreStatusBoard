@@ -160,5 +160,20 @@ table {
   width: 30%;
 }
 .tableInfoTTPercent{
-    width:70%;
+  width:70%;
+}
+
+@media screen and (max-device-width: 1600px) {
+
+  .doubleTable {
+    display: inline-block;
+  }
+  .tableStatusPercent {
+    margin-left: 10px;
+    width: 96%;
+  }
+
+  .tableInfoTTPercent {
+    width: 96%;
+  }
 }

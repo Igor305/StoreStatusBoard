@@ -41,46 +41,6 @@ namespace DataAccessLayer.Repositories.EFRepositories.NetMonitoring
             return greenFrom5Day;
         }
 
-
-        /* public async Task<Monitoring> getStartStocksR(int? nstock)
-         {
-             Monitoring monitoring = await _netMonitoringContext.Monitorings.Where(x => x.Stock == nstock && x.Device == "router").OrderByDescending(x=> x.LogTime).FirstOrDefaultAsync();
-
-             return monitoring;
-         }
-
-
-         public async Task<Monitoring> getStartGreenFrom5Day(int? nstock)
-         {
-             Monitoring greenFrom5Day = await _netMonitoringContext.Monitorings.Where(x => x.LogTime.Value.Date >= DateTime.Today.Date.AddDays(-5) && x.Device == "router" && x.Status == 1 && x.Stock == nstock).FirstOrDefaultAsync();
-
-             return greenFrom5Day;
-         }
-
-         public async Task<Monitoring> getStartStocksS(int? nstock)
-         {
-             Monitoring monitoring = await _netMonitoringContext.Monitorings.Where(x => x.Stock == nstock && x.Device == "S").OrderByDescending(x => x.LogTime).FirstOrDefaultAsync();
-
-             return monitoring;
-         }*/
-
-
-        public async Task<List<Monitoring>> getStocksR(int count)
-        {
-
-            List<Monitoring> monitorings = await _netMonitoringContext.Monitorings.Where(x => x.LogTime.Value.Date == DateTime.Today.Date && x.Device == "router").OrderByDescending(x => x.LogTime).Take(count).OrderBy(x=>x.Stock).ToListAsync();
-
-            return monitorings;
-        }
-
-        public async Task<List<Monitoring>> getStocksS(int count)
-        {
-
-            List<Monitoring> monitorings = await _netMonitoringContext.Monitorings.Where(x => x.LogTime.Value.Date == DateTime.Today.Date && x.Device == "S").OrderByDescending(x => x.LogTime).Take(count).OrderBy(x => x.Stock).ToListAsync();
-
-            return monitorings;
-        }
-
         public async Task<List<string>> getDevicesFromStock(int nstock)
         {
 

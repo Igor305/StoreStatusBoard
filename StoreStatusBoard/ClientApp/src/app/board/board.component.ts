@@ -26,6 +26,7 @@ export class BoardComponent implements OnInit {
 
 
   public async ngOnInit() {
+
     this.getBoard();
     setInterval(() => this.getBoard(), 50000);
 

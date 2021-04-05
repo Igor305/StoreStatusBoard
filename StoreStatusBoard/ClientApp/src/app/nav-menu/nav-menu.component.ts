@@ -16,8 +16,8 @@ export class NavMenuComponent {
   hideAmountR: number 
   middleAmountR: number 
   lowAmountR: number 
-  routerPercent: any
-  syncPercent: any
+  routerPercent: string
+  syncPercent: string
 
   constructor(private boardService: BoardService, ) { }
 

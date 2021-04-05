@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ryx+B50lhE/EJNarewPPnSYO8e4TifIeFISDJizx78xIfRQZfALxwsU2RML066rkm+OxF0po0KjQGXoBO/TZMg==",
+  "dgSpecHash": "cxj2NvJPYl94Ng6Tr519EChLOVlCtib2EKxlYErWOB+RQ7J16VYrMWWlexHti4uNS1mpCEDlnRqgq0a5CZzqWg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\i.talavyria\\Desktop\\StoreStatusBoard\\DataAccessLayer\\DataAccessLayer.csproj",
+  "projectFilePath": "C:\\Users\\i.talavyria\\Desktop\\Новая папка\\StoreStatusBoard\\DataAccessLayer\\DataAccessLayer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\i.talavyria\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\i.talavyria\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

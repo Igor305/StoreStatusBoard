@@ -18,24 +18,10 @@ namespace StoreStatusBoard.Controllers
             _boardService = boardService;
         }
 
-        [HttpGet]
+        [HttpGet()]
         public async Task<BoardResponseModel> Board()
         {
             BoardResponseModel boardModelResponses = await _boardService.getBoard();
-
-            HttpContext.Session.SetString("board", JsonSerializer.Serialize(boardModelResponses));
-
-                var value = HttpContext.Session.GetString("board");
-                boardModelResponses = JsonSerializer.Deserialize<BoardResponseModel>(value);
-
-
-            return boardModelResponses;
-        }
-
-        [HttpGet("Start")]
-        public async Task<BoardResponseModel> StartBoard()
-        {
-            BoardResponseModel boardModelResponses = await _boardService.getStartBoard();
 
             return boardModelResponses;
         }
@@ -43,21 +29,42 @@ namespace StoreStatusBoard.Controllers
         [HttpGet("RecordSession")]
         public async Task<string> RecordSession()
         {
-            BoardResponseModel boardModelResponses =  await _boardService.getStartBoard();
+            string result;
+            BoardResponseModel boardModelResponses =  await _boardService.getBoard();
 
-            HttpContext.Session.SetString("board", JsonSerializer.Serialize(boardModelResponses));
+            try
+            {
 
-            string res = "successful";
+                HttpContext.Session.SetString("board", JsonSerializer.Serialize(boardModelResponses));
 
-            return res;
+            }
+            catch
+            {
+
+                result = "error";
+
+            }
+            result = "successful";
+
+            return result;
         }
 
 
         [HttpGet("GetSession")]
         public BoardResponseModel GetSession()
         {
-            var board = HttpContext.Session.GetString("board");
-            BoardResponseModel boardModelResponses = JsonSerializer.Deserialize<BoardResponseModel>(board);
+            BoardResponseModel boardModelResponses = new BoardResponseModel();
+            try
+            {
+
+
+                var board = HttpContext.Session.GetString("board");
+                boardModelResponses = JsonSerializer.Deserialize<BoardResponseModel>(board);
+            }
+            catch
+            {
+                return boardModelResponses;
+            }
 
             return boardModelResponses;
         }

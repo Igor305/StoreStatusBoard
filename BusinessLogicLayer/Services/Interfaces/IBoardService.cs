@@ -5,7 +5,6 @@ namespace BusinessLogicLayer.Services.Interfaces
 {
     public interface IBoardService
     {
-        public Task<BoardResponseModel> getStartBoard();
         public Task<BoardResponseModel> getBoard();
         public Task<StatusResponseModel> getStatus(int nshop);
         public Task<ShopResponseModel> getShopInfo(int nshop);
