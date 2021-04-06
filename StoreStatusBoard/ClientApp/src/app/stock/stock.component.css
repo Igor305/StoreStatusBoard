@@ -81,7 +81,7 @@ table {
 
 .circleBlock{
     position:relative;
-    margin-left: 0.45%;
+    margin-left:10px;
 }
 
 /deep/ .mat-tooltip {
@@ -89,13 +89,14 @@ table {
   white-space: pre-line;
 }
 
- .circle {
+.circle {
   position: relative;
   margin-top: 15px;
   margin-left: 15px;
   width: 25px;
   height: 25px;
   border-radius: 25px;
+  z-index: 100;
 }
 
 .circleTime {
@@ -124,10 +125,11 @@ table {
 .line {
   position: absolute;
   top: 25px;
-  left: 25px;
-  height: 5px;
+  left: 30px;
+  height: 2px;
   width: 1800px;
-  color: #000000;
+  background-color: grey;
+
 }
 
 .tableStatus {
@@ -163,11 +165,53 @@ table {
   width:70%;
 }
 
-@media screen and (max-device-width: 1600px) {
+@media (max-width: 1940px) {
+
+  .circleTime {
+    width: 45px;
+    font-size: 18px;
+  }
+
+  .tr, .td {
+    font-size: 18px;
+  }
+
+  .line {
+    width: 1650px;
+  }
+}
+@media (max-width: 1800px) {
+
+  .circle {
+    margin-top: 15px;
+    margin-left: 5px;
+    width: 25px;
+    height: 25px;
+  }
+
+  .circleBlock {
+    margin-left: 0.1%;
+  }
+
+  .tr, .td {
+    font-size: 16px;
+  }
+
+  .circleTime {
+    font-size: 14px;
+  }
+
+  .line {
+    width: 1400px;
+  }
+}
+
+@media (max-width: 1700px) {
 
   .doubleTable {
     display: inline-block;
   }
+
   .tableStatusPercent {
     margin-left: 10px;
     width: 96%;
@@ -175,5 +219,132 @@ table {
 
   .tableInfoTTPercent {
     width: 96%;
+  }
+
+  .circle {
+    margin-top: 20px;
+    margin-left: 5px;
+    width: 15px;
+    height: 15px;
+  }
+
+  .circleTime {
+    font-size: 12px;
+  }
+
+  .circleBlock {
+    margin-left: 0.1%;
+  }
+  .line {
+    left: 15px;
+    width: 1390px;
+  }
+
+}
+
+@media (max-width: 1650px) {
+
+  .circle {
+    width: 13px;
+    height: 13px;
+  }
+
+  .circleTime {
+    width: 40px;
+    font-size: 12px;
+  }
+
+  .circleBlock {
+    margin-left: 5px;
+  }
+  .line {
+    top: 25px;
+    left: 15px;
+    width: 1350px;
+  }
+}
+
+@media (max-width: 1450px) {
+
+  .circle {
+    width: 10px;
+    height: 10px;
+  }
+
+  .circleTime {
+    margin-top: 10px;
+    transform: rotate(60deg);
+    font-size: 12px;
+  }
+
+  .circleBlock {
+    margin-left: 0.1%;
+  }
+
+  .line {
+    width: 1240px;
+  }
+
+}
+
+@media (max-width: 1350px) {
+
+  .circleTime {
+    width: 36px;
+  }
+
+  .line {
+    width: 1115px;
+  }
+}
+
+@media (max-width: 1200px) {
+
+  .circleTime {
+    width: 30px;
+  }
+
+  .line {
+    width: 925px;
+  }
+}
+
+@media (max-width: 1000px) {
+
+  .circleTime {
+    width: 25px;
+  }
+
+  .line {
+    width: 770px;
+  }
+}
+
+@media (max-width: 850px) {
+
+  .circleTime {
+    width: 20px;
+  }
+
+  .line {
+    width: 615px;
+  }
+}
+
+
+@media (max-width: 680px) {
+
+  .circleTime {
+    width: 15px;
+  }
+  .line {
+    width: 460px;
+  }
+}
+
+@media (max-width: 520px) {
+
+  .statusFromDay {
+    display: none;
   }
 }

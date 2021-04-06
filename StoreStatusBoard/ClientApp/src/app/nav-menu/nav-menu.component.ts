@@ -36,7 +36,7 @@ export class NavMenuComponent {
 
     }
 
-    //setInterval(() => this.getRecordSession(), 300000);
+    setInterval(() => this.getRecordSession(), 60000);
     //setInterval(() => this.getState(), 50000);
 
   }
