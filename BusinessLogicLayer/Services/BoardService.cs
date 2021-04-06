@@ -16,11 +16,11 @@ namespace BusinessLogicLayer.Services
     {
         private readonly IMonitoringRepository _monitoringRepository;
         private readonly IRStockRepository _rStockRepository;
-
+        private readonly IStreetsLocalizationRepository _streetsLocalizationRepository;
+        private readonly ICityLocalizationRepository _cityLocalizationRepository;
         private readonly IShopsRepository _shopsRepository;
         private readonly IProviderRepository _providerRepository;
         private readonly IShopProvidersRepository _shopProvidersRepository;
-        private readonly ITempImportAddressesRepository _tempImportAddressesRepository;
         private readonly IShopRegionLocalizationsRepository _shopRegionLocalizationsRepository;
         private readonly IShopWorkTimesRepository _shopWorkTimesRepository;
 
@@ -29,8 +29,8 @@ namespace BusinessLogicLayer.Services
         public BoardService (IMonitoringRepository monitoringRepository, IRStockRepository rStockRepository,
         IShopsRepository shopsRepository, IProviderRepository providerRepository,
             IShopProvidersRepository shopProvidersRepository, IShopRegionLocalizationsRepository shopRegionLocalizationsRepository,
-            ITempImportAddressesRepository tempImportAddressesRepository, IShopWorkTimesRepository shopWorkTimesRepository,
-            IMapper mapper)
+            IStreetsLocalizationRepository streetsLocalizationRepository, ICityLocalizationRepository cityLocalizationRepository,
+            IShopWorkTimesRepository shopWorkTimesRepository, IMapper mapper)
         {
             _monitoringRepository = monitoringRepository;
             _rStockRepository = rStockRepository;
@@ -38,7 +38,8 @@ namespace BusinessLogicLayer.Services
             _shopsRepository = shopsRepository;
             _providerRepository = providerRepository;
             _shopProvidersRepository = shopProvidersRepository;
-            _tempImportAddressesRepository = tempImportAddressesRepository;
+            _streetsLocalizationRepository = streetsLocalizationRepository;
+            _cityLocalizationRepository = cityLocalizationRepository;
             _shopWorkTimesRepository = shopWorkTimesRepository;
             _shopRegionLocalizationsRepository = shopRegionLocalizationsRepository;
 
@@ -160,25 +161,23 @@ namespace BusinessLogicLayer.Services
         {
             ShopResponseModel shopResponseModel = new ShopResponseModel();
 
-            DateTime workTimeFrom = await _shopWorkTimesRepository.getShopWorkTimesFrom(nshop);
-            DateTime workTimeTo = await _shopWorkTimesRepository.getShopWorkTimesTo(nshop);
+            Shop shop = await _shopsRepository.getShop(nshop);
+
+            DateTime workTimeFrom = await _shopWorkTimesRepository.getShopWorkTimesFrom(shop.Id);
+            DateTime workTimeTo = await _shopWorkTimesRepository.getShopWorkTimesTo(shop.Id);
 
             shopResponseModel.WorkTimeFrom = workTimeFrom.ToShortTimeString();
             shopResponseModel.WorkTimeTo = workTimeTo.ToShortTimeString();
 
-            Shop shop = await _shopsRepository.getShop(nshop);
-
-            ShopModel shopModel = _mapper.Map<Shop, ShopModel>(shop);
-
-            shopResponseModel.Region = await _shopRegionLocalizationsRepository.getRegion(shopModel.ShopRegionId);
-            shopResponseModel.City = await _tempImportAddressesRepository.getShopCity(shopModel.StreetId);
-            shopResponseModel.Street = await _tempImportAddressesRepository.getShopStreet(shopModel.StreetId);
-            shopResponseModel.Number = shopModel.Address;
+            shopResponseModel.Region = await _shopRegionLocalizationsRepository.getRegion(shop.ShopRegionId);
+            shopResponseModel.City = await _cityLocalizationRepository.getCity(shop.CityId);
+            shopResponseModel.Street = await _streetsLocalizationRepository.getStreet(shop.StreetId);
+            shopResponseModel.Number = shop.Address;
 
             List<ProviderModel> providerModels = new List<ProviderModel>();
 
 
-            List<int> providers = await _shopProvidersRepository.getShopProvider(nshop);
+            List<int> providers = await _shopProvidersRepository.getShopProvider(shop.Id);
 
             for (int x = 0; x < providers.Count; x++)
             {

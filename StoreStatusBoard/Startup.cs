@@ -43,7 +43,8 @@ namespace StoreStatusBoard
             services.AddScoped<IShopWorkTimesRepository, ShopWorkTimesRepository>();
             services.AddScoped<IShopRegionLocalizationsRepository, ShopRegionLocalizationsRepository>();
             services.AddScoped<IShopsRepository, ShopsRepository>();
-            services.AddScoped<ITempImportAddressesRepository, TempImportAddressesRepository>();
+            services.AddScoped<IStreetsLocalizationRepository, StreetsLocalizationRepository>();
+            services.AddScoped<ICityLocalizationRepository, CityLocalizationRepository>();
             services.AddScoped<IBoardService, BoardService>();
             services.AddControllersWithViews();
 
