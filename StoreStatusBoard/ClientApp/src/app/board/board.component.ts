@@ -28,7 +28,6 @@ export class BoardComponent implements OnInit {
 
     this.getBoard();
     setInterval(() => this.getBoard(), 10000);
-    await this.boardService.getStatusPing();
 
   }
 
