@@ -1,7 +1,6 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { StockModel } from '../models/stock.model';
-import { NavMenuComponent } from '../nav-menu/nav-menu.component';
 import { BoardService } from '../services/board.service';
 import { AnimationOptions } from 'ngx-lottie';
 
@@ -29,6 +28,7 @@ export class BoardComponent implements OnInit {
 
     this.getBoard();
     setInterval(() => this.getBoard(), 10000);
+    await this.boardService.getStatusPing();
 
   }
 

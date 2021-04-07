@@ -19,7 +19,7 @@ namespace DataAccessLayer.Repositories.EFRepositories.NetMonitoring
 
         public async Task<int> getCountStock()
         {
-            Monitoring lastStock = await _netMonitoringContext.Monitorings.Where(x => x.LogTime.Value.Date == DateTime.Today.Date.AddDays(-5) && x.Device == "router").OrderByDescending(x => x.Stock).FirstAsync();
+            Monitoring lastStock = await _netMonitoringContext.Monitorings.Where(x => x.LogTime.Value.Date == DateTime.Today.Date.AddDays(-1) && x.Device == "router").OrderByDescending(x => x.Stock).FirstAsync();
 
             int? nStock = lastStock.Stock;
 
@@ -30,7 +30,7 @@ namespace DataAccessLayer.Repositories.EFRepositories.NetMonitoring
 
         public async Task<List<Monitoring>> getStocksFor5Day()
         {
-            List<Monitoring> monitorings = await _netMonitoringContext.Monitorings.Where(x => x.LogTime.Value.Date >= DateTime.Today.Date.AddDays(-5) && (x.Device == "router" || x.Device == "S")).OrderByDescending(x => x.LogTime).ToListAsync();
+            List<Monitoring> monitorings = await _netMonitoringContext.Monitorings.Where(x => x.LogTime.Value.Date >= DateTime.Today.Date.AddDays(-1) && (x.Device == "router" || x.Device == "S")).OrderByDescending(x => x.LogTime).ToListAsync();
            return monitorings;
         }
 

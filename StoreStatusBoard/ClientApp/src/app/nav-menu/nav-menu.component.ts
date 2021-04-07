@@ -10,14 +10,14 @@ export class NavMenuComponent {
 
   screenWidth1450: boolean = false;
   timeNow: string = ""
-  stockAmount: number = 0;
-  amountR: number 
-  amountS: number
-  hideAmountR: number 
-  middleAmountR: number 
-  lowAmountR: number 
-  routerPercent: string
-  syncPercent: string
+  stockAmount: string = "";
+  amountR: string = ""; 
+  amountS: string = "";
+  hideAmountR: string = "";
+  middleAmountR: string = "";
+  lowAmountR: string = "";
+  routerPercent: string = "";
+  syncPercent: string = "";
   stocks: any
 
   constructor(private boardService: BoardService, ) { }
@@ -50,48 +50,57 @@ export class NavMenuComponent {
 
   public async getState() {
 
-   this.stocks = await this.boardService.getSession();
-    this.getHeader(this.stocks);
+   let stocks = await this.boardService.getSession();
 
-
+   if (stocks.monitoringModels.length != 0){
+    this.getHeader(stocks);
+   }
   }
 
   public getHeader(stocks : any) {
-    this.stockAmount = 0;
-    this.amountR = 0;
-    this.amountS = 0;
-    this.hideAmountR = 0;
-    this.middleAmountR = 0;
-    this.lowAmountR = 0;
+
+    let stockAmount = 0;
+    let amountR = 0;
+    let amountS = 0;
+    let hideAmountR = 0;
+    let middleAmountR = 0;
+    let lowAmountR = 0;
 
     for (var x  of stocks.monitoringModels) {
 
       if ((x.status == 0) && (x.isGrey == 0)) {
-        this.amountR++;
+        amountR++;
       }
       if ((x.statusS == 0) && (x.isGrey == 0)) {
-        this.amountS++;
+        amountS++;
       }
 
       if ((x.responseTime != 0) && (x.isGrey == 0)) {
         if (x.responseTime < 40) {
-          this.hideAmountR++;
+          hideAmountR++;
         }
         if ((x.responseTime >= 40) && (x.responseTime < 80)) {
-          this.middleAmountR++;
+          middleAmountR++;
         }
         if (x.responseTime >= 80) {
-          this.lowAmountR++;
+          lowAmountR++;
         }
       }
 
       if (x.isGrey == 0) {
-        this.stockAmount++;
+        stockAmount++;
       }
     }
 
-    this.routerPercent = ((stocks.monitoringModels.length - this.amountR) / stocks.monitoringModels.length * 100).toFixed(2);
-    this.syncPercent = ((stocks.monitoringModels.length - this.amountS) / stocks.monitoringModels.length * 100).toFixed(2);
+    this.routerPercent = ((stocks.monitoringModels.length - amountR) / stocks.monitoringModels.length * 100).toFixed(2);
+    this.syncPercent = ((stocks.monitoringModels.length - amountS) / stocks.monitoringModels.length * 100).toFixed(2);
+
+    this.stockAmount = stockAmount.toString();
+    this.amountS = amountS.toString();
+    this.amountR = amountR.toString();
+    this.hideAmountR = hideAmountR.toString();
+    this.middleAmountR = middleAmountR.toString();
+    this.lowAmountR = lowAmountR.toString();  
   }
 
   public async getTime() {
