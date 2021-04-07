@@ -5,7 +5,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { LayoutModule } from '@angular/cdk/layout';
 import { RouterModule } from '@angular/router';
 import { LottieModule } from 'ngx-lottie';
-import player from 'lottie-web';
+import  player from 'lottie-web';
 
 export function playerFactory() {
   return player;

@@ -6,6 +6,7 @@ import { DeviceInShopResponseModel } from '../models/response/device.response.mo
 import { ShopResponseModel } from '../models/response/shop.response.model';
 import { StatusForDayResponseModel } from '../models/response/status.forday.response.model';
 import { StatusResponseModel } from '../models/response/status.response.model';
+declare var require: any
 
 @Injectable({
   providedIn: 'root'
@@ -78,14 +79,19 @@ export class BoardService {
   }
 
   public async getStatusPing() {
-   /* var ping = require('ping');
+  /*  app.get('/', function(req, res, next) {
+        var ping = spawn('ping', ['www.google.com']);
+        ping.stdout.pipe(res);
+    });*/
+
+    var ping = require('ping');
 
     var hosts = ['192.168.1.1', 'google.com', 'yahoo.com'];
-    hosts.forEach(function (host) {
-      ping.sys.probe(host, function (isAlive) {
+    hosts.forEach(function(host){
+    ping.sys.probe(host, function(isAlive){
         var msg = isAlive ? 'host ' + host + ' is alive' : 'host ' + host + ' is dead';
         console.log(msg);
       });
-    });*/
+    });
   }
 }

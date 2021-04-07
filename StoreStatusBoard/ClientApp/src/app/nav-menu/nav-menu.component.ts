@@ -31,7 +31,6 @@ export class NavMenuComponent {
 
     if (this.stocks == undefined) {
 
-      console.log(this.stocks);
       this.getRecordSession();
 
     }
