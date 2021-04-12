@@ -27,13 +27,13 @@ export class BoardComponent implements OnInit {
   public async ngOnInit() {
 
     this.getBoard();
-    setInterval(() => this.getBoard(), 10000);
+    setInterval(() => this.getBoard(), 60000);
 
   }
 
-  public async getBoard() {
-
-    let stocks = await this.boardService.getSession();
+  public async getBoard(){
+    
+    var stocks = await this.boardService.getBoard();
     this.stocks = stocks.monitoringModels;
   }
 }

@@ -15,10 +15,9 @@ export class BoardService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  public async getBoard(): Promise<BoardResponseModel> {
+  public async getBoard(): Promise<BoardResponseModel>{
     const url: string = "/api/Board"; //https://localhost:44341
     const board = await this.http.get<BoardResponseModel>(url).toPromise();
-
     return board;
   }
 

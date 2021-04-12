@@ -1,8 +1,6 @@
 ﻿using BusinessLogicLayer.Models.Response;
 using BusinessLogicLayer.Services.Interfaces;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace StoreStatusBoard.Controllers
@@ -12,48 +10,17 @@ namespace StoreStatusBoard.Controllers
     public class BoardController : ControllerBase
     {
         private readonly IBoardService _boardService;
-
         public BoardController(IBoardService boardService)
         {
             _boardService = boardService;
         }
 
         [HttpGet()]
-        public async Task<BoardResponseModel> Board()
+        public async Task<BoardResponseModel> getBoard()
         {
-            BoardResponseModel boardModelResponses = await _boardService.getBoard();
+            BoardResponseModel responseModel = await _boardService.getBoard();
 
-            return boardModelResponses;
-        }
-
-        [HttpGet("RecordSession")]
-        public async Task<BoardResponseModel> RecordSession()
-        {
-            BoardResponseModel boardModelResponses =  await _boardService.getBoard();
-
-            HttpContext.Session.SetString("board", JsonSerializer.Serialize(boardModelResponses));
-
-            boardModelResponses = GetSession();
-
-            return boardModelResponses;
-        }
-
-
-        [HttpGet("GetSession")]
-        public BoardResponseModel GetSession()
-        {
-            BoardResponseModel boardModelResponses = new BoardResponseModel();
-            try
-            {
-                var board = HttpContext.Session.GetString("board");
-                boardModelResponses = JsonSerializer.Deserialize<BoardResponseModel>(board);
-            }
-            catch
-            {
-                return boardModelResponses;
-            }
-
-            return boardModelResponses;
+            return responseModel;
         }
 
         [HttpGet("GetStatus")]

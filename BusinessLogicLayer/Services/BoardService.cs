@@ -6,9 +6,11 @@ using DataAccessLayer.Entities.NetMonitoring;
 using DataAccessLayer.Entities.Shops;
 using DataAccessLayer.Repositories.Interfaces.NetMonitoring;
 using DataAccessLayer.Repositories.Interfaces.Shops;
+using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace BusinessLogicLayer.Services
 {
@@ -24,13 +26,14 @@ namespace BusinessLogicLayer.Services
         private readonly IShopRegionLocalizationsRepository _shopRegionLocalizationsRepository;
         private readonly IShopWorkTimesRepository _shopWorkTimesRepository;
 
+        private readonly IMemoryCache _memoryCache;
         private readonly IMapper _mapper;
 
         public BoardService (IMonitoringRepository monitoringRepository, IRStockRepository rStockRepository,
         IShopsRepository shopsRepository, IProviderRepository providerRepository,
             IShopProvidersRepository shopProvidersRepository, IShopRegionLocalizationsRepository shopRegionLocalizationsRepository,
             IStreetsLocalizationRepository streetsLocalizationRepository, ICityLocalizationRepository cityLocalizationRepository,
-            IShopWorkTimesRepository shopWorkTimesRepository, IMapper mapper)
+            IShopWorkTimesRepository shopWorkTimesRepository, IMemoryCache memoryCache, IMapper mapper)
         {
             _monitoringRepository = monitoringRepository;
             _rStockRepository = rStockRepository;
@@ -43,11 +46,30 @@ namespace BusinessLogicLayer.Services
             _shopWorkTimesRepository = shopWorkTimesRepository;
             _shopRegionLocalizationsRepository = shopRegionLocalizationsRepository;
 
+            _memoryCache = memoryCache;
             _mapper = mapper;
         }
 
+        private Timer timer = new Timer();
+        private static bool isActual = true;
         public async Task<BoardResponseModel> getBoard()
         {
+            BoardResponseModel responseModel = new BoardResponseModel();
+
+            if (!_memoryCache.TryGetValue("responseModel", out responseModel)&&(isActual))
+            {
+                isActual = false;
+                responseModel = await InCache();
+            }
+            
+            responseModel = _memoryCache.Get<BoardResponseModel>("responseModel");
+
+            return responseModel;
+        }
+
+        private async Task<BoardResponseModel> InCache()
+        {
+
             BoardResponseModel responseModel = new BoardResponseModel();
 
             List<Monitoring> monitorings = await _monitoringRepository.getStocksFor5Day();
@@ -120,7 +142,7 @@ namespace BusinessLogicLayer.Services
                                 break;
                             }
                         }
-                        
+
                         if (monitoringModel.isGrey != 0)
                         {
                             monitoringModel.isGrey = 1;
@@ -134,12 +156,19 @@ namespace BusinessLogicLayer.Services
 
                 if (!isAdd)
                 {
-                    responseModel.monitoringModels.Add( new MonitoringModel() { Stock = x, isGrey = 1 });
+                    responseModel.monitoringModels.Add(new MonitoringModel() { Stock = x, isGrey = 1 });
                 }
             }
 
+            _memoryCache.Set("responseModel", responseModel, new MemoryCacheEntryOptions
+            {
+                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(1)
+            });
+
+            isActual = true;
+
             return responseModel;
-        }
+        } 
 
         public async Task<StatusResponseModel> getStatus(int nshop)
         {
