@@ -119,3 +119,12 @@ mat-sidenav {
   text-align: center;
   opacity: 1;
 }
+
+.pingRed{
+  position:absolute;
+  left: 10px;
+  top: 10px;
+  font-size: 20px;
+  color: rgb(28, 231, 28);
+  z-index: 100;
+}

@@ -9,8 +9,8 @@ using DataAccessLayer.Repositories.Interfaces.Shops;
 using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using System.Threading.Tasks;
-using System.Timers;
 
 namespace BusinessLogicLayer.Services
 {
@@ -50,8 +50,9 @@ namespace BusinessLogicLayer.Services
             _mapper = mapper;
         }
 
-        private Timer timer = new Timer();
         private static bool isActual = true;
+        private static List<int?> reds = new List<int?>();
+
         public async Task<BoardResponseModel> getBoard()
         {
             BoardResponseModel responseModel = new BoardResponseModel();
@@ -76,7 +77,7 @@ namespace BusinessLogicLayer.Services
 
             List<Monitoring> newlistStosks = new List<Monitoring>();
             List<Monitoring> s = new List<Monitoring>();
-            List<Monitoring> red = new List<Monitoring>();
+            List<Monitoring> greens = new List<Monitoring>();
 
             int allstock = await _rStockRepository.getAmountShop();
 
@@ -84,7 +85,7 @@ namespace BusinessLogicLayer.Services
 
             do
             {
-                foreach (Monitoring monitoring in monitorings)
+                foreach (Monitoring monitoring in monitorings)                                          //All router
                 {
                     if ((monitoring.Device == "router") && (monitoring.Stock == nstock))
                     {
@@ -93,7 +94,7 @@ namespace BusinessLogicLayer.Services
                     }
                 }
 
-                foreach (Monitoring monitoring in monitorings)
+                foreach (Monitoring monitoring in monitorings)                                          //All S
                 {
                     if ((monitoring.Device == "S") && (monitoring.Stock == nstock))
                     {
@@ -102,11 +103,11 @@ namespace BusinessLogicLayer.Services
                     }
                 }
 
-                foreach (Monitoring monitoring in monitorings)
+                foreach (Monitoring monitoring in monitorings)                                          //Greens
                 {
                     if ((monitoring.Device == "router") && (monitoring.Stock == nstock) && (monitoring.Status == 1))
                     {
-                        red.Add(monitoring);
+                        greens.Add(monitoring);
                         break;
                     }
                 }
@@ -117,6 +118,8 @@ namespace BusinessLogicLayer.Services
 
             List<MonitoringModel> monitoringModels = _mapper.Map<List<Monitoring>, List<MonitoringModel>>(newlistStosks);
 
+            reds.Clear();
+
             for (int x = 1; x <= allstock; x++)
             {
                 bool isAdd = false;
@@ -125,7 +128,7 @@ namespace BusinessLogicLayer.Services
                 {
                     if (x == monitoringModel.Stock)
                     {
-                        foreach (Monitoring monitoring in red)
+                        foreach (Monitoring monitoring in greens)                               //Grey
                         {
                             if (x == monitoring.Stock)
                             {
@@ -134,7 +137,7 @@ namespace BusinessLogicLayer.Services
                             }
                         }
 
-                        foreach (Monitoring monitoring in s)
+                        foreach (Monitoring monitoring in s)                                   //Add S
                         {
                             if (x == monitoring.Stock)
                             {
@@ -158,6 +161,32 @@ namespace BusinessLogicLayer.Services
                 {
                     responseModel.monitoringModels.Add(new MonitoringModel() { Stock = x, isGrey = 1 });
                 }
+
+                foreach (MonitoringModel monitoringModel in monitoringModels)                    //check Ip Address for reds
+                {
+                    if (x == monitoringModel.Stock)
+                    {
+
+                        if ((monitoringModel.isGrey == 0) && (monitoringModel.Status == 0))
+                        {
+
+                            bool result = getPing(monitoringModel.Stock);
+
+                            if (result)
+                            {
+                                monitoringModel.Status = 1;
+                            }
+                            else
+                            {
+                                reds.Add(monitoringModel.Stock);
+                            }
+
+                        }
+
+                    }
+
+                }
+
             }
 
             _memoryCache.Set("responseModel", responseModel, new MemoryCacheEntryOptions
@@ -168,7 +197,70 @@ namespace BusinessLogicLayer.Services
             isActual = true;
 
             return responseModel;
+            
         } 
+
+        private bool getPing(int? nStock)
+        {
+            Ping ping = new Ping();
+            bool pingable = false;
+            string strNStock = "";
+
+            if (nStock > 0)
+            {
+                strNStock = "a000" + nStock.ToString();
+
+                if (nStock >= 10)
+                {
+                    strNStock = "a00" + nStock.ToString();
+
+                    if (nStock >= 100)
+                    {
+                        strNStock = "a0" + nStock.ToString();
+
+                        if (nStock >= 1000)
+                        {
+                            strNStock = "a" + nStock.ToString();
+                        }
+
+                    }
+
+                }
+            }
+
+            string ip = strNStock + "-router";
+
+            try
+            {
+                PingReply reply = ping.Send(ip);
+                pingable = reply.Status == IPStatus.Success;
+            }
+            catch
+            {
+                return pingable;
+            }
+            return pingable;
+        }
+
+        public PingRedResponseModel getPingReds()
+        {
+            PingRedResponseModel pingRedResponseModel = new PingRedResponseModel();
+
+            if (reds.Count != 0)
+            {
+
+                foreach( int? red in reds)
+                {
+                    bool result = getPing(red);
+                    pingRedResponseModel.pingRedModels.Add(new PingRedModel() { Shop = red, IsPing = result });
+                }
+            }
+            if (reds.Count == 0)
+            {
+                return pingRedResponseModel;
+            }
+            return pingRedResponseModel;
+        }
 
         public async Task<StatusResponseModel> getStatus(int nshop)
         {

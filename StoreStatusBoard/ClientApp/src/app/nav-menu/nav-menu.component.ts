@@ -27,18 +27,7 @@ export class NavMenuComponent {
     setInterval(() => this.getTime(), 1000);
 
     this.getBoard();
-
-
-    /*this.getState();
-
-    if (this.stocks == undefined) {
-
-      this.getRecordSession();
-
-    }*/
-
-   // setInterval(() => this.getRecordSession(), 60000);
-    // this.getState(), 50000);
+    setInterval(() => this.getBoard(), 60000);
 
   }
 
@@ -46,22 +35,6 @@ export class NavMenuComponent {
     
     var stocks = await this.boardService.getBoard();
     this.getHeader(stocks);
-  }
-
-  public async getRecordSession() {
-
-    let stocks = await this.boardService.getRecordSession();
-    this.getHeader(stocks);
-
-  }
-
-  public async getState() {
-
-   let stocks = await this.boardService.getSession();
-
-   if (stocks.monitoringModels.length != 0){
-    this.getHeader(stocks);
-   }
   }
 
   public getHeader(stocks : any) {

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BoardResponseModel } from '../models/response/board.response.model';
 import { DeviceInShopResponseModel } from '../models/response/device.response.model';
+import { PingRedResponseModel } from '../models/response/ping.red.response.model';
 import { ShopResponseModel } from '../models/response/shop.response.model';
 import { StatusForDayResponseModel } from '../models/response/status.forday.response.model';
 import { StatusResponseModel } from '../models/response/status.response.model';
@@ -21,20 +22,10 @@ export class BoardService {
     return board;
   }
 
-  public async getRecordSession(): Promise<BoardResponseModel> {
-
-    const url: string = "/api/Board/RecordSession"; //https://localhost:44341
-    const board = await this.http.get<BoardResponseModel>(url).toPromise();
-
-    return board;
-  }
-
-  public async getSession(): Promise<BoardResponseModel> {
-
-    const url: string = "/api/Board/GetSession"; //https://localhost:44341
-    const board = await this.http.get<BoardResponseModel>(url).toPromise();
-
-    return board;
+  public async getPingRed(): Promise<PingRedResponseModel>{
+    const url: string = "/api/Board/GetPingRed"; 
+    const getPingReds = await this.http.get<PingRedResponseModel>(url).toPromise();
+    return getPingReds;
   }
 
   public async getStatus(nshop: number): Promise<StatusResponseModel> {
@@ -48,7 +39,7 @@ export class BoardService {
   }
 
   public async getShopInfo(nshop: number): Promise<ShopResponseModel> {
-    const url: string = "/api/Board/ShopInfo";
+    const url: string = "/api/Board/GetShopInfo";
 
     const params = new HttpParams()
       .set('nshop', nshop.toString());
@@ -58,7 +49,7 @@ export class BoardService {
   }
 
   public async getStatusForDay(nshop: number): Promise<StatusForDayResponseModel> {
-    const url: string = "/api/Board/ShopStatusForDay";
+    const url: string = "/api/Board/GetShopStatusForDay";
 
     const params = new HttpParams()
       .set('nshop', nshop.toString());
@@ -68,7 +59,7 @@ export class BoardService {
   }
 
   public async getDeviceInShop(nshop: number): Promise<DeviceInShopResponseModel> {
-    const url: string = "/api/Board/DeviceInShop";
+    const url: string = "/api/Board/GetDeviceInShop";
 
     const params = new HttpParams()
       .set('nshop', nshop.toString());

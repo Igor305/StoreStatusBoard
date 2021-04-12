@@ -6,10 +6,12 @@
           <nav>
             <a routerLink="/{{stock.stock}}">
               <div class="sideRouter">
-                <div *ngIf="(stock.status == 0)&&(stock.isGrey == 0)" class="stocks">
-                  <div id="Nstock" class="stocks" style="background-color: #FF4A3E;">
-                    {{stock.stock}}
-                    <div id="S">S</div>
+                <div *ngIf="((stock.status == 0))&&(stock.isGrey == 0)" class="stocks">
+                    <div id="Nstock" class="stocks" style="background-color: #FF4A3E;">{{stock.stock}}</div>
+                    <div id="Provider" class="Provaider">1</div>
+                    <div id="S" class="S">S</div>
+                    <div *ngFor="let pingRed of pingReds;">
+                      <div *ngIf="((pingRed.shop == stock.stock))&&(pingRed.isPing)" class="pingRed">P</div>
                   </div>
                 </div>
               </div>
@@ -43,17 +45,20 @@
               <div id="Nstock" class="stocks" style="background-color: #94D196;">{{stock.stock}} </div>
               <div id="S" class="S">S</div>
             </div>
+            <div *ngIf="((stock.status == 0))&&(stock.isGrey == 0)" class="stocks">
+              <div id="Nstock" class="stocks" style="background-color: #FF4A3E;">{{stock.stock}}</div>
+              <div id="Provider" class="Provaider">1</div>
+              <div id="S" class="S">S</div>
+              <div *ngFor="let pingRed of pingReds;">
+                <div *ngIf="((pingRed.shop == stock.stock))&&(pingRed.isPing)" class="pingRed">P</div>
+              </div>
+            </div>
             <div *ngIf="(stock.status == 1)&&(stock.statusS == 0)" class="stocks" style=" background-color: #94D196;">
               <div id="Nstock" class="stocksRed">{{stock.stock}}</div>
               <div id="S" class="S" style="color: #FF4A3E;">S</div>
             </div>
             <div *ngIf="(stock.isGrey == 1)" class="stocks">
               <div id="Nstock" class="stocks" style="background-color: #968B8B;">{{stock.stock}}</div>
-              <div id="S" class="S">S</div>
-            </div>
-            <div *ngIf="(((stock.status == 0)&&(stock.statusS == 0))||((stock.status == 0)&&(stock.statusS == 1)))&&(stock.isGrey != 1)" class="stocks">
-              <div id="Nstock" class="stocks" style="background-color: #FF4A3E;">{{stock.stock}}</div>
-              <div id="Provider" class="Provaider">1</div>
               <div id="S" class="S">S</div>
             </div>
           </a>

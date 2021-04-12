@@ -1,6 +1,7 @@
 ﻿using BusinessLogicLayer.Models.Response;
 using BusinessLogicLayer.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace StoreStatusBoard.Controllers
@@ -18,9 +19,26 @@ namespace StoreStatusBoard.Controllers
         [HttpGet()]
         public async Task<BoardResponseModel> getBoard()
         {
-            BoardResponseModel responseModel = await _boardService.getBoard();
+            BoardResponseModel responseModel = new BoardResponseModel();
+            try
+            {
+                responseModel = await _boardService.getBoard();
+            }
+            catch
+            {
+
+                return responseModel;
+            }
 
             return responseModel;
+        }
+
+        [HttpGet("GetPingRed")]
+        public PingRedResponseModel getPingRed()
+        {
+            PingRedResponseModel pingRedResponseModel = _boardService.getPingReds();
+
+            return pingRedResponseModel;
         }
 
         [HttpGet("GetStatus")]
@@ -31,7 +49,7 @@ namespace StoreStatusBoard.Controllers
             return statusResponseModel;
         }
 
-        [HttpGet("ShopInfo")]
+        [HttpGet("GetShopInfo")]
         public async Task<ShopResponseModel> ShopInfo(int nshop)
         {
             ShopResponseModel shopResponseModel = await _boardService.getShopInfo(nshop);
@@ -39,7 +57,7 @@ namespace StoreStatusBoard.Controllers
             return shopResponseModel;
         }
 
-        [HttpGet("ShopStatusForDay")]
+        [HttpGet("GetShopStatusForDay")]
         public async Task<StatusForDayResponseModel> ShopStatusForDay(int nshop)
         {
             StatusForDayResponseModel statusForDayResponseModel = await _boardService.getStatusForDay(nshop);
@@ -48,7 +66,7 @@ namespace StoreStatusBoard.Controllers
         }
 
 
-        [HttpGet("DeviceInShop")]
+        [HttpGet("GetDeviceInShop")]
         public async Task<DeviceInShopResponseModel> DeviceInShop(int nshop)
         {
             DeviceInShopResponseModel deviceInShopResponseModel = await _boardService.getDeviceinShop(nshop);

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { StockModel } from '../models/stock.model';
 import { BoardService } from '../services/board.service';
 import { AnimationOptions } from 'ngx-lottie';
+import { PingRedModel } from '../models/ping.red.model';
 
 @Component({
   selector: 'app-board',
@@ -16,6 +17,7 @@ export class BoardComponent implements OnInit {
   badPing: boolean = false;
   stocks: StockModel[] = [];
   showFiller: boolean = true;
+  pingReds: PingRedModel[] = [];
 
   options: AnimationOptions = {
     path: '/assets/data.json',
@@ -28,12 +30,19 @@ export class BoardComponent implements OnInit {
 
     this.getBoard();
     setInterval(() => this.getBoard(), 60000);
-
+    setInterval(() => this.getPingRed(), 30000);
   }
 
   public async getBoard(){
     
-    var stocks = await this.boardService.getBoard();
+    let stocks = await this.boardService.getBoard();
     this.stocks = stocks.monitoringModels;
+  }
+
+  public async getPingRed(){
+
+    let pingReds = await this.boardService.getPingRed();
+    this.pingReds = pingReds.pingRedModels;
+    console.log(this.pingReds);
   }
 }
