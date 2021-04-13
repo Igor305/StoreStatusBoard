@@ -30,19 +30,25 @@ export class BoardComponent implements OnInit {
 
     this.getBoard();
     setInterval(() => this.getBoard(), 60000);
-    setInterval(() => this.getPingRed(), 30000);
+    setInterval(() => this.getPingRed(), 60000);
   }
 
   public async getBoard(){
     
     let stocks = await this.boardService.getBoard();
-    this.stocks = stocks.monitoringModels;
+    if(stocks.monitoringModels.length == 0){
+      console.log("0");
+    }
+    if(stocks.monitoringModels.length != 0){
+      console.log("WTF");
+      this.stocks = stocks.monitoringModels;
+    }
+
   }
 
   public async getPingRed(){
 
     let pingReds = await this.boardService.getPingRed();
     this.pingReds = pingReds.pingRedModels;
-    console.log(this.pingReds);
   }
 }

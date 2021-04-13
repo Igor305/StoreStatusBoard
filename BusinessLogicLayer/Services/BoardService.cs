@@ -52,23 +52,36 @@ namespace BusinessLogicLayer.Services
 
         private static bool isActual = true;
         private static List<int?> reds = new List<int?>();
+        private static BoardResponseModel boardResponseModel = new BoardResponseModel();
 
         public async Task<BoardResponseModel> getBoard()
         {
             BoardResponseModel responseModel = new BoardResponseModel();
 
-            if (!_memoryCache.TryGetValue("responseModel", out responseModel)&&(isActual))
+            if (_memoryCache.TryGetValue("responseModel", out responseModel))
             {
-                isActual = false;
-                responseModel = await InCache();
+                responseModel = _memoryCache.Get<BoardResponseModel>("responseModel");
+                return responseModel;
             }
-            
-            responseModel = _memoryCache.Get<BoardResponseModel>("responseModel");
+
+            if (!_memoryCache.TryGetValue("responseModel", out responseModel)&&(isActual))
+            {            
+                isActual = false;
+                await InCache();
+                responseModel = boardResponseModel;
+                return responseModel;
+            }
+
+            if (!_memoryCache.TryGetValue("responseModel", out responseModel) && (!isActual))
+            {
+                responseModel = boardResponseModel;
+                return responseModel;
+            }
 
             return responseModel;
         }
 
-        private async Task<BoardResponseModel> InCache()
+        private async Task InCache()
         {
 
             BoardResponseModel responseModel = new BoardResponseModel();
@@ -191,12 +204,12 @@ namespace BusinessLogicLayer.Services
 
             _memoryCache.Set("responseModel", responseModel, new MemoryCacheEntryOptions
             {
-                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(1)
+                AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(30)
             });
 
             isActual = true;
 
-            return responseModel;
+            boardResponseModel = responseModel;
             
         } 
 

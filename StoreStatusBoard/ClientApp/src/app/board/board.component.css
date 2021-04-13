@@ -10,7 +10,7 @@ div {
 .errorLine {
   position: relative;
   width: 100%;
-  height: 1%;
+  height: 10px;
   background-color: #968B8B;
 }
 
@@ -64,7 +64,7 @@ div {
 }
 
 #Nstock {
-  font-size: 30px;
+  font-size: 35px;
   text-align: center;
 }
 
@@ -99,10 +99,22 @@ mat-sidenav {
   height: 50%;
 }
 
-.buttonSidenav {
+.sidenav {
   position: absolute;
   height: 100%;
   width: 10px;
+  background-color: #A4A4A4;
+  top: 0px;
+  right: 0px;
+  cursor: pointer;
+}
+
+.buttonSidenav{
+  position: absolute;
+  top:50%;
+  right: 30%;
+  height:50px;
+  width:50px;
   background-color: #A4A4A4;
   top: 0px;
   right: 0px;
@@ -127,4 +139,25 @@ mat-sidenav {
   font-size: 20px;
   color: rgb(28, 231, 28);
   z-index: 100;
+}
+
+@media(max-width: 1200px) {
+  mat-sidenav{
+    width: 245px;
+  }
+}
+@media(max-width: 1047px){
+  mat-sidenav{
+    margin-top: 210px;
+  }
+}
+@media(max-width: 844px){
+  mat-sidenav{
+    width: 123px;
+  }
+}
+@media(max-width: 599px){
+  mat-sidenav{
+    margin-top: 499px;
+  }
 }

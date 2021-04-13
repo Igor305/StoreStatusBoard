@@ -39,6 +39,13 @@ namespace DataAccessLayer.Repositories.EFRepositories.NetMonitoring
             return monitorings;
         }
 
+        public async Task<List<Monitoring>> getAllLogTimeForRouterAndS()
+        {
+            List<Monitoring> monitorings = await _netMonitoringContext.Monitorings.Where(x => x.LogTime.Value.Date == DateTime.Today.Date && (x.Device == "router" || x.Device == "S")).ToListAsync();
+            
+            return monitorings;
+        }
+
         public async Task<List<Monitoring>> getStatusStockHours(int nstock, int hour)
         {
             List<Monitoring> monitorings = await _netMonitoringContext.Monitorings.Where(x => x.LogTime.Value.Date == DateTime.Today.Date &&

@@ -26,7 +26,6 @@ namespace StoreStatusBoard.Controllers
             }
             catch
             {
-
                 return responseModel;
             }
 
