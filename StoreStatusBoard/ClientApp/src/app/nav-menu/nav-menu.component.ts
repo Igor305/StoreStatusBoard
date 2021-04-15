@@ -34,9 +34,7 @@ export class NavMenuComponent {
   public async getBoard(){
     
     var stocks = await this.boardService.getBoard();
-    if(stocks.monitoringModels.length == 0){
-      console.log("0");
-    }
+    
     if(stocks.monitoringModels.length != 0){
       this.getHeader(stocks);
     }

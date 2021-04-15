@@ -1,5 +1,4 @@
 ﻿using BusinessLogicLayer.Models.Response;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.Services.Interfaces

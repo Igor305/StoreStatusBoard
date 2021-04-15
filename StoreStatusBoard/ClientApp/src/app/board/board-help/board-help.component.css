@@ -1,0 +1,40 @@
+button{
+    position: relative;
+    margin-top: 20px;
+    margin-left: 40%;
+}
+.block{
+    position: relative;
+    margin-top: 10px;
+    display: flex;
+}
+.red{
+    position: relative;
+    height: 30px;
+    width: 80px;
+    border: 1px solid #FC1203;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+}
+.redText{
+    position: relative;
+    margin-left: 15px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+}
+.extext{
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+}
+.text{
+    position: relative;
+    margin-left: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+}
+.letter{
+    position: relative;
+    margin-top: 5px;
+}

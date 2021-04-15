@@ -36,6 +36,9 @@
           </nav>
         </div>
       </div>
+    <div type = "button" mat-button (click)="openDialog()">
+      <img  class="help" src="/assets/Help.jpg">
+    </div>
     </mat-sidenav>
     <div class="example-sidenav-content">
       <div *ngFor="let stock of stocks;">
@@ -72,4 +75,3 @@
   <ng-lottie [options]="options">
   </ng-lottie>
 </div>
-

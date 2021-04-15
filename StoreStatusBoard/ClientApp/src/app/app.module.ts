@@ -6,13 +6,18 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import { BoardModule } from './board/board.module';
 
+import { CookieService } from 'ngx-cookie-service';
+import { BoardService } from './services/board.service';
+
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { BoardComponent } from './board/board.component';
-import { BoardService } from './services/board.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StockComponent } from './stock/stock.component';
 import { StockModule } from './stock/stock.module';
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { BoardHelpComponent } from './board/board-help/board-help.component';
 
 
 
@@ -34,7 +39,13 @@ import { StockModule } from './stock/stock.module';
 ], { relativeLinkResolution: 'legacy', initialNavigation: 'enabled' }),
     BrowserAnimationsModule
   ],
-  providers: [BoardService],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' }},
+    BoardService, 
+    CookieService,
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [BoardComponent, BoardHelpComponent]
 })
 export class AppModule { }

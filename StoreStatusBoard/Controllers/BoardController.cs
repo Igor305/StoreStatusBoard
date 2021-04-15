@@ -19,17 +19,9 @@ namespace StoreStatusBoard.Controllers
         [HttpGet()]
         public async Task<BoardResponseModel> getBoard()
         {
-            BoardResponseModel responseModel = new BoardResponseModel();
-            try
-            {
-                responseModel = await _boardService.getBoard();
-            }
-            catch
-            {
-                return responseModel;
-            }
+            BoardResponseModel boardResponseModel = await _boardService.getBoard();
 
-            return responseModel;
+            return boardResponseModel;
         }
 
         [HttpGet("GetPingRed")]

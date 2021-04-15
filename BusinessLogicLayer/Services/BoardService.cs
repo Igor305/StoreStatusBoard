@@ -50,41 +50,30 @@ namespace BusinessLogicLayer.Services
             _mapper = mapper;
         }
 
+       
         private static bool isActual = true;
         private static List<int?> reds = new List<int?>();
-        private static BoardResponseModel boardResponseModel = new BoardResponseModel();
 
         public async Task<BoardResponseModel> getBoard()
         {
             BoardResponseModel responseModel = new BoardResponseModel();
 
-            if (_memoryCache.TryGetValue("responseModel", out responseModel))
+            if ((!_memoryCache.TryGetValue("responseModel", out responseModel))&&(isActual))
             {
-                responseModel = _memoryCache.Get<BoardResponseModel>("responseModel");
-                return responseModel;
+                await inCache();
             }
 
-            if (!_memoryCache.TryGetValue("responseModel", out responseModel)&&(isActual))
-            {            
-                isActual = false;
-                await InCache();
-                responseModel = boardResponseModel;
-                return responseModel;
-            }
-
-            if (!_memoryCache.TryGetValue("responseModel", out responseModel) && (!isActual))
-            {
-                responseModel = boardResponseModel;
-                return responseModel;
-            }
+            responseModel = _memoryCache.Get<BoardResponseModel>("responseModel");
 
             return responseModel;
         }
 
-        private async Task InCache()
+        private async Task inCache()
         {
 
             BoardResponseModel responseModel = new BoardResponseModel();
+
+            isActual = false;
 
             List<Monitoring> monitorings = await _monitoringRepository.getStocksFor5Day();
 
@@ -204,13 +193,11 @@ namespace BusinessLogicLayer.Services
 
             _memoryCache.Set("responseModel", responseModel, new MemoryCacheEntryOptions
             {
-                AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(30)
+                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(10)
             });
 
             isActual = true;
-
-            boardResponseModel = responseModel;
-            
+                
         } 
 
         private bool getPing(int? nStock)

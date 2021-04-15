@@ -16,7 +16,7 @@ div {
 
 .errorS {
   position: relative;
-  height: 50%;
+  height: 45%;
 }
 
 .stocks {
@@ -84,9 +84,14 @@ div {
   z-index: 101;
 }
 
+mat-sidenav-container{
+  position: sticky;
+  top: 0px;
+}
+
 mat-sidenav {
   position: fixed;
-  margin-top: 105px;
+  top: 105px;
   height: 100%;
   width: 365px;
 }
@@ -96,12 +101,13 @@ mat-sidenav {
 }
 
 .sideSync {
-  height: 50%;
+  height: 40%;
 }
 
 .sidenav {
-  position: absolute;
-  height: 100%;
+  position:absolute;
+  left: 80%;
+  height: 5%;
   width: 10px;
   background-color: #A4A4A4;
   top: 0px;
@@ -139,6 +145,15 @@ mat-sidenav {
   font-size: 20px;
   color: rgb(28, 231, 28);
   z-index: 100;
+}
+
+.help{
+  position: absolute;
+  right: 0px;
+  top: 87%;
+  height: 50px;
+  width: 50px;
+  background-image: url('/assets/Help.jpg');
 }
 
 @media(max-width: 1200px) {
