@@ -50,28 +50,37 @@ namespace BusinessLogicLayer.Services
             _mapper = mapper;
         }
 
-       
+        private static bool isStart = true;
         private static bool isActual = true;
         private static List<int?> reds = new List<int?>();
-
+        private static System.Timers.Timer aTimer;
         public async Task<BoardResponseModel> getBoard()
         {
             BoardResponseModel responseModel = new BoardResponseModel();
 
-            if ((!_memoryCache.TryGetValue("responseModel", out responseModel))&&(isActual))
+
+            if (isStart)
+            {
+               /* CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
+                CancellationToken token = cancelTokenSource.Token;
+                await _timedHostedService.StartAsync(token);*/
+
+               /* RecurringJob.AddOrUpdate<BoardService>("inCache", x => x.inCache(), Cron.MinuteInterval(10));
+                RecurringJob.Trigger("inCache");*/
+            }
+            /*if ((!_memoryCache.TryGetValue("responseModel", out responseModel))&&(isActual))
             {
                 await inCache();
-            }
+            }*/
 
             responseModel = _memoryCache.Get<BoardResponseModel>("responseModel");
 
             return responseModel;
         }
 
-        private async Task inCache()
+        public async Task inCache()
         {
-
-            BoardResponseModel responseModel = new BoardResponseModel();
+           BoardResponseModel responseModel = new BoardResponseModel();
 
             isActual = false;
 
@@ -196,8 +205,7 @@ namespace BusinessLogicLayer.Services
                 AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(10)
             });
 
-            isActual = true;
-                
+            isActual = true;           
         } 
 
         private bool getPing(int? nStock)
@@ -260,6 +268,74 @@ namespace BusinessLogicLayer.Services
                 return pingRedResponseModel;
             }
             return pingRedResponseModel;
+        }
+
+        private async Task infoTTInCache()
+        {
+            List<Monitoring> log7 = new List<Monitoring>();
+            List<Monitoring> log730 = new List<Monitoring>();
+            List<Monitoring> log8 = new List<Monitoring>();
+            List<Monitoring> log830 = new List<Monitoring>();
+            List<Monitoring> log9 = new List<Monitoring>();
+            List<Monitoring> log930 = new List<Monitoring>();
+            List<Monitoring> log10 = new List<Monitoring>();
+            List<Monitoring> log1030 = new List<Monitoring>();
+            List<Monitoring> log11 = new List<Monitoring>();
+            List<Monitoring> log1130 = new List<Monitoring>();
+            List<Monitoring> log12 = new List<Monitoring>();
+            List<Monitoring> log1230 = new List<Monitoring>();
+            List<Monitoring> log13 = new List<Monitoring>();
+            List<Monitoring> log1330 = new List<Monitoring>();
+            List<Monitoring> log14 = new List<Monitoring>();
+            List<Monitoring> log1430 = new List<Monitoring>();
+            List<Monitoring> log15 = new List<Monitoring>();
+            List<Monitoring> log1530 = new List<Monitoring>();
+            List<Monitoring> log16 = new List<Monitoring>();
+            List<Monitoring> log1630 = new List<Monitoring>();
+            List<Monitoring> log17 = new List<Monitoring>();
+            List<Monitoring> log1730 = new List<Monitoring>();
+            List<Monitoring> log18 = new List<Monitoring>();
+            List<Monitoring> log1830 = new List<Monitoring>();
+            List<Monitoring> log19 = new List<Monitoring>();
+            List<Monitoring> log1930 = new List<Monitoring>();
+            List<Monitoring> log20 = new List<Monitoring>();
+            List<Monitoring> log2030 = new List<Monitoring>();
+            List<Monitoring> log21 = new List<Monitoring>();
+            List<Monitoring> log2130 = new List<Monitoring>();
+            List<Monitoring> log22 = new List<Monitoring>();
+
+            int nlog = 1;
+            List<Monitoring> alllogTimeForRouterAndS = await _monitoringRepository.getAllLogTimeForRouterAndS();
+
+            foreach (Monitoring monitoring in alllogTimeForRouterAndS)
+            {
+                for (int nstock = 1; nstock <= 800; nstock++)
+                {
+                    if (monitoring.Stock == nstock)
+                    {
+                        if (monitoring.LogTime.Value.Hour == 6)
+                        {
+                            if (monitoring.LogTime.Value.Minute >= 30)
+                            {
+                                log7.Add(monitoring);
+                            }
+                        }
+
+                        if (monitoring.LogTime.Value.Hour == 7)
+                        {
+                            if (monitoring.LogTime.Value.Minute < 30)
+                            {
+                                log730.Add(monitoring);
+                            }
+
+                            if (monitoring.LogTime.Value.Minute >= 30)
+                            {
+                                log8.Add(monitoring);
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         public async Task<StatusResponseModel> getStatus(int nshop)

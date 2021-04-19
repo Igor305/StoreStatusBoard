@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreStatusBoard", "StoreStatusBoard\StoreStatusBoard.csproj", "{F875F0FC-315F-404F-8653-A6068C6E6E82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoreStatusBoard", "StoreStatusBoard\StoreStatusBoard.csproj", "{F875F0FC-315F-404F-8653-A6068C6E6E82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogicLayer", "BusinessLogicLayer\BusinessLogicLayer.csproj", "{FE8AFDCF-8299-4281-99DB-1FB22887BE60}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogicLayer", "BusinessLogicLayer\BusinessLogicLayer.csproj", "{FE8AFDCF-8299-4281-99DB-1FB22887BE60}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{EB48353D-6BBE-4B53-A70F-F98CA32B449C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{EB48353D-6BBE-4B53-A70F-F98CA32B449C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

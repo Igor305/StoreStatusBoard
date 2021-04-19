@@ -7,6 +7,8 @@ using DataAccessLayer.Repositories.EFRepositories.NetMonitoring;
 using DataAccessLayer.Repositories.EFRepositories.Shops;
 using DataAccessLayer.Repositories.Interfaces.NetMonitoring;
 using DataAccessLayer.Repositories.Interfaces.Shops;
+using Hangfire;
+using Hangfire.SqlServer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
@@ -14,6 +16,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace StoreStatusBoard
 {
@@ -46,8 +49,11 @@ namespace StoreStatusBoard
             services.AddScoped<IStreetsLocalizationRepository, StreetsLocalizationRepository>();
             services.AddScoped<ICityLocalizationRepository, CityLocalizationRepository>();
             services.AddScoped<IBoardService, BoardService>();
-            services.AddControllersWithViews();
 
+            services.AddHostedService<ConsumeScopedServiceHostedService>();
+            services.AddScoped<IScopedProcessingService, ScopedProcessingService>();
+
+            services.AddControllersWithViews();
 
             MapperConfiguration mapperconfig = new MapperConfiguration(cfg =>
             {   
@@ -61,6 +67,24 @@ namespace StoreStatusBoard
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddHangfire(configuration => configuration
+            .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+            .UseSimpleAssemblyNameTypeSerializer()
+            .UseRecommendedSerializerSettings()
+            .UseSqlServerStorage(Configuration.GetConnectionString("HangfireConnection"), new SqlServerStorageOptions
+            {
+                CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
+                SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
+                QueuePollInterval = TimeSpan.Zero,
+                UseRecommendedIsolationLevel = true,
+                DisableGlobalLocks = true
+            }));
+
+            services.AddHangfireServer();
+
+            JobStorage.Current = new SqlServerStorage(Configuration.GetConnectionString("HangfireConnection"));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

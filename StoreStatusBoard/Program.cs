@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace StoreStatusBoard
 {
     public class Program
-    {
+    {      
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
@@ -23,6 +23,11 @@ namespace StoreStatusBoard
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
+                })
+                .ConfigureServices(services =>
+                {
+                services.AddHostedService<TimedHostedService>();
+            });
+
     }
 }

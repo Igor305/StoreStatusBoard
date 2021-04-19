@@ -106,8 +106,7 @@ mat-sidenav {
 
 .sidenav {
   position:absolute;
-  left: 80%;
-  height: 5%;
+  height: 100%;
   width: 10px;
   background-color: #A4A4A4;
   top: 0px;
