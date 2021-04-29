@@ -25,8 +25,7 @@ namespace DataAccessLayer.Repositories.EFRepositories.NetMonitoring
 
         public async Task<List<string>> getDevicesFromStock(int nstock)
         {
-
-            List<string> devices = await _netMonitoringContext.Monitorings.Where(x => x.LogTime.Value.Date == DateTime.Today.Date && x.Stock == nstock).Select(x => x.Device).Distinct().OrderBy(x => x).ToListAsync();
+            List<string> devices = await _netMonitoringContext.Monitorings.Where(x => x.LogTime.Value >= DateTime.Now.AddMinutes(-10) && x.Stock == nstock && x.IpAddress != "0.0.0.0" && x.IpAddress != null).Select(x => x.Device).Distinct().OrderBy(x => x).ToListAsync();
 
             return devices;
         }
@@ -35,6 +34,13 @@ namespace DataAccessLayer.Repositories.EFRepositories.NetMonitoring
         {
 
             Monitoring monitorings = await _netMonitoringContext.Monitorings.Where(x => x.Stock == nstock && x.Device == device).OrderByDescending(x => x.LogTime).FirstAsync();
+
+            return monitorings;
+        }
+
+        public async Task<List<Monitoring>> getAllDeviceFromLastLogTime()
+        {
+            List<Monitoring> monitorings = await _netMonitoringContext.Monitorings.Where(x => x.LogTime.Value >= DateTime.Now.AddMinutes(-10) && (x.Device == "router" || x.Device == "S")).OrderBy(x => x.Stock).ToListAsync();
 
             return monitorings;
         }

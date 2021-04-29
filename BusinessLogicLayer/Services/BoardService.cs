@@ -50,28 +50,11 @@ namespace BusinessLogicLayer.Services
             _mapper = mapper;
         }
 
-        private static bool isStart = true;
-        private static bool isActual = true;
         private static List<int?> reds = new List<int?>();
-        private static System.Timers.Timer aTimer;
-        public async Task<BoardResponseModel> getBoard()
+
+        public BoardResponseModel getBoard()
         {
             BoardResponseModel responseModel = new BoardResponseModel();
-
-
-            if (isStart)
-            {
-               /* CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
-                CancellationToken token = cancelTokenSource.Token;
-                await _timedHostedService.StartAsync(token);*/
-
-               /* RecurringJob.AddOrUpdate<BoardService>("inCache", x => x.inCache(), Cron.MinuteInterval(10));
-                RecurringJob.Trigger("inCache");*/
-            }
-            /*if ((!_memoryCache.TryGetValue("responseModel", out responseModel))&&(isActual))
-            {
-                await inCache();
-            }*/
 
             responseModel = _memoryCache.Get<BoardResponseModel>("responseModel");
 
@@ -80,9 +63,31 @@ namespace BusinessLogicLayer.Services
 
         public async Task inCache()
         {
-           BoardResponseModel responseModel = new BoardResponseModel();
+            try
+            {
+                await writeBoardInCache();
+                //await allInfoInCache();
+            }
+            catch
+            {
+                return;
+            }
+          
+        }
 
-            isActual = false;
+        private async Task allInfoInCache()
+        {
+            List<List<MonitoringModel>> allStatus = await writeStatusInCahce();
+
+            StatusShopInCacheModel statusShopInCacheModel = new StatusShopInCacheModel();
+            int allstock = await _rStockRepository.getAmountShop();
+
+        }
+
+        private async Task writeBoardInCache()
+        {
+            
+           BoardResponseModel responseModel = new BoardResponseModel();
 
             List<Monitoring> monitorings = await _monitoringRepository.getStocksFor5Day();
 
@@ -204,8 +209,7 @@ namespace BusinessLogicLayer.Services
             {
                 AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(10)
             });
-
-            isActual = true;           
+          
         } 
 
         private bool getPing(int? nStock)
@@ -336,6 +340,46 @@ namespace BusinessLogicLayer.Services
                     }
                 }
             }
+        }
+
+        private async Task<List<List<MonitoringModel>>> writeStatusInCahce()
+        {
+
+            List<Monitoring> monitorings = await _monitoringRepository.getAllDeviceFromLastLogTime();
+
+            List<MonitoringModel> monitoringModels = _mapper.Map<List<Monitoring>, List<MonitoringModel>>(monitorings);
+
+            List<MonitoringModel> lastLogtimeInMonitoringModelsToRourter1 = new List<MonitoringModel>();
+            List<MonitoringModel> lastLogtimeInMonitoringModelsToS = new List<MonitoringModel>();
+
+            List<List<MonitoringModel>> lastLogtimeInMonitoringModels = new List<List<MonitoringModel>>();
+
+            int nstock = 1;
+
+            foreach (MonitoringModel monitoringModel in monitoringModels)
+            {
+                if ((monitoringModel.Device == "router") && (monitoringModel.Stock == nstock))
+                {
+                    lastLogtimeInMonitoringModelsToRourter1.Add(monitoringModel);
+                    nstock++;
+                }
+
+            }
+
+            nstock = 1;
+
+            foreach (MonitoringModel monitoringModel in monitoringModels)
+            {
+                if ((monitoringModel.Device == "S") && (monitoringModel.Stock == nstock))
+                {
+                    lastLogtimeInMonitoringModelsToS.Add(monitoringModel);
+                }
+            }
+
+            lastLogtimeInMonitoringModels.Add(lastLogtimeInMonitoringModelsToRourter1);
+            lastLogtimeInMonitoringModels.Add(lastLogtimeInMonitoringModelsToS);
+
+            return lastLogtimeInMonitoringModels;
         }
 
         public async Task<StatusResponseModel> getStatus(int nshop)

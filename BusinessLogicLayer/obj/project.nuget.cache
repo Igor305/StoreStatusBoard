@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DPLRnMPi5I0Q6KJexH8X2rOigb/j/yNEwa+9+YSuvCPiKTcCWl/0uFIdwvNUwN40OLULXIUUS1JLawfB79nAEA==",
+  "dgSpecHash": "g8RWnVC9hgLQlZDbILH99f4By98lTVYp/tNu5bcjY1Nb1N0ffiVdRUI4m9u2pfUPWCLhSHVs8R1INrfk0royuw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\i.talavyria\\Desktop\\StoreStatusBoard\\BusinessLogicLayer\\BusinessLogicLayer.csproj",
+  "projectFilePath": "C:\\Users\\i.talavyria\\Desktop\\project\\StoreStatusBoard\\BusinessLogicLayer\\BusinessLogicLayer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\i.talavyria\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\i.talavyria\\.nuget\\packages\\hangfire.aspnetcore\\1.7.22\\hangfire.aspnetcore.1.7.22.nupkg.sha512",
