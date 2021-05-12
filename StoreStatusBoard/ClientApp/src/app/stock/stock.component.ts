@@ -3,9 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { DeviceInShopResponseModel } from '../models/response/device.response.model';
 import { ShopResponseModel } from '../models/response/shop.response.model';
 import { StatusForDayResponseModel } from '../models/response/status.forday.response.model';
-import { StatusTableModel } from '../models/table/status.table.model';
 import { BoardService } from '../services/board.service';
-import { AnimationItem } from 'lottie-web';
 import { AnimationOptions } from 'ngx-lottie';
 import { StatusResponseModel } from '../models/response/status.response.model';
 
@@ -24,7 +22,10 @@ export class StockComponent implements OnInit {
   shopInfo: ShopResponseModel = {};
   statusForDay: StatusForDayResponseModel = {};
   deviceInShop: DeviceInShopResponseModel = {};
-
+  logTimeRouter : string = "";
+  statusRouter : boolean = false;
+  logTimeSync : string = ""; 
+  statusSync : boolean = false;
 
   options: AnimationOptions = {
     path: '/assets/data.json',
@@ -76,14 +77,51 @@ export class StockComponent implements OnInit {
 
     this.getDeviceInShop();
 
-
-
   }
 
   public async getStatusTable() {
 
-    this.statusTable = await this.boardService.getStatus(this.shopId);
+    let shops = await this.boardService.getBoard();
+    let routers = await this.boardService.getLastTrueRouters();
 
+    for (let shop of shops.monitoringModels){
+
+      for (let router of routers.monitoringModels){
+
+        if (shop.stock == router.stock && router.stock == this.shopId.toString()){
+
+          if (shop.status == 1){
+            this.statusRouter = true;
+          }
+
+          if (shop.status == 0){
+            this.statusRouter = false;
+          }
+
+          this.logTimeRouter = router.strLogTime;
+        }
+      }
+    }
+
+    let syncs = await this.boardService.getLastTrueS();
+
+    for (let shop of shops.monitoringModels){
+
+      for (let sync of syncs.monitoringModels){
+
+        if (shop.stock == sync.stock && sync.stock == this.shopId.toString()){
+
+          if(shop.statusS == 1){
+            this.statusSync = true;
+          }
+          if(shop.statusS == 0){
+            this.statusSync = false;
+          }
+
+          this.logTimeSync = sync.strLogTime;
+        }
+      }
+    }
   }
 
   public async getShopInfo() {

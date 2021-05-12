@@ -17,6 +17,8 @@ export class BoardComponent implements OnInit {
   badPingStock: string = "";
   badPing: boolean = false;
   stocks: StockModel[] = [];
+  routers : StockModel[] = [];
+  syncs : StockModel[] = []; 
   showFiller: boolean = true;
   pingReds: PingRedModel[] = [];
 
@@ -37,6 +39,12 @@ export class BoardComponent implements OnInit {
     
     let stocks = await this.boardService.getBoard();
     this.stocks = stocks.monitoringModels;
+
+    let routers = await this.boardService.getLastTrueRouters();
+    this.routers = routers.monitoringModels;
+
+    let syncs = await this.boardService.getLastTrueS();
+    this.syncs = syncs.monitoringModels;
   }
 
   public async getPingRed(){

@@ -61,6 +61,24 @@ namespace BusinessLogicLayer.Services
             return responseModel;
         }
 
+        public BoardResponseModel getRoutersTrue()
+        {
+            BoardResponseModel responseModel = new BoardResponseModel();
+
+            responseModel = _memoryCache.Get<BoardResponseModel>("lastTrueRouters");
+
+            return responseModel;
+        }
+
+        public BoardResponseModel getSTrue()
+        {
+            BoardResponseModel responseModel = new BoardResponseModel();
+
+            responseModel = _memoryCache.Get<BoardResponseModel>("lastTrueS");
+
+            return responseModel;
+        }
+
         public async Task inCache()
         {
             try
@@ -91,9 +109,13 @@ namespace BusinessLogicLayer.Services
 
             List<Monitoring> monitorings = await _monitoringRepository.getStocksFor5Day();
 
-            List<Monitoring> newlistStosks = new List<Monitoring>();
-            List<Monitoring> s = new List<Monitoring>();
-            List<Monitoring> greens = new List<Monitoring>();
+            List<MonitoringModel> monitoringModels = _mapper.Map<List<Monitoring>, List<MonitoringModel>>(monitorings);
+
+            List<MonitoringModel> newlistStosks = new List<MonitoringModel>();
+            List<MonitoringModel> trueRouterModels = new List<MonitoringModel>();
+            List<MonitoringModel> s = new List<MonitoringModel>();
+            List<MonitoringModel> trueSModels = new List<MonitoringModel>();
+            List<MonitoringModel> greens = new List<MonitoringModel>();
 
             int allstock = await _rStockRepository.getAmountShop();
 
@@ -101,7 +123,7 @@ namespace BusinessLogicLayer.Services
 
             do
             {
-                foreach (Monitoring monitoring in monitorings)                                          //All router
+                foreach (MonitoringModel monitoring in monitoringModels)                                          //All router (last log)
                 {
                     if ((monitoring.Device == "router") && (monitoring.Stock == nstock))
                     {
@@ -110,7 +132,16 @@ namespace BusinessLogicLayer.Services
                     }
                 }
 
-                foreach (Monitoring monitoring in monitorings)                                          //All S
+                foreach (MonitoringModel monitoring in monitoringModels)                                          //All router (Status == true)
+                {
+                    if ((monitoring.Device == "router") && (monitoring.Stock == nstock) && (monitoring.Status == 1))
+                    {
+                        trueRouterModels.Add(monitoring);
+                        break;
+                    }
+                }
+
+                foreach (MonitoringModel monitoring in monitoringModels)                                          //All S (last log)
                 {
                     if ((monitoring.Device == "S") && (monitoring.Stock == nstock))
                     {
@@ -119,7 +150,16 @@ namespace BusinessLogicLayer.Services
                     }
                 }
 
-                foreach (Monitoring monitoring in monitorings)                                          //Greens
+                foreach (MonitoringModel monitoring in monitoringModels)                                         //All S (Status == true)
+                {            
+                    if ((monitoring.Device == "S") && (monitoring.Stock == nstock) && (monitoring.Status == 1))
+                    {
+                        trueSModels.Add(monitoring);
+                        break;
+                    }
+                }
+
+                foreach (MonitoringModel monitoring in monitoringModels)                                          //Greens
                 {
                     if ((monitoring.Device == "router") && (monitoring.Stock == nstock) && (monitoring.Status == 1))
                     {
@@ -132,7 +172,7 @@ namespace BusinessLogicLayer.Services
 
             } while (nstock <= allstock);
 
-            List<MonitoringModel> monitoringModels = _mapper.Map<List<Monitoring>, List<MonitoringModel>>(newlistStosks);
+            monitoringModels = newlistStosks;
 
             reds.Clear();
 
@@ -144,7 +184,7 @@ namespace BusinessLogicLayer.Services
                 {
                     if (x == monitoringModel.Stock)
                     {
-                        foreach (Monitoring monitoring in greens)                               //Grey
+                        foreach (MonitoringModel monitoring in greens)                               //Grey
                         {
                             if (x == monitoring.Stock)
                             {
@@ -153,7 +193,7 @@ namespace BusinessLogicLayer.Services
                             }
                         }
 
-                        foreach (Monitoring monitoring in s)                                   //Add S
+                        foreach (MonitoringModel monitoring in s)                                   //Add S
                         {
                             if (x == monitoring.Stock)
                             {
@@ -207,9 +247,27 @@ namespace BusinessLogicLayer.Services
 
             _memoryCache.Set("responseModel", responseModel, new MemoryCacheEntryOptions
             {
-                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(10)
+                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(20)
             });
-          
+
+            BoardResponseModel lastTrueRouters = new BoardResponseModel();
+            lastTrueRouters.monitoringModels = trueRouterModels;
+            lastTrueRouters.monitoringModels.ForEach(x => x.StrLogTime = x.LogTime.ToString());
+  
+            _memoryCache.Set("lastTrueRouters", lastTrueRouters, new MemoryCacheEntryOptions
+            {
+                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(20)
+            });
+
+            BoardResponseModel lastTrueS = new BoardResponseModel();
+            lastTrueS.monitoringModels = trueSModels;
+            lastTrueS.monitoringModels.ForEach(x => x.StrLogTime = x.LogTime.ToString());
+
+            _memoryCache.Set("lastTrueS", lastTrueS, new MemoryCacheEntryOptions
+            {
+                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(20)
+            });
+
         } 
 
         private bool getPing(int? nStock)

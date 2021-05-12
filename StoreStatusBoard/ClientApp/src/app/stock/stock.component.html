@@ -29,22 +29,21 @@
         </thead>
         <tr>
           <td class="td">
-            <div *ngIf="statusTable.provider1.status == 1" style="color: #5DCB61;">
-              {{statusTable.provider1.strLogTime}}
+            <div *ngIf="statusRouter" style="color:green">
+              {{logTimeRouter}}
             </div>
-            <div *ngIf="statusTable.provider1.status == 0" style="color: #FF4A3E;">
-              {{statusTable.provider1.strLogTime}}
+            <div *ngIf="!statusRouter" style="color:red">
+              {{logTimeRouter}}
             </div>
           </td>
           <td class="td">
-
           </td>
-          <td class="td">
-            <div *ngIf="statusTable.sunc.status == 1" style="color: #5DCB61;">
-              {{statusTable.sunc.strLogTime}}
-            </div>
-            <div *ngIf="statusTable.sunc.status == 0" style="color: #FF4A3E;">
-              {{statusTable.sunc.strLogTime}}
+          <td class="td">       
+            <div *ngIf="statusSync" style="color:green">
+              {{logTimeSync}}
+            </div>     
+            <div *ngIf="!statusSync" style="color:red">
+              {{logTimeSync}}
             </div>
           </td>
         </tr>

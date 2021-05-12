@@ -23,6 +23,22 @@ namespace StoreStatusBoard.Controllers
             return boardResponseModel;
         }
 
+        [HttpGet("GetLastTrueRouters")]
+        public BoardResponseModel getLastTrueRouters()
+        {
+            BoardResponseModel boardResponseModel = _boardService.getRoutersTrue();
+
+            return boardResponseModel;
+        }
+
+        [HttpGet("GetLastTrueS")]
+        public BoardResponseModel getLastTrueS()
+        {
+            BoardResponseModel boardResponseModel = _boardService.getSTrue();
+
+            return boardResponseModel;
+        }
+
         [HttpGet("GetPingRed")]
         public PingRedResponseModel getPingRed()
         {

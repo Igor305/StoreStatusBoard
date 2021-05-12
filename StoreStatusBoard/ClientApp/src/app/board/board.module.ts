@@ -6,8 +6,11 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { RouterModule } from '@angular/router';
 import { MatDialogModule } from '@angular/material/dialog';
 import { LottieModule } from 'ngx-lottie';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 import  player from 'lottie-web';
 import { BoardHelpComponent } from './board-help/board-help.component';
+
 
 export function playerFactory() {
   return player;
@@ -21,6 +24,7 @@ export function playerFactory() {
     LayoutModule,
     RouterModule,
     MatDialogModule,
+    MatTooltipModule,
     LottieModule.forRoot({ player: playerFactory })
   ],
   entryComponents: [BoardComponent, BoardHelpComponent]

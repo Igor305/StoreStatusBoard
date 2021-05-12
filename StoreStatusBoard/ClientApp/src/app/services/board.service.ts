@@ -22,6 +22,18 @@ export class BoardService {
     return board;
   }
 
+  public async getLastTrueRouters(): Promise<BoardResponseModel>{
+    const url: string = "/api/Board/GetLastTrueRouters";
+    const board = await this.http.get<BoardResponseModel>(url).toPromise();
+    return board;
+  }
+
+  public async getLastTrueS(): Promise<BoardResponseModel>{
+    const url: string = "/api/Board/GetLastTrueS";
+    const board = await this.http.get<BoardResponseModel>(url).toPromise();
+    return board;
+  }
+
   public async getPingRed(): Promise<PingRedResponseModel>{
     const url: string = "/api/Board/GetPingRed"; 
     const getPingReds = await this.http.get<PingRedResponseModel>(url).toPromise();
